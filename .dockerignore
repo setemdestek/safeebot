@@ -1,0 +1,57 @@
+# Dependencies (will be installed fresh in Docker)
+node_modules
+
+# Build output (will be built in Docker)
+.next
+out
+build
+
+# Version control
+.git
+.gitignore
+
+# Docker files (prevent recursive copy)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Environment files (injected via Coolify, not copied)
+.env*
+!.env.example
+
+# Documentation
+*.md
+docs/
+LICENSE
+
+# IDE & Editor configs
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+__mocks__/
+jest.config.js
+jest.setup.ts
+test-output*.txt
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Agent/AI configs (development only)
+.agent/
+.agents/
+.gemini/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

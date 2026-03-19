@@ -1,0 +1,202 @@
+{
+    "common": {
+        "appName": "SafeBot",
+        "start": "Başla",
+        "howItWorks": "Necə işləyir",
+        "home": "Əsas",
+        "about": "Haqqımızda",
+        "chatbot": "Chatbot",
+        "cv": "CV Hazırla",
+        "settings": "Parametrlər",
+        "login": "Giriş",
+        "register": "Qeydiyyat",
+        "logout": "Çıxış",
+        "language": "Dil",
+        "theme": "Tema",
+        "dark": "Tünd",
+        "light": "Açıq",
+        "system": "Sistem",
+        "loading": "Yüklənir...",
+        "error": "Xəta",
+        "success": "Uğurlu",
+        "cancel": "Ləğv et",
+        "save": "Saxla",
+        "delete": "Sil",
+        "confirm": "Təsdiqlə",
+        "back": "Geri",
+        "send": "Göndər",
+        "close": "Bağla",
+        "yes": "Bəli",
+        "no": "Xeyr",
+        "search": "Axtar"
+    },
+    "hero": {
+        "title": "Təhlükəsiz Gələcək, <highlight>Bu Gündən Başlayır</highlight>",
+        "subtitle": "Süni İntellekt dəstəkli Əməyin Mühafizəsi və Texniki Təhlükəsizlik platforması. Suallarınızı verin, dərhal peşəkar cavab alın.",
+        "cta": "Başla",
+        "howItWorks": "Necə işləyir?"
+    },
+    "sources": {
+        "badge": "MƏNBƏ",
+        "title": "İstinad Edilən Qanun və Standartlar",
+        "subtitle": "Platformamız yerli qanunvericilik və beynəlxalq təhlükəsizlik standartları əsasında formalaşdırılmışdır."
+    },
+    "howItWorks": {
+        "title": "Necə İşləyir?",
+        "step1Title": "Qeydiyyat və Giriş",
+        "step1Desc": "Platformanın imkanlarından yararlanmaq üçün sadələşdirilmiş üsulla qeydiyyatdan keçin və ya mövcud hesabınızla təhlükəsiz giriş edin.",
+        "step2Title": "Sualınızı Ünvanlayın",
+        "step2Desc": "Əməyin mühafizəsi, texniki təhlükəsizlik və ya risklərin qiymətləndirilməsi ilə bağlı sualınızı peşəkar çata daxil edin.",
+        "step3Title": "Süni İntellekt Analizi",
+        "step3Desc": "Sistemimiz sualınızı Azərbaycan Respublikasının qanunvericiliyi (Əmək Məcəlləsi, FHN qaydaları) və beynəlxalq standartlar (NEBOSH, ISO) əsasında analiz edir.",
+        "step4Title": "Dəqiq Həllər Əldə Edin",
+        "step4Desc": "Saniyələr içində qanunvericiliyə istinad edən, və ya məlumat xarakterli dəqiq tətbiq edilə bilən peşəkar cavablar alın."
+    },
+    "auth": {
+        "loginTitle": "Xoş Gəldiniz",
+        "loginSubtitle": "Hesabınıza daxil olun",
+        "registerTitle": "Qeydiyyat",
+        "registerSubtitle": "Yeni hesab yaradın",
+        "firstName": "Ad",
+        "lastName": "Soyad",
+        "email": "E-poçt",
+        "password": "Şifrə",
+        "confirmPassword": "Şifrənin təkrarı",
+        "forgotPassword": "Şifrəni unutmusunuz?",
+        "rememberMe": "Məni xatırla",
+        "noAccount": "Hesabınız yoxdur?",
+        "hasAccount": "Artıq hesabınız var?",
+        "registerNow": "Qeydiyyatdan keçin",
+        "loginNow": "Daxil olun",
+        "passwordWeak": "Zəif",
+        "passwordMedium": "Orta",
+        "passwordStrong": "Güclü",
+        "passwordMismatch": "Şifrələr uyğun gəlmir",
+        "emailInvalid": "Düzgün e-poçt daxil edin",
+        "fieldRequired": "Bu sahə mütləqdir",
+        "loginSuccess": "Uğurla daxil oldunuz",
+        "registerSuccess": "Qeydiyyat uğurla tamamlandı",
+        "forgotPasswordSuccess": "Şifrə bərpa linki e-poçtunuza göndərildi",
+        "forgotPasswordTitle": "Şifrəni Sıfırla",
+        "forgotPasswordSubtitle": "E-poçt ünvanınızı daxil edin, sizə şifrə sıfırlama linki göndərəcəyik",
+        "sendResetLink": "Sıfırlama Linki Göndər",
+        "backToLogin": "Girişə qayıt",
+        "updatePasswordTitle": "Yeni Şifrə Təyin Et",
+        "updatePasswordSubtitle": "Hesabınız üçün yeni şifrənizi daxil edin",
+        "newPassword": "Yeni Şifrə",
+        "confirmNewPassword": "Yeni Şifrənin Təkrarı",
+        "updatePasswordButton": "Şifrəni Yenilə",
+        "updatePasswordSuccess": "Şifrəniz uğurla yeniləndi",
+        "logoutSuccess": "Uğurla çıxış etdiniz"
+    },
+    "chat": {
+        "title": "Chatbot",
+        "newChat": "Yeni Çat",
+        "clearChat": "Söhbəti Təmizlə",
+        "chatHistory": "Söhbət Tarixçəsi",
+        "typeMessage": "Mesajınızı yazın...",
+        "sending": "Göndərilir...",
+        "welcome": "Salam! Mən SƏTƏM mövzusunda köməkçi süni intellektəm. Əmək təhlükəsizliyi, ətraf mühit mühafizəsi və sağlamlıq sahəsindəki suallarınızı cavablandırmağa hazıram.",
+        "networkError": "Bağlantı xətası. Yenidən cəhd edin.",
+        "timeoutError": "Cavab gecikir, zəhmət olmasa yenidən cəhd edin.",
+        "today": "Bu gün",
+        "yesterday": "Dünən",
+        "lastWeek": "Keçən həftə",
+        "older": "Daha əvvəl",
+        "deleteChat": "Söhbəti sil",
+        "deleteChatConfirm": "Bu söhbəti silmək istədiyinizə əminsiniz?"
+    },
+    "settings": {
+        "title": "Parametrlər",
+        "profile": "Profil",
+        "security": "Təhlükəsizlik",
+        "preferences": "Seçimlər",
+        "changePassword": "Şifrəni Dəyiş",
+        "currentPassword": "Cari şifrə",
+        "newPassword": "Yeni şifrə",
+        "confirmNewPassword": "Yeni şifrənin təkrarı",
+        "deleteAccount": "Hesabı Sil",
+        "deleteAccountWarning": "Bu əməliyyat geri qaytarıla bilməz. Bütün məlumatlarınız silinəcək.",
+        "deleteAccountConfirm": "Hesabı silmək istədiyinizə əminsiniz?",
+        "profileUpdated": "Profil yeniləndi",
+        "passwordChanged": "Şifrə dəyişdirildi",
+        "selectLanguage": "Dil seçin",
+        "selectTheme": "Tema seçin"
+    },
+    "footer": {
+        "rights": "Bütün hüquqlar qorunur.",
+        "privacy": "Məxfilik Siyasəti",
+        "terms": "İstifadə Şərtləri"
+    },
+    "privacy": {
+        "title": "Məxfilik Siyasəti",
+        "subtitle": "Məlumatlarınızın təhlükəsizliyi bizim üçün hər şeydən üstündür",
+        "heroSubtitle": "Təhlükəsiz Gələcək, Bu Gündən Başlayır",
+        "intro": "Platformamızda sizin təhlükəsizliyiniz hər şeydən üstündür. Məxfilik prinsiplərimiz çox sadədir:",
+        "sec1Title": "Tam Məxfilik",
+        "sec1Desc": "Süni intellektlə apardığınız bütün söhbətlər şifrələnmiş şəkildə qorunur və kənar şəxslər üçün qapalıdır.",
+        "sec2Title": "Heç Bir Paylaşım Yoxdur",
+        "sec2Desc": "Sizin müraciətləriniz və şəxsi məlumatlarınız heç bir halda üçüncü tərəflərə və ya reklam şirkətlərinə ötürülmür.",
+        "sec3Title": "Nəzarət Sizdədir",
+        "sec3Desc": "İstədiyiniz an söhbət tarixçənizi tamamilə silə bilərsiniz. Silinən məlumatlar sistemimizdən birdəfəlik yox olur.",
+        "sec4Title": "Təhlükəsiz Giriş",
+        "sec4Desc": "Hesabınıza giriş ən müasir təhlükəsizlik protokolları ilə qorunur."
+    },
+    "cvSection": {
+        "title": "CV Hazırlama",
+        "comingSoon": "Bu bölmə hazırlanır. Tezliklə əlçatan olacaq!"
+    },
+    "support": {
+        "title": "Dəstək",
+        "subtitle": "Sualınız var? Bizə e-poçt ilə müraciət edin",
+        "emailLabel": "E-poçt ünvanımız",
+        "emailButton": "E-poçt göndər",
+        "description": "Platformaya aid hər hansı sual, təklif və ya problemlə bağlı bizə yazın. Ən qısa zamanda cavab verəcəyik."
+    },
+    "terms": {
+        "title": "İstifadəçi Qaydaları və Şərtləri",
+        "subtitle": "Bu Qaydalar və Şərtləer Safebot.az platformasında qeydiyyatdan keçən və xidmətlərdən istifadə edən bütün istifadəçilərə şamil olunur. Qeydiyyatdan keçməklə, istifadəçi bu sənəddə qeyd edilmiş bütün şərtləri qəbul etmiş sayılır:",
+        "heroSubtitle": "Təhlükəsiz Gələcək, Bu Gündən Başlayır",
+        "sections": {
+            "s1": {
+                "title": "1. Qeydiyyat və istifadəçi məlumatları",
+                "d1": "İstifadəçi qeydiyyat zamanı təqdim etdiyi məlumatların tam, düzgün və aktual olmasına görə məsuliyyət daşıyır.",
+                "d2": "Yanlış məlumat nəticəsində yaranan hüquqi və texniki məsuliyyət istifadəçinin üzərindədir.",
+                "d3": "Qeydiyyatla yanaşı, istifadəçi şəxsi məlumatlarının emalına dair təqdim olunmuş “Məxfilik Siyasəti” və “Açıq Razılıq” şərtlərini qəbul etmiş sayılır."
+            },
+            "s2": {
+                "title": "2. Azyaşlılarla bağlı qaydalar",
+                "d1": "18 yaşdan aşağı şəxslər yalnız valideyn icazəsi ilə platformadan istifadə edə bilər.",
+                "d2": "Ailə üzvünün kartından icazəsiz istifadə nəticəsində yaranan məsuliyyət istifadəçiyə məxsusdur. Platforma bu hallara görə cavabdehlik daşımır."
+            },
+            "s3": {
+                "title": "3. Ödəniş qaydaları",
+                "d1": "Ödəniş yalnız Safebot.Az tərəfindən göstərilən rəsmi hesab və ödəniş kanalları ilə qəbul olunur.",
+                "d2": "Üçüncü şəxslərə edilən ödənişlərə görə platforma məsuliyyət daşımır."
+            },
+            "s4": {
+                "title": "4. Geri qaytarılma və əvəzləmə",
+                "d1": "Azərbaycan Respublikasının İstehlakçıların Hüquqlarının Müdafiəsi Haqqında Qanuna əsasən, dərhal təqdim olunan rəqəmsal xidmətlər və sifarişdən sonra xərci çəkilən məhsullar geri qaytarılmır.",
+                "d2": "İstehlakçının 14 günlük geri çəkilmə hüququ rəqəmsal məhsullara şamil edilmir.",
+                "d3": "Təqdim olunan xidmətlər rəqəmsal məzmunun onlayn çatdırılmasıdır və fiziki məhsul hesab edilmir.",
+                "d4": "Bu səbəbdən geri qaytarma və dəyişdirilmə qaydaları Azərbaycan Respublikasının “İstehlakçıların Hüquqlarının Müdafiəsi haqqında” Qanununun rəqəmsal məzmunla bağlı müddəalarına uyğun olaraq tətbiq edilir."
+            },
+            "s5": {
+                "title": "5. Təhlükəsizlik və fırıldaqçılığın qarşısı",
+                "d1": "Safebot.Az tərəfindən göstərilməmiş əlaqə vasitələri ilə aparılan yazışma və alış-verişlərə görə platforma məsuliyyət daşımır.",
+                "d2": "Saxta qəbz, fırıldaqçılıq, hesab oğurluğu, üçüncü şəxslərin məlumatlarının dəyişdirilməsi aşkarlandıqda istifadəçi platformadan ömürlük bloklanır.",
+                "d3": "Zəruri hallarda hüquq-mühafizə orqanlarına məlumat təqdim edilə bilər."
+            },
+            "s6": {
+                "title": "6. Müştəri öhdəlikləri",
+                "d1": "İstifadəçi hesab məlumatlarını gizli saxlamalıdır.",
+                "d2": "Hesabın üçüncü şəxslərlə paylaşılması nəticəsində yaranan məsuliyyət istifadəçiyə məxsusdur.",
+                "d3": "Platformada hər hansı fırıldaqçılıq və ya pozuntu aşkar edildikdə, istifadəçi dərhal bloklanır."
+            },
+            "s7": {
+                "title": "7. Qaydaların qüvvəyə minməsi",
+                "d1": "Bu qaydalar istifadəçinin qeydiyyatdan keçdiyi andan etibarən qüvvəyə minir və istifadəçi bu şərtlərə əməl etməyə borcludur."
+            }
+        }
+    }
+}

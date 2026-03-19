@@ -1,0 +1,202 @@
+{
+    "common": {
+        "appName": "SafeBot",
+        "start": "Get Started",
+        "howItWorks": "How It Works",
+        "home": "Home",
+        "about": "About",
+        "chatbot": "Chatbot",
+        "cv": "Create CV",
+        "settings": "Settings",
+        "login": "Login",
+        "register": "Register",
+        "logout": "Logout",
+        "language": "Language",
+        "theme": "Theme",
+        "dark": "Dark",
+        "light": "Light",
+        "system": "System",
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "cancel": "Cancel",
+        "save": "Save",
+        "delete": "Delete",
+        "confirm": "Confirm",
+        "back": "Back",
+        "send": "Send",
+        "close": "Close",
+        "yes": "Yes",
+        "no": "No",
+        "search": "Search"
+    },
+    "hero": {
+        "title": "A Safe Future <highlight>Starts Today</highlight>",
+        "subtitle": "AI-powered Occupational Safety and Technical Security platform. Ask your questions, get professional answers immediately.",
+        "cta": "Get Started",
+        "howItWorks": "How It Works?"
+    },
+    "sources": {
+        "badge": "SOURCE",
+        "title": "Referenced Laws and Standards",
+        "subtitle": "Our platform is formed on the basis of local legislation and international safety standards."
+    },
+    "howItWorks": {
+        "title": "How It Works?",
+        "step1Title": "Registration & Login",
+        "step1Desc": "Register using a simplified method or log in securely with your existing account to take advantage of the platform's capabilities.",
+        "step2Title": "Ask Your Question",
+        "step2Desc": "Enter your question related to occupational safety, technical security, or risk assessment into the professional chat.",
+        "step3Title": "AI Analysis",
+        "step3Desc": "Our system analyzes your question based on the legislation of the Republic of Azerbaijan (Labor Code, MES regulations) and international standards (NEBOSH, ISO).",
+        "step4Title": "Get Accurate Solutions",
+        "step4Desc": "Receive accurate, applicable professional answers that reference legislation or provide informational guidance in seconds."
+    },
+    "auth": {
+        "loginTitle": "Welcome Back",
+        "loginSubtitle": "Sign in to your account",
+        "registerTitle": "Register",
+        "registerSubtitle": "Create a new account",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "forgotPassword": "Forgot Password?",
+        "rememberMe": "Remember me",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "registerNow": "Register Now",
+        "loginNow": "Sign In",
+        "passwordWeak": "Weak",
+        "passwordMedium": "Medium",
+        "passwordStrong": "Strong",
+        "passwordMismatch": "Passwords do not match",
+        "emailInvalid": "Enter a valid email address",
+        "fieldRequired": "This field is required",
+        "loginSuccess": "Successfully logged in",
+        "registerSuccess": "Registration completed successfully",
+        "forgotPasswordSuccess": "Password reset link sent to your email",
+        "forgotPasswordTitle": "Reset Password",
+        "forgotPasswordSubtitle": "Enter your email address and we'll send you a password reset link",
+        "sendResetLink": "Send Reset Link",
+        "backToLogin": "Back to Login",
+        "updatePasswordTitle": "Set New Password",
+        "updatePasswordSubtitle": "Enter your new password for your account",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "updatePasswordButton": "Update Password",
+        "updatePasswordSuccess": "Your password has been updated successfully",
+        "logoutSuccess": "Successfully logged out"
+    },
+    "chat": {
+        "title": "Chatbot",
+        "newChat": "New Chat",
+        "clearChat": "Clear Chat",
+        "chatHistory": "Chat History",
+        "typeMessage": "Type your message...",
+        "sending": "Sending...",
+        "welcome": "Hello! I'm an AI assistant for occupational safety topics. I'm ready to answer your questions about workplace safety, environmental protection, and health.",
+        "networkError": "Connection error. Please try again.",
+        "timeoutError": "Response is delayed, please try again.",
+        "today": "Today",
+        "yesterday": "Yesterday",
+        "lastWeek": "Last Week",
+        "older": "Older",
+        "deleteChat": "Delete Chat",
+        "deleteChatConfirm": "Are you sure you want to delete this chat?"
+    },
+    "settings": {
+        "title": "Settings",
+        "profile": "Profile",
+        "security": "Security",
+        "preferences": "Preferences",
+        "changePassword": "Change Password",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "deleteAccount": "Delete Account",
+        "deleteAccountWarning": "This action cannot be undone. All your data will be deleted.",
+        "deleteAccountConfirm": "Are you sure you want to delete your account?",
+        "profileUpdated": "Profile updated",
+        "passwordChanged": "Password changed",
+        "selectLanguage": "Select Language",
+        "selectTheme": "Select Theme"
+    },
+    "footer": {
+        "rights": "All rights reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "subtitle": "Your data security is our top priority",
+        "heroSubtitle": "A Safe Future Starts Today",
+        "intro": "Your security is our top priority on our platform. Our privacy principles are very simple:",
+        "sec1Title": "Complete Privacy",
+        "sec1Desc": "All your conversations with the artificial intelligence are encrypted and closed to outsiders.",
+        "sec2Title": "No Sharing",
+        "sec2Desc": "Your requests and personal data are under no circumstances transferred to third parties or advertising companies.",
+        "sec3Title": "You Are in Control",
+        "sec3Desc": "You can completely delete your chat history at any time. Deleted data disappears from our system permanently.",
+        "sec4Title": "Secure Login",
+        "sec4Desc": "Access to your account is protected with the most modern security protocols."
+    },
+    "cvSection": {
+        "title": "CV Builder",
+        "comingSoon": "This section is being prepared. It will be available soon!"
+    },
+    "support": {
+        "title": "Support",
+        "subtitle": "Have a question? Contact us via email",
+        "emailLabel": "Our email address",
+        "emailButton": "Send Email",
+        "description": "Write to us about any questions, suggestions, or issues related to the platform. We will respond as soon as possible."
+    },
+    "terms": {
+        "title": "Terms and Conditions",
+        "subtitle": "These Terms and Conditions apply to all users who register and use services on the Safebot.az platform. By registering, the user is deemed to have accepted all terms stated in this document:",
+        "heroSubtitle": "A Safe Future Starts Today",
+        "sections": {
+            "s1": {
+                "title": "1. Registration and user information",
+                "d1": "The user is responsible for the completeness, accuracy, and timeliness of the information provided during registration.",
+                "d2": "The legal and technical responsibility resulting from incorrect information lies with the user.",
+                "d3": "Along with registration, the user is deemed to have accepted the 'Privacy Policy' and 'Explicit Consent' terms provided for processing personal information."
+            },
+            "s2": {
+                "title": "2. Rules regarding minors",
+                "d1": "Persons under 18 years of age can only use the platform with parental permission.",
+                "d2": "Responsibility resulting from unauthorized use of a family member's card belongs to the user. The platform is not responsible for such cases."
+            },
+            "s3": {
+                "title": "3. Payment rules",
+                "d1": "Payments are only accepted through official accounts and payment channels indicated by Safebot.Az.",
+                "d2": "The platform is not responsible for payments made to third parties."
+            },
+            "s4": {
+                "title": "4. Returns and replacements",
+                "d1": "According to the Law of the Republic of Azerbaijan on the Protection of Consumer Rights, digital services provided immediately and products for which costs are incurred after the order are non-refundable.",
+                "d2": "The consumer's 14-day withdrawal right does not apply to digital products.",
+                "d3": "The provided services are online delivery of digital content and are not considered physical products.",
+                "d4": "For this reason, return and exchange rules are applied in accordance with the provisions related to digital content of the Law of the Republic of Azerbaijan 'On Protection of Consumer Rights'."
+            },
+            "s5": {
+                "title": "5. Security and fraud prevention",
+                "d1": "The platform is not responsible for correspondence and purchases conducted through communication means not indicated by Safebot.Az.",
+                "d2": "If fake receipts, fraud, account theft, or modification of third-party information are detected, the user will be permanently blocked from the platform.",
+                "d3": "Information can be provided to law enforcement authorities if necessary."
+            },
+            "s6": {
+                "title": "6. Customer obligations",
+                "d1": "The user must keep account information confidential.",
+                "d2": "Responsibility resulting from sharing the account with third parties belongs to the user.",
+                "d3": "If any fraud or violation is detected on the platform, the user is immediately blocked."
+            },
+            "s7": {
+                "title": "7. Entry into force of the rules",
+                "d1": "These rules enter into force from the moment the user registers, and the user is obliged to comply with these terms."
+            }
+        }
+    }
+}
