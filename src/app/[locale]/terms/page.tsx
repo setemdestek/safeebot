@@ -76,7 +76,7 @@ export default function TermsPage() {
                     <div className="w-32 h-32 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mx-auto mb-8 p-2">
                         <Logo width={120} height={120} />
                     </div>
-                    <h2 className="text-4xl font-bold text-white mb-4">SafeBot</h2>
+                    <h2 className="text-4xl font-bold text-white mb-4">SafeeBot</h2>
                     <p className="text-white/80 text-lg leading-relaxed">
                         {t('heroSubtitle')}
                     </p>

@@ -27,11 +27,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "SafeBot — Təhlükəsiz Gələcək, Bu Gündən Başlayır",
+    title: "SafeeBot — Təhlükəsiz Gələcək, Bu Gündən Başlayır",
     description:
         "Azərbaycanda əməyin mühafizəsi və texniki təhlükəsizlik sahəsində süni intellekt dəstəkli chatbot platforması.",
     keywords: [
-        "SafeBot",
+        "SafeeBot",
         "əmək təhlükəsizliyi",
         "SƏTƏM",
         "chatbot",

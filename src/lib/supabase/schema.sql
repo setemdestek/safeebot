@@ -1,5 +1,5 @@
 -- ================================================
--- SafeBot Supabase Schema (DEAKTIV — strukturlar hazır)
+-- SafeeBot Supabase Schema (DEAKTIV — strukturlar hazır)
 -- Bu faylı Supabase-ə tətbiq etmək üçün aktiv etimək lazımdır
 -- ================================================
 

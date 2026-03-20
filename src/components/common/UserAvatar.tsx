@@ -40,7 +40,7 @@ function HelmetRobotIcon({ className }: { className?: string }) {
 }
 
 export function UserAvatar({ id, alt, className }: UserAvatarProps) {
-    const seed = id || "safebot-default-user";
+    const seed = id || "SafeeBot-default-user";
     const src = `https://api.dicebear.com/9.x/bottts-neutral/svg?seed=${encodeURIComponent(seed)}`;
 
     return (

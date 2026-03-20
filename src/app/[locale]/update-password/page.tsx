@@ -102,7 +102,7 @@ export default function UpdatePasswordPage() {
                     <div className="w-16 h-16 rounded-2xl bg-[hsl(var(--primary)/0.1)] flex items-center justify-center mb-4">
                         <Logo width={44} height={44} />
                     </div>
-                    <h1 className="text-2xl font-bold tracking-tight">SafeBot</h1>
+                    <h1 className="text-2xl font-bold tracking-tight">SafeeBot</h1>
                 </div>
 
                 {/* Card */}

@@ -16,7 +16,7 @@ export function ConsentDeclaration({ className }: ConsentDeclarationProps) {
                 "Elektron poçt ünvanı",
                 "Sifariş zamanı təqdim edilmiş məlumatlar"
             ],
-            note: "Ödəniş zamanı tələb olunan kart və maliyyə məlumatları yalnız ödəniş sistemi tərəfindən emal olunur. Safebot.az bu məlumatlara heç bir halda çıxış əldə etmir və onları saxlamır."
+            note: "Ödəniş zamanı tələb olunan kart və maliyyə məlumatları yalnız ödəniş sistemi tərəfindən emal olunur. SafeeBot.az bu məlumatlara heç bir halda çıxış əldə etmir və onları saxlamır."
         },
         {
             title: "2. Emal məqsədi",
@@ -35,14 +35,14 @@ export function ConsentDeclaration({ className }: ConsentDeclarationProps) {
                 "Məhsulun aktivləşdirilməsi üçün tələb olunan minimal məlumatların istifadə edilməsi",
                 "Qanunla tələb olunduqda dövlət qurumlarına təqdim edilməsi"
             ],
-            highlight: "Safebot.Az şəxsi məlumatları kommersiya məqsədi ilə satmır və üçüncü şəxslərə ötürmür."
+            highlight: "SafeeBot.Az şəxsi məlumatları kommersiya məqsədi ilə satmır və üçüncü şəxslərə ötürmür."
         },
         {
             title: "4. Məlumatların saxlanması və istifadəsi",
             desc: [
                 "4.1. İstifadəçi məlumatları yalnız xidmətin göstərilməsi və sifarişin icrası üçün tələb olunan müddətdə, həmçinin Azərbaycan Respublikasının qanunvericiliyinin tələblərinə uyğun şəkildə saxlanılır.",
-                "4.2. Safebot.Az istifadəçinin təqdim etdiyi məlumatlardan əlavə emal məqsədilə istifadə etmir. Məlumatlar artıq tələb olunmadıqda təhlükəsiz şəkildə silinir və ya anonimləşdirilir.",
-                "4.3. Safebot.Az yalnız sifarişın aktivləşdirilməsi və icrası üçün istifadəçinin təqdim etdiyi minimum məlumatlardan istifadə edir və sifariş tamamlandıqdan sonra bu məlumatların əlavə saxlanılması, ötürülməsi və ya istifadəsi həyata keçirilmir."
+                "4.2. SafeeBot.Az istifadəçinin təqdim etdiyi məlumatlardan əlavə emal məqsədilə istifadə etmir. Məlumatlar artıq tələb olunmadıqda təhlükəsiz şəkildə silinir və ya anonimləşdirilir.",
+                "4.3. SafeeBot.Az yalnız sifarişın aktivləşdirilməsi və icrası üçün istifadəçinin təqdim etdiyi minimum məlumatlardan istifadə edir və sifariş tamamlandıqdan sonra bu məlumatların əlavə saxlanılması, ötürülməsi və ya istifadəsi həyata keçirilmir."
             ]
         },
         {

@@ -87,7 +87,7 @@ export function ChatSidebar({
                 <div className="flex items-center gap-2 mb-6 mt-2 justify-center">
                     <Logo width={32} height={32} />
                     <WordFadeIn
-                        words="SafeBot"
+                        words="SafeeBot"
                         className="text-xl md:text-2xl md:leading-none tracking-normal drop-shadow-none text-[hsl(var(--foreground))] dark:text-[hsl(var(--foreground))]"
                     />
                 </div>

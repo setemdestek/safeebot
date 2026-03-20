@@ -14,7 +14,7 @@ describe('UserAvatar', () => {
         render(<UserAvatar alt="Default Avatar" />);
         const img = screen.getByRole('img', { name: 'Default Avatar' });
         expect(img).toBeInTheDocument();
-        expect(img).toHaveAttribute('src', expect.stringContaining('safebot-default-user'));
+        expect(img).toHaveAttribute('src', expect.stringContaining('SafeeBot-default-user'));
     });
 
     it('renders with provided id as seed', () => {

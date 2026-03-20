@@ -12,5 +12,5 @@ export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = "az";
 
 // App info
-export const APP_NAME = "SafeBot";
+export const APP_NAME = "SafeeBot";
 export const APP_YEAR = 2026;

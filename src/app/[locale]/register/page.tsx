@@ -136,7 +136,7 @@ function RegisterForm() {
                             <Logo width={60} height={60} />
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-                            SafeBot
+                            SafeeBot
                         </h1>
                         <p className="mt-4 text-neutral-300 max-w-lg text-lg leading-relaxed">
                             Təhlükəsiz Gələcək, Bu Gündən Başlayır
@@ -154,7 +154,7 @@ function RegisterForm() {
                 <div className="w-20 h-20 rounded-[1.25rem] bg-white/10 backdrop-blur-md flex items-center justify-center mb-5 border border-white/20 shadow-xl relative z-10 transition-transform hover:scale-105 duration-500">
                     <Logo width={54} height={54} />
                 </div>
-                <h2 className="text-3xl font-bold text-white tracking-tight drop-shadow-lg relative z-10">SafeBot</h2>
+                <h2 className="text-3xl font-bold text-white tracking-tight drop-shadow-lg relative z-10">SafeeBot</h2>
                 <p className="text-white/80 text-sm mt-3 text-center max-w-[250px] leading-relaxed relative z-10 font-medium">
                     Təhlükəsiz Gələcək, Bu Gündən Başlayır
                 </p>

@@ -1,6 +1,6 @@
 {
     "common": {
-        "appName": "SafeBot",
+        "appName": "SafeeBot",
         "start": "Başla",
         "howItWorks": "Necə işləyir",
         "home": "Əsas",
@@ -155,7 +155,7 @@
     },
     "terms": {
         "title": "İstifadəçi Qaydaları və Şərtləri",
-        "subtitle": "Bu Qaydalar və Şərtləer Safebot.az platformasında qeydiyyatdan keçən və xidmətlərdən istifadə edən bütün istifadəçilərə şamil olunur. Qeydiyyatdan keçməklə, istifadəçi bu sənəddə qeyd edilmiş bütün şərtləri qəbul etmiş sayılır:",
+        "subtitle": "Bu Qaydalar və Şərtləer SafeeBot.az platformasında qeydiyyatdan keçən və xidmətlərdən istifadə edən bütün istifadəçilərə şamil olunur. Qeydiyyatdan keçməklə, istifadəçi bu sənəddə qeyd edilmiş bütün şərtləri qəbul etmiş sayılır:",
         "heroSubtitle": "Təhlükəsiz Gələcək, Bu Gündən Başlayır",
         "sections": {
             "s1": {
@@ -171,7 +171,7 @@
             },
             "s3": {
                 "title": "3. Ödəniş qaydaları",
-                "d1": "Ödəniş yalnız Safebot.Az tərəfindən göstərilən rəsmi hesab və ödəniş kanalları ilə qəbul olunur.",
+                "d1": "Ödəniş yalnız SafeeBot.Az tərəfindən göstərilən rəsmi hesab və ödəniş kanalları ilə qəbul olunur.",
                 "d2": "Üçüncü şəxslərə edilən ödənişlərə görə platforma məsuliyyət daşımır."
             },
             "s4": {
@@ -183,7 +183,7 @@
             },
             "s5": {
                 "title": "5. Təhlükəsizlik və fırıldaqçılığın qarşısı",
-                "d1": "Safebot.Az tərəfindən göstərilməmiş əlaqə vasitələri ilə aparılan yazışma və alış-verişlərə görə platforma məsuliyyət daşımır.",
+                "d1": "SafeeBot.Az tərəfindən göstərilməmiş əlaqə vasitələri ilə aparılan yazışma və alış-verişlərə görə platforma məsuliyyət daşımır.",
                 "d2": "Saxta qəbz, fırıldaqçılıq, hesab oğurluğu, üçüncü şəxslərin məlumatlarının dəyişdirilməsi aşkarlandıqda istifadəçi platformadan ömürlük bloklanır.",
                 "d3": "Zəruri hallarda hüquq-mühafizə orqanlarına məlumat təqdim edilə bilər."
             },

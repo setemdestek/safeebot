@@ -34,7 +34,7 @@ export function LanguageSelector() {
         const segments = pathname.split("/");
         segments[1] = newLocale;
         const newPath = segments.join("/");
-        localStorage.setItem("safebot_locale", newLocale);
+        localStorage.setItem("SafeeBot_locale", newLocale);
         router.push(newPath);
         setOpen(false);
     };

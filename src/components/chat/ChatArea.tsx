@@ -110,7 +110,7 @@ export function ChatArea({ messages, isLoading, isMessageSending }: ChatAreaProp
         <div className="flex-1 relative flex flex-col overflow-hidden">
             {/* Background Animation */}
             <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.03] dark:opacity-[0.08] pointer-events-none overflow-hidden">
-                <CpuArchitecture width="100%" height="100%" text="SafeBOT" className="scale-125 md:scale-100 object-cover" />
+                <CpuArchitecture width="100%" height="100%" text="SafeeBot" className="scale-125 md:scale-100 object-cover" />
             </div>
 
             {/* Chat Content */}
@@ -118,7 +118,7 @@ export function ChatArea({ messages, isLoading, isMessageSending }: ChatAreaProp
                 {/* Welcome message if no messages */}
                 {messages.length === 0 && !isLoading && (
                     <div className="flex flex-col items-center justify-end h-full text-center px-4 pb-12 sm:pb-24">
-                        <h2 className="text-2xl font-semibold mb-3 tracking-tight">SafeBot</h2>
+                        <h2 className="text-2xl font-semibold mb-3 tracking-tight">SafeeBot</h2>
                         <p className="text-[hsl(var(--muted-foreground))] max-w-md leading-relaxed text-[15px]">
                             {t("welcome")}
                         </p>

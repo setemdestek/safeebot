@@ -79,7 +79,7 @@ export default function SettingsPage() {
     const handleLanguageChange = (newLocale: string) => {
         const segments = window.location.pathname.split("/");
         segments[1] = newLocale;
-        localStorage.setItem("safebot_locale", newLocale);
+        localStorage.setItem("safeebot_locale", newLocale);
         router.push(segments.join("/"));
     };
 
@@ -148,7 +148,7 @@ export default function SettingsPage() {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium">
-                                                {tc("appName") === "SafeBot" ? "Ad" : "Name"}
+                                                {tc("appName") === "SafeeBot" ? "Ad" : "Name"}
                                             </label>
                                             <Input
                                                 value={profileForm.firstName}
@@ -162,7 +162,7 @@ export default function SettingsPage() {
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium">
-                                                {tc("appName") === "SafeBot" ? "Soyad" : "Last Name"}
+                                                {tc("appName") === "SafeeBot" ? "Soyad" : "Last Name"}
                                             </label>
                                             <Input
                                                 value={profileForm.lastName}

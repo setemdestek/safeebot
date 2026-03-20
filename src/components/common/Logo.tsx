@@ -12,7 +12,7 @@ export function Logo({ className, width = 44, height = 44 }: LogoProps) {
     return (
         <Image
             src="/loqo.jpeg"
-            alt="SafeBot Logo"
+            alt="SafeeBot Logo"
             width={width}
             height={height}
             className={cn(
