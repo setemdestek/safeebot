@@ -29,7 +29,7 @@ export function LogoWithText({ className, textClassName, iconSize = 44 }: LogoPr
         <div className={cn("flex items-center gap-2 group", className)}>
             <Logo width={iconSize} height={iconSize} />
             <span className={cn("text-xl font-bold tracking-tight", textClassName)}>
-                Safe<span className="text-[hsl(var(--primary))]">Bot</span>
+                Safee<span className="text-[hsl(var(--primary))]">Bot</span>
             </span>
         </div>
     );
