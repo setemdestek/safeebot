@@ -48,7 +48,7 @@ export default function ChatPage() {
                     setSidebarOpen(false);
                 }}
                 onNewChat={() => {
-                    createNewChat();
+                    createNewChat(t("newChat"));
                     setSidebarOpen(false);
                 }}
                 onDeleteSession={deleteSession}

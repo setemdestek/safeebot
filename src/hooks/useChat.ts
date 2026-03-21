@@ -77,13 +77,13 @@ export function useChat() {
         [],
     );
 
-    const createNewChat = useCallback(async () => {
+    const createNewChat = useCallback(async (title = "New Chat") => {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return null;
 
         const { data, error } = await supabase
             .from("chat_sessions")
-            .insert({ user_id: user.id, title: "Yeni Söhbət" })
+            .insert({ user_id: user.id, title })
             .select()
             .single();
 
