@@ -91,7 +91,7 @@
     },
     "chat": {
         "title": "Чатбот",
-        "newChat": "Новый Чат",
+        "newChat": "Новый чат",
         "clearChat": "Очистить Чат",
         "chatHistory": "История Чатов",
         "typeMessage": "Введите сообщение...",

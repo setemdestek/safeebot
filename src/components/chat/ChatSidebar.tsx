@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -12,6 +13,9 @@ import {
     ChevronLeft,
     Shield,
     Mail,
+    Pencil,
+    Check,
+    X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WordFadeIn } from "@/components/ui/word-fade-in";
@@ -27,6 +31,7 @@ interface ChatSidebarProps {
     onSelectSession: (id: string) => void;
     onNewChat: () => void;
     onDeleteSession: (id: string) => void;
+    onRenameSession?: (id: string, newTitle: string) => void;
     isOpen: boolean;
     onClose: () => void;
     onOpenJsaModal?: () => void;
@@ -43,12 +48,17 @@ function formatDate(ts: number, t: (key: string) => string): string {
     return new Date(ts).toLocaleDateString();
 }
 
+function getDisplayTitle(title: string, t: (key: string) => string): string {
+    return title === "__new_chat__" ? t("newChat") : title;
+}
+
 export function ChatSidebar({
     sessions,
     activeSessionId,
     onSelectSession,
     onNewChat,
     onDeleteSession,
+    onRenameSession,
     isOpen,
     onClose,
     onOpenJsaModal,
@@ -59,6 +69,33 @@ export function ChatSidebar({
     const locale = useLocale();
     const router = useRouter();
     const { user, logout } = useAuth();
+
+    const [editingId, setEditingId] = useState<string | null>(null);
+    const [editValue, setEditValue] = useState("");
+    const editInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (editingId && editInputRef.current) {
+            editInputRef.current.focus();
+            editInputRef.current.select();
+        }
+    }, [editingId]);
+
+    const startRename = (session: ChatSession) => {
+        setEditingId(session.id);
+        setEditValue(getDisplayTitle(session.title, t));
+    };
+
+    const confirmRename = () => {
+        if (editingId && editValue.trim() && onRenameSession) {
+            onRenameSession(editingId, editValue.trim());
+        }
+        setEditingId(null);
+    };
+
+    const cancelRename = () => {
+        setEditingId(null);
+    };
 
     const handleLogout = () => {
         logout();
@@ -110,7 +147,7 @@ export function ChatSidebar({
                     <Button
                         onClick={() => {
                             onOpenJsaModal();
-                            onClose(); // mobil görünüm üçün bağla
+                            onClose();
                         }}
                         className="w-full mt-2 bg-red-600 hover:bg-red-700 text-white"
                         size="sm"
@@ -130,32 +167,92 @@ export function ChatSidebar({
                         </p>
                         <div className="space-y-0.5">
                             {group.map((session) => (
-                                <button
+                                <div
                                     key={session.id}
-                                    onClick={() => onSelectSession(session.id)}
                                     className={cn(
-                                        "w-full flex items-center gap-2 px-3 py-2.5 rounded-[var(--radius)] text-sm text-left group transition-colors duration-150",
+                                        "w-full flex items-center gap-2 px-3 py-2.5 rounded-[var(--radius)] text-sm text-left group transition-colors duration-150 cursor-pointer",
                                         session.id === activeSessionId
                                             ? "bg-[hsl(var(--sidebar-primary))] text-[hsl(var(--sidebar-primary-foreground))]"
                                             : "hover:bg-[hsl(var(--sidebar-accent))] text-[hsl(var(--sidebar-foreground))]",
                                     )}
+                                    onClick={() => {
+                                        if (editingId !== session.id) {
+                                            onSelectSession(session.id);
+                                        }
+                                    }}
                                 >
                                     <MessageSquare className="w-4 h-4 shrink-0 opacity-60" />
-                                    <span className="truncate flex-1">{session.title}</span>
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            onDeleteSession(session.id);
-                                        }}
-                                        className={cn(
-                                            "opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-[hsl(var(--destructive)/0.1)] transition-opacity",
-                                            session.id === activeSessionId && "hover:bg-white/20",
-                                        )}
-                                        title={t("deleteChat")}
-                                    >
-                                        <Trash2 className="w-3 h-3" />
-                                    </button>
-                                </button>
+
+                                    {editingId === session.id ? (
+                                        <form
+                                            className="flex-1 flex items-center gap-1"
+                                            onSubmit={(e) => {
+                                                e.preventDefault();
+                                                confirmRename();
+                                            }}
+                                        >
+                                            <input
+                                                ref={editInputRef}
+                                                value={editValue}
+                                                onChange={(e) => setEditValue(e.target.value)}
+                                                onKeyDown={(e) => {
+                                                    if (e.key === "Escape") cancelRename();
+                                                }}
+                                                onBlur={confirmRename}
+                                                className="flex-1 bg-transparent border-b border-current outline-none text-sm min-w-0"
+                                            />
+                                            <button
+                                                type="submit"
+                                                className="p-0.5 rounded hover:bg-white/20"
+                                                onMouseDown={(e) => e.preventDefault()}
+                                            >
+                                                <Check className="w-3 h-3" />
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="p-0.5 rounded hover:bg-white/20"
+                                                onMouseDown={(e) => {
+                                                    e.preventDefault();
+                                                    cancelRename();
+                                                }}
+                                            >
+                                                <X className="w-3 h-3" />
+                                            </button>
+                                        </form>
+                                    ) : (
+                                        <>
+                                            <span className="truncate flex-1">
+                                                {getDisplayTitle(session.title, t)}
+                                            </span>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    startRename(session);
+                                                }}
+                                                className={cn(
+                                                    "opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-[hsl(var(--sidebar-accent))] transition-opacity",
+                                                    session.id === activeSessionId && "hover:bg-white/20",
+                                                )}
+                                                title="Rename"
+                                            >
+                                                <Pencil className="w-3 h-3" />
+                                            </button>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    onDeleteSession(session.id);
+                                                }}
+                                                className={cn(
+                                                    "opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-[hsl(var(--destructive)/0.1)] transition-opacity",
+                                                    session.id === activeSessionId && "hover:bg-white/20",
+                                                )}
+                                                title={t("deleteChat")}
+                                            >
+                                                <Trash2 className="w-3 h-3" />
+                                            </button>
+                                        </>
+                                    )}
+                                </div>
                             ))}
                         </div>
                     </div>

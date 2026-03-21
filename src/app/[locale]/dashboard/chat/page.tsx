@@ -23,6 +23,7 @@ export default function ChatPage() {
         setActiveSessionId,
         createNewChat,
         deleteSession,
+        renameSession,
         clearMessages,
         sendMessage,
     } = useChat();
@@ -48,10 +49,11 @@ export default function ChatPage() {
                     setSidebarOpen(false);
                 }}
                 onNewChat={() => {
-                    createNewChat(t("newChat"));
+                    createNewChat();
                     setSidebarOpen(false);
                 }}
                 onDeleteSession={deleteSession}
+                onRenameSession={renameSession}
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
                 onOpenJsaModal={() => setIsJsaModalOpen(true)}

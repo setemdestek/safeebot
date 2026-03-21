@@ -77,13 +77,13 @@ export function useChat() {
         [],
     );
 
-    const createNewChat = useCallback(async (title = "New Chat") => {
+    const createNewChat = useCallback(async () => {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return null;
 
         const { data, error } = await supabase
             .from("chat_sessions")
-            .insert({ user_id: user.id, title })
+            .insert({ user_id: user.id, title: "__new_chat__" })
             .select()
             .single();
 
@@ -127,6 +127,26 @@ export function useChat() {
             }
         },
         [activeSessionId, supabase, loadSessions],
+    );
+
+    const renameSession = useCallback(
+        async (sessionId: string, newTitle: string) => {
+            const trimmed = newTitle.trim();
+            if (!trimmed) return;
+
+            updateSessionLocally(sessionId, (s) => ({ ...s, title: trimmed }));
+
+            const { error } = await supabase
+                .from("chat_sessions")
+                .update({ title: trimmed })
+                .eq("id", sessionId);
+
+            if (error) {
+                console.error("Söhbətin adını dəyişərkən xəta:", error);
+                loadSessions();
+            }
+        },
+        [supabase, updateSessionLocally, loadSessions],
     );
 
     const clearMessages = useCallback(async () => {
@@ -293,6 +313,7 @@ export function useChat() {
         setActiveSessionId,
         createNewChat,
         deleteSession,
+        renameSession,
         clearMessages,
         sendMessage,
     };
