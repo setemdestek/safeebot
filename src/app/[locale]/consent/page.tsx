@@ -30,7 +30,7 @@ export default function ConsentPage() {
                     <div className="text-center mb-12">
                         <h1 className="text-4xl font-bold tracking-tight mb-4">Açıq Razılıq Bəyannaməsi</h1>
                         <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed text-center">
-                            Bu bəyannamə istifadəçinin şəxsi məlumatlarının Safebot.az tərəfindən emal edilməsinə açıq və təsdiqlənmiş razılığını əks etdirir. Qeydiyyatdan keçməklə və ya sifariş verməklə aşağıdakı şərtlərlə tam razı olduğunuzu təsdiqləyirsiniz.
+                            Bu bəyannamə istifadəçinin şəxsi məlumatlarının Safeebot.az tərəfindən emal edilməsinə açıq və təsdiqlənmiş razılığını əks etdirir. Qeydiyyatdan keçməklə və ya sifariş verməklə aşağıdakı şərtlərlə tam razı olduğunuzu təsdiqləyirsiniz.
                         </p>
                     </div>
 
