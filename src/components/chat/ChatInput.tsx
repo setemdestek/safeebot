@@ -137,7 +137,7 @@ export function ChatInput({ onSend, isLoading }: ChatInputProps) {
 
             <div className="mt-3.5 text-center px-4 w-full">
                 <p className="text-xs text-[hsl(var(--muted-foreground))]">
-                    SafeeBot səhvlər edə bilər. Əhəmiyyətli məlumatları istifadə etməzdən öncə yoxlamağınız tövsiyə olunur.
+                    {t("disclaimer")}
                 </p>
             </div>
         </div>

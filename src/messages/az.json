@@ -104,7 +104,9 @@
         "lastWeek": "Keçən həftə",
         "older": "Daha əvvəl",
         "deleteChat": "Söhbəti sil",
-        "deleteChatConfirm": "Bu söhbəti silmək istədiyinizə əminsiniz?"
+        "deleteChatConfirm": "Bu söhbəti silmək istədiyinizə əminsiniz?",
+        "jsaButton": "RİSK ANALİZİ ET",
+        "disclaimer": "SafeeBot səhvlər edə bilər. Əhəmiyyətli məlumatları istifadə etməzdən öncə yoxlamağınız tövsiyə olunur."
     },
     "settings": {
         "title": "Parametrlər",

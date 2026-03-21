@@ -32,14 +32,14 @@ interface ChatSidebarProps {
     onOpenJsaModal?: () => void;
 }
 
-function formatDate(ts: number): string {
+function formatDate(ts: number, t: (key: string) => string): string {
     const now = Date.now();
     const diff = now - ts;
     const day = 86400000;
 
-    if (diff < day) return "Bu gün";
-    if (diff < day * 2) return "Dünən";
-    if (diff < day * 7) return "Keçən həftə";
+    if (diff < day) return t("today");
+    if (diff < day * 2) return t("yesterday");
+    if (diff < day * 7) return t("lastWeek");
     return new Date(ts).toLocaleDateString();
 }
 
@@ -68,7 +68,7 @@ export function ChatSidebar({
     // Group by date
     const grouped: Record<string, ChatSession[]> = {};
     sessions.forEach((s) => {
-        const label = formatDate(s.updatedAt);
+        const label = formatDate(s.updatedAt, t);
         if (!grouped[label]) grouped[label] = [];
         grouped[label].push(s);
     });
@@ -116,7 +116,7 @@ export function ChatSidebar({
                         size="sm"
                     >
                         <Shield className="w-4 h-4 mr-2" />
-                        RİSK ANALİZİ ET
+                        {t("jsaButton")}
                     </Button>
                 )}
             </div>

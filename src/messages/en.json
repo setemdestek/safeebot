@@ -104,7 +104,9 @@
         "lastWeek": "Last Week",
         "older": "Older",
         "deleteChat": "Delete Chat",
-        "deleteChatConfirm": "Are you sure you want to delete this chat?"
+        "deleteChatConfirm": "Are you sure you want to delete this chat?",
+        "jsaButton": "RISK ANALYSIS",
+        "disclaimer": "SafeeBot can make mistakes. We recommend verifying important information before use."
     },
     "settings": {
         "title": "Settings",
