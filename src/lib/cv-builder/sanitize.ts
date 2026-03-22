@@ -4,7 +4,8 @@ import { JSDOM } from 'jsdom';
 import type { CVFormData } from '@/types/cv';
 
 const window = new JSDOM('').window;
-const purify = DOMPurify(window as unknown as Window);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const purify = DOMPurify(window as any);
 
 function sanitizeString(str: string): string {
   return purify.sanitize(str, { ALLOWED_TAGS: [] }); // strip ALL HTML
