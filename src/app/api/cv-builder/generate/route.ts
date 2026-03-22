@@ -63,12 +63,15 @@ export async function POST(request: Request) {
     // 7. Generate DOCX
     const docxBuffer = await generateCV(sanitizedData, photoBuffer);
 
-    // 8. Return DOCX
+    // 8. Return DOCX — sanitize filename to prevent header injection
+    const safeName = (str: string) => str.replace(/[^a-zA-Z0-9\u00C0-\u024F\u0400-\u04FF _-]/g, '').slice(0, 50);
+    const fileName = `CV_${safeName(sanitizedData.personalInfo.firstName)}_${safeName(sanitizedData.personalInfo.lastName)}.docx`;
+
     return new NextResponse(new Uint8Array(docxBuffer), {
       status: 200,
       headers: {
         'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'Content-Disposition': `attachment; filename="CV_${sanitizedData.personalInfo.firstName}_${sanitizedData.personalInfo.lastName}.docx"`,
+        'Content-Disposition': `attachment; filename="${fileName}"`,
       },
     });
   } catch (error) {

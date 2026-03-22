@@ -3,13 +3,16 @@ import { createClient } from '@/lib/supabase/server';
 import { callGemini } from '@/lib/cv-builder/gemini';
 import { buildCoverLetterPrompt } from '@/lib/cv-builder/prompts';
 import { sanitizeCVData } from '@/lib/cv-builder/sanitize';
-import { coverLetterResultSchema } from '@/lib/validations-cv';
+import { parseGeminiJSON } from '@/lib/cv-builder/parse-gemini-json';
+import { cvFormSchema, coverLetterResultSchema } from '@/lib/validations-cv';
 
 export const maxDuration = 60;
 
-function parseGeminiJSON(text: string): unknown {
-  const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  return JSON.parse(cleaned);
+const MAX_JOB_DESCRIPTION_LENGTH = 5000;
+
+function sanitizeJobDescription(raw: unknown): string {
+  if (!raw || typeof raw !== 'string') return '';
+  return raw.slice(0, MAX_JOB_DESCRIPTION_LENGTH).replace(/<[^>]*>/g, '').trim();
 }
 
 export async function POST(request: Request) {
@@ -30,8 +33,13 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const sanitizedData = sanitizeCVData({ ...body.cvData, photo: null });
-    const jobDescription = body.jobDescription || '';
+    const inputValidation = cvFormSchema.safeParse(body.cvData);
+    if (!inputValidation.success) {
+      return NextResponse.json({ message: 'Validasiya xətası.' }, { status: 400 });
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sanitizedData = sanitizeCVData({ ...inputValidation.data, photo: null } as any);
+    const jobDescription = sanitizeJobDescription(body.jobDescription);
 
     const prompt = buildCoverLetterPrompt(sanitizedData, jobDescription);
 

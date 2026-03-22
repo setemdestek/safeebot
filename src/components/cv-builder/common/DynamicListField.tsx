@@ -12,6 +12,7 @@ interface DynamicListFieldProps<T extends { id: string }> {
   addLabel: string;
   title: string;
   maxItems?: number;
+  emptyMessage?: string;
 }
 
 export default function DynamicListField<T extends { id: string }>({
@@ -22,6 +23,7 @@ export default function DynamicListField<T extends { id: string }>({
   addLabel,
   title,
   maxItems = 10,
+  emptyMessage,
 }: DynamicListFieldProps<T>) {
   return (
     <div className="space-y-4">
@@ -58,7 +60,7 @@ export default function DynamicListField<T extends { id: string }>({
       </AnimatePresence>
       {items.length === 0 && (
         <p className="text-sm text-muted-foreground text-center py-4">
-          {addLabel} düyməsinə basaraq əlavə edin
+          {emptyMessage ?? `${addLabel} düyməsinə basaraq əlavə edin`}
         </p>
       )}
     </div>

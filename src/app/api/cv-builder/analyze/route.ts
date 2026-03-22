@@ -3,15 +3,10 @@ import { createClient } from '@/lib/supabase/server';
 import { callGemini } from '@/lib/cv-builder/gemini';
 import { buildAnalysisPrompt } from '@/lib/cv-builder/prompts';
 import { sanitizeCVData } from '@/lib/cv-builder/sanitize';
-import { cvAnalysisResultSchema } from '@/lib/validations-cv';
+import { cvFormSchema, cvAnalysisResultSchema } from '@/lib/validations-cv';
+import { parseGeminiJSON } from '@/lib/cv-builder/parse-gemini-json';
 
 export const maxDuration = 60;
-
-function parseGeminiJSON(text: string): unknown {
-  // Strip markdown code fences if present
-  const cleaned = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-  return JSON.parse(cleaned);
-}
 
 export async function POST(request: Request) {
   try {
@@ -31,7 +26,12 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const sanitizedData = sanitizeCVData({ ...body.cvData, photo: null });
+    const inputValidation = cvFormSchema.safeParse(body.cvData);
+    if (!inputValidation.success) {
+      return NextResponse.json({ message: 'Validasiya xətası.' }, { status: 400 });
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const sanitizedData = sanitizeCVData({ ...inputValidation.data, photo: null } as any);
 
     const prompt = buildAnalysisPrompt(sanitizedData);
 
