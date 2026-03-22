@@ -144,9 +144,224 @@
         "sec4Title": "Безопасный Вход",
         "sec4Desc": "Доступ к вашему аккаунту защищен самыми современными протоколами безопасности."
     },
-    "cvSection": {
+    "cvBuilder": {
         "title": "Создание CV",
-        "comingSoon": "Этот раздел готовится. Скоро будет доступен!"
+        "subtitle": "Создайте ваше профессиональное резюме",
+
+        "steps": {
+            "language": "Выбор языка",
+            "template": "Выбор шаблона",
+            "form": "Данные",
+            "analysis": "Анализ",
+            "done": "Готово"
+        },
+
+        "languageSelector": {
+            "title": "Выберите язык CV",
+            "subtitle": "Ваше CV будет подготовлено на выбранном языке",
+            "az": "Азербайджанский",
+            "en": "Английский",
+            "ru": "Русский"
+        },
+
+        "templateSelector": {
+            "title": "Выберите шаблон",
+            "subtitle": "Выберите один из 10 профессиональных шаблонов",
+            "preview": "Предпросмотр",
+            "select": "Выбрать"
+        },
+
+        "form": {
+            "photo": {
+                "title": "Фото",
+                "upload": "Загрузить фото",
+                "dragDrop": "Перетащите фото сюда или нажмите",
+                "maxSize": "Максимум: 10МБ (JPG/PNG)",
+                "remove": "Удалить фото",
+                "invalidType": "Принимаются только форматы JPG и PNG",
+                "tooLarge": "Фото не должно превышать 10МБ"
+            },
+            "personalInfo": {
+                "title": "Личные данные",
+                "firstName": "Имя",
+                "lastName": "Фамилия",
+                "dateOfBirth": "Дата рождения",
+                "email": "Электронная почта",
+                "phone": "Телефон",
+                "city": "Город",
+                "address": "Адрес",
+                "addressOptional": "Адрес (необязательно)",
+                "driversLicense": "Водительское удостоверение",
+                "driversLicenseOptional": "Водительское удостоверение (необязательно)",
+                "gender": "Пол",
+                "male": "Мужской",
+                "female": "Женский",
+                "maritalStatus": "Семейное положение",
+                "single": "Холост / Не замужем",
+                "married": "Женат / Замужем",
+                "linkedin": "Аккаунт LinkedIn",
+                "linkedinOptional": "LinkedIn URL (необязательно)"
+            },
+            "aboutMe": {
+                "title": "О себе",
+                "placeholder": "Напишите краткую информацию о себе (50-500 символов)...",
+                "charCount": "{count}/500 символов",
+                "minChars": "Требуется минимум 50 символов"
+            },
+            "workExperience": {
+                "title": "Опыт работы",
+                "company": "Название компании / организации",
+                "position": "Должность",
+                "startDate": "Дата начала",
+                "endDate": "Дата окончания",
+                "currentlyWorking": "Работаю здесь по настоящее время",
+                "description": "Описание выполненной работы",
+                "descriptionPlaceholder": "Напишите об основных обязанностях и достижениях...",
+                "addMore": "Добавить опыт работы"
+            },
+            "education": {
+                "title": "Образование",
+                "institution": "Учебное заведение",
+                "major": "Специальность",
+                "startDate": "Дата начала",
+                "endDate": "Дата окончания",
+                "currentlyStudying": "Учусь здесь по настоящее время",
+                "city": "Город",
+                "addMore": "Добавить образование"
+            },
+            "skills": {
+                "title": "Навыки",
+                "name": "Название навыка",
+                "level": "Уровень",
+                "beginner": "Начинающий",
+                "intermediate": "Средний",
+                "good": "Хороший",
+                "excellent": "Отличный",
+                "expert": "Эксперт",
+                "addMore": "Добавить навык"
+            },
+            "languages": {
+                "title": "Языки",
+                "name": "Язык",
+                "level": "Уровень",
+                "native": "Родной язык",
+                "addMore": "Добавить язык"
+            },
+            "courses": {
+                "title": "Курсы",
+                "name": "Название курса",
+                "organization": "Организация",
+                "date": "Дата",
+                "addMore": "Добавить курс"
+            },
+            "certificates": {
+                "title": "Сертификаты",
+                "name": "Название сертификата",
+                "issuer": "Выдавшая организация",
+                "date": "Дата",
+                "addMore": "Добавить сертификат"
+            },
+            "interests": {
+                "title": "Интересы",
+                "placeholder": "Введите интерес...",
+                "add": "Добавить"
+            },
+            "references": {
+                "title": "Рекомендации",
+                "fullName": "Имя и фамилия",
+                "position": "Должность",
+                "company": "Компания",
+                "phone": "Телефон",
+                "email": "Электронная почта",
+                "addMore": "Добавить рекомендацию"
+            }
+        },
+
+        "actions": {
+            "analyze": "Анализировать",
+            "generate": "Создать CV",
+            "download": "Скачать",
+            "reAnalyze": "Повторный анализ",
+            "addItem": "Добавить",
+            "removeItem": "Удалить",
+            "back": "Назад",
+            "next": "Далее",
+            "reset": "Сбросить",
+            "coverLetter": "Сопроводительное письмо"
+        },
+
+        "ai": {
+            "atsScore": {
+                "title": "Балл ATS",
+                "subtitle": "Балл вашего CV в системах ATS",
+                "justification": "Обоснование",
+                "subCriteria": {
+                    "keywordRelevance": "Соответствие ключевым словам",
+                    "formatCompatibility": "Совместимость формата",
+                    "sectionCompleteness": "Полнота разделов",
+                    "contentQuality": "Качество содержания"
+                }
+            },
+            "analysis": {
+                "title": "Анализ CV",
+                "overallImpression": "Общая оценка",
+                "strengths": "Сильные стороны",
+                "improvements": "Предложения по улучшению",
+                "grammarErrors": "Грамматические ошибки",
+                "topActions": "Первые 3 шага",
+                "section": "Раздел",
+                "current": "Текущее",
+                "suggested": "Предложение",
+                "why": "Причина",
+                "location": "Место",
+                "error": "Ошибка",
+                "correction": "Исправление"
+            },
+            "coverLetter": {
+                "title": "Сопроводительное письмо",
+                "jobDescription": "Описание вакансии",
+                "jobDescriptionPlaceholder": "Вставьте описание вакансии, на которую вы претендуете (необязательно)...",
+                "generate": "Создать письмо",
+                "regenerate": "Создать заново",
+                "downloadDocx": "Скачать DOCX",
+                "optional": "Этот раздел необязателен"
+            }
+        },
+
+        "progress": {
+            "personalInfo": "Личные данные",
+            "aboutMe": "О себе",
+            "workExperience": "Опыт работы",
+            "education": "Образование",
+            "skills": "Навыки",
+            "languages": "Языки",
+            "courses": "Курсы",
+            "certificates": "Сертификаты",
+            "interests": "Интересы",
+            "references": "Рекомендации"
+        },
+
+        "errors": {
+            "authRequired": "Для использования этой функции необходимо войти в систему",
+            "rateLimitDaily": "Дневной лимит исчерпан. Повторите попытку завтра.",
+            "rateLimitMonthly": "Месячный лимит исчерпан.",
+            "validationFailed": "Заполните все обязательные поля",
+            "generateFailed": "При создании CV произошла ошибка",
+            "analyzeFailed": "При анализе произошла ошибка",
+            "coverLetterFailed": "При создании письма произошла ошибка",
+            "aiUnavailable": "Сервис ИИ временно недоступен",
+            "photoTooLarge": "Фото не должно превышать 10МБ",
+            "invalidPhotoType": "Принимаются только форматы JPG и PNG",
+            "networkError": "Ошибка сети. Повторите попытку.",
+            "timeout": "Время запроса истекло. Повторите попытку."
+        },
+
+        "restore": {
+            "title": "Предыдущие данные CV",
+            "message": "Найдены ваши предыдущие данные CV. Хотите продолжить?",
+            "continue": "Да, продолжить",
+            "startFresh": "Нет, начать заново"
+        }
     },
     "support": {
         "title": "Поддержка",

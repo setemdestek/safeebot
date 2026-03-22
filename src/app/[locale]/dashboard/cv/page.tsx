@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Construction } from "lucide-react";
 
 export default function CvPage() {
-    const t = useTranslations("cvSection");
+    const t = useTranslations("cvBuilder");
 
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
