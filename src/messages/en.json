@@ -144,9 +144,224 @@
         "sec4Title": "Secure Login",
         "sec4Desc": "Access to your account is protected with the most modern security protocols."
     },
-    "cvSection": {
+    "cvBuilder": {
         "title": "CV Builder",
-        "comingSoon": "This section is being prepared. It will be available soon!"
+        "subtitle": "Create your professional CV",
+
+        "steps": {
+            "language": "Language Selection",
+            "template": "Template Selection",
+            "form": "Details",
+            "analysis": "Analysis",
+            "done": "Done"
+        },
+
+        "languageSelector": {
+            "title": "Select CV Language",
+            "subtitle": "Your CV will be prepared in the selected language",
+            "az": "Azerbaijani",
+            "en": "English",
+            "ru": "Russian"
+        },
+
+        "templateSelector": {
+            "title": "Select Template",
+            "subtitle": "Choose one of 10 professional templates",
+            "preview": "Preview",
+            "select": "Select"
+        },
+
+        "form": {
+            "photo": {
+                "title": "Photo",
+                "upload": "Upload Photo",
+                "dragDrop": "Drag and drop photo here or click",
+                "maxSize": "Maximum: 10MB (JPG/PNG)",
+                "remove": "Remove Photo",
+                "invalidType": "Only JPG and PNG formats are accepted",
+                "tooLarge": "Photo must not exceed 10MB"
+            },
+            "personalInfo": {
+                "title": "Personal Information",
+                "firstName": "First Name",
+                "lastName": "Last Name",
+                "dateOfBirth": "Date of Birth",
+                "email": "Email",
+                "phone": "Phone",
+                "city": "City",
+                "address": "Address",
+                "addressOptional": "Address (optional)",
+                "driversLicense": "Driver's License",
+                "driversLicenseOptional": "Driver's License (optional)",
+                "gender": "Gender",
+                "male": "Male",
+                "female": "Female",
+                "maritalStatus": "Marital Status",
+                "single": "Single",
+                "married": "Married",
+                "linkedin": "LinkedIn Account",
+                "linkedinOptional": "LinkedIn URL (optional)"
+            },
+            "aboutMe": {
+                "title": "About Me",
+                "placeholder": "Write a short description about yourself (50-500 characters)...",
+                "charCount": "{count}/500 characters",
+                "minChars": "Minimum 50 characters required"
+            },
+            "workExperience": {
+                "title": "Work Experience",
+                "company": "Company / Organization Name",
+                "position": "Position",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "currentlyWorking": "Currently working here",
+                "description": "Job Description",
+                "descriptionPlaceholder": "Write your main responsibilities and achievements...",
+                "addMore": "Add Work Experience"
+            },
+            "education": {
+                "title": "Education",
+                "institution": "Educational Institution",
+                "major": "Field of Study",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "currentlyStudying": "Currently studying here",
+                "city": "City",
+                "addMore": "Add Education"
+            },
+            "skills": {
+                "title": "Skills",
+                "name": "Skill Name",
+                "level": "Level",
+                "beginner": "Beginner",
+                "intermediate": "Intermediate",
+                "good": "Good",
+                "excellent": "Excellent",
+                "expert": "Expert",
+                "addMore": "Add Skill"
+            },
+            "languages": {
+                "title": "Languages",
+                "name": "Language",
+                "level": "Level",
+                "native": "Native",
+                "addMore": "Add Language"
+            },
+            "courses": {
+                "title": "Courses",
+                "name": "Course Name",
+                "organization": "Organization",
+                "date": "Date",
+                "addMore": "Add Course"
+            },
+            "certificates": {
+                "title": "Certificates",
+                "name": "Certificate Name",
+                "issuer": "Issuing Organization",
+                "date": "Date",
+                "addMore": "Add Certificate"
+            },
+            "interests": {
+                "title": "Interests",
+                "placeholder": "Enter an interest...",
+                "add": "Add"
+            },
+            "references": {
+                "title": "References",
+                "fullName": "Full Name",
+                "position": "Position",
+                "company": "Company",
+                "phone": "Phone",
+                "email": "Email",
+                "addMore": "Add Reference"
+            }
+        },
+
+        "actions": {
+            "analyze": "Analyze",
+            "generate": "Generate CV",
+            "download": "Download",
+            "reAnalyze": "Re-Analyze",
+            "addItem": "Add",
+            "removeItem": "Remove",
+            "back": "Back",
+            "next": "Next",
+            "reset": "Reset",
+            "coverLetter": "Cover Letter"
+        },
+
+        "ai": {
+            "atsScore": {
+                "title": "ATS Score",
+                "subtitle": "Your CV's score in ATS systems",
+                "justification": "Justification",
+                "subCriteria": {
+                    "keywordRelevance": "Keyword Relevance",
+                    "formatCompatibility": "Format Compatibility",
+                    "sectionCompleteness": "Section Completeness",
+                    "contentQuality": "Content Quality"
+                }
+            },
+            "analysis": {
+                "title": "CV Analysis",
+                "overallImpression": "Overall Impression",
+                "strengths": "Strengths",
+                "improvements": "Improvement Suggestions",
+                "grammarErrors": "Grammar Errors",
+                "topActions": "Top 3 Actions",
+                "section": "Section",
+                "current": "Current",
+                "suggested": "Suggested",
+                "why": "Reason",
+                "location": "Location",
+                "error": "Error",
+                "correction": "Correction"
+            },
+            "coverLetter": {
+                "title": "Cover Letter",
+                "jobDescription": "Job Description",
+                "jobDescriptionPlaceholder": "Paste the job description you are applying for (optional)...",
+                "generate": "Generate Letter",
+                "regenerate": "Regenerate",
+                "downloadDocx": "Download DOCX",
+                "optional": "This section is optional"
+            }
+        },
+
+        "progress": {
+            "personalInfo": "Personal Information",
+            "aboutMe": "About Me",
+            "workExperience": "Work Experience",
+            "education": "Education",
+            "skills": "Skills",
+            "languages": "Languages",
+            "courses": "Courses",
+            "certificates": "Certificates",
+            "interests": "Interests",
+            "references": "References"
+        },
+
+        "errors": {
+            "authRequired": "You must be logged in to use this feature",
+            "rateLimitDaily": "Daily limit reached. Please try again tomorrow.",
+            "rateLimitMonthly": "Monthly limit reached.",
+            "validationFailed": "Please fill in all required fields",
+            "generateFailed": "An error occurred while generating the CV",
+            "analyzeFailed": "An error occurred during analysis",
+            "coverLetterFailed": "An error occurred while generating the cover letter",
+            "aiUnavailable": "AI service is temporarily unavailable",
+            "photoTooLarge": "Photo must not exceed 10MB",
+            "invalidPhotoType": "Only JPG and PNG formats are accepted",
+            "networkError": "Network error. Please try again.",
+            "timeout": "Request timed out. Please try again."
+        },
+
+        "restore": {
+            "title": "Previous CV Data",
+            "message": "Your previous CV data was found. Would you like to continue?",
+            "continue": "Yes, continue",
+            "startFresh": "No, start fresh"
+        }
     },
     "support": {
         "title": "Support",

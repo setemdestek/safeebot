@@ -144,9 +144,224 @@
         "sec4Title": "Təhlükəsiz Giriş",
         "sec4Desc": "Hesabınıza giriş ən müasir təhlükəsizlik protokolları ilə qorunur."
     },
-    "cvSection": {
+    "cvBuilder": {
         "title": "CV Hazırlama",
-        "comingSoon": "Bu bölmə hazırlanır. Tezliklə əlçatan olacaq!"
+        "subtitle": "Peşəkar CV-nizi hazırlayın",
+
+        "steps": {
+            "language": "Dil Seçimi",
+            "template": "Şablon Seçimi",
+            "form": "Məlumatlar",
+            "analysis": "Analiz",
+            "done": "Hazır"
+        },
+
+        "languageSelector": {
+            "title": "CV Dilini Seçin",
+            "subtitle": "CV-niz seçilən dildə hazırlanacaq",
+            "az": "Azərbaycan dili",
+            "en": "İngilis dili",
+            "ru": "Rus dili"
+        },
+
+        "templateSelector": {
+            "title": "Şablon Seçin",
+            "subtitle": "10 peşəkar şablondan birini seçin",
+            "preview": "Önizləmə",
+            "select": "Seçin"
+        },
+
+        "form": {
+            "photo": {
+                "title": "Şəkil",
+                "upload": "Şəkil Yüklə",
+                "dragDrop": "Şəkli buraya sürükləyin və ya klikləyin",
+                "maxSize": "Maksimum: 10MB (JPG/PNG)",
+                "remove": "Şəkli Sil",
+                "invalidType": "Yalnız JPG və PNG formatları qəbul olunur",
+                "tooLarge": "Şəkil 10MB-dan böyük olmamalıdır"
+            },
+            "personalInfo": {
+                "title": "Şəxsi Məlumatlar",
+                "firstName": "Ad",
+                "lastName": "Soyad",
+                "dateOfBirth": "Doğum Tarixi",
+                "email": "E-poçt",
+                "phone": "Telefon",
+                "city": "Şəhər",
+                "address": "Ünvan",
+                "addressOptional": "Ünvan (opsional)",
+                "driversLicense": "Sürücülük Vəsiqəsi",
+                "driversLicenseOptional": "Sürücülük Vəsiqəsi (opsional)",
+                "gender": "Cins",
+                "male": "Kişi",
+                "female": "Qadın",
+                "maritalStatus": "Ailə Vəziyyəti",
+                "single": "Subay",
+                "married": "Evli",
+                "linkedin": "LinkedIn Hesabı",
+                "linkedinOptional": "LinkedIn URL (opsional)"
+            },
+            "aboutMe": {
+                "title": "Haqqımda",
+                "placeholder": "Özünüz haqqında qısa məlumat yazın (50-500 simvol)...",
+                "charCount": "{count}/500 simvol",
+                "minChars": "Minimum 50 simvol tələb olunur"
+            },
+            "workExperience": {
+                "title": "İş Təcrübəsi",
+                "company": "Şirkət / Müəssisə Adı",
+                "position": "Vəzifə",
+                "startDate": "Başlama Tarixi",
+                "endDate": "Bitmə Tarixi",
+                "currentlyWorking": "Hal-hazırda işləyirəm",
+                "description": "Görülən İşin Təsviri",
+                "descriptionPlaceholder": "Əsas vəzifə və nailiyyətlərinizi yazın...",
+                "addMore": "İş Təcrübəsi Əlavə Et"
+            },
+            "education": {
+                "title": "Təhsil",
+                "institution": "Təhsil Müəssisəsi",
+                "major": "İxtisas",
+                "startDate": "Başlama Tarixi",
+                "endDate": "Bitmə Tarixi",
+                "currentlyStudying": "Hazırda oxuyuram",
+                "city": "Şəhər",
+                "addMore": "Təhsil Əlavə Et"
+            },
+            "skills": {
+                "title": "Bacarıqlar",
+                "name": "Bacarıq Adı",
+                "level": "Səviyyə",
+                "beginner": "Başlanğıc",
+                "intermediate": "Orta",
+                "good": "Yaxşı",
+                "excellent": "Əla",
+                "expert": "Ekspert",
+                "addMore": "Bacarıq Əlavə Et"
+            },
+            "languages": {
+                "title": "Dillər",
+                "name": "Dil",
+                "level": "Səviyyə",
+                "native": "Ana dili",
+                "addMore": "Dil Əlavə Et"
+            },
+            "courses": {
+                "title": "Kurslar",
+                "name": "Kurs Adı",
+                "organization": "Təşkilat",
+                "date": "Tarix",
+                "addMore": "Kurs Əlavə Et"
+            },
+            "certificates": {
+                "title": "Sertifikatlar",
+                "name": "Sertifikat Adı",
+                "issuer": "Verən Təşkilat",
+                "date": "Tarix",
+                "addMore": "Sertifikat Əlavə Et"
+            },
+            "interests": {
+                "title": "Maraqlar",
+                "placeholder": "Maraq daxil edin...",
+                "add": "Əlavə Et"
+            },
+            "references": {
+                "title": "Referanslar",
+                "fullName": "Ad Soyad",
+                "position": "Vəzifə",
+                "company": "Şirkət",
+                "phone": "Telefon",
+                "email": "E-poçt",
+                "addMore": "Referans Əlavə Et"
+            }
+        },
+
+        "actions": {
+            "analyze": "Analiz Et",
+            "generate": "CV Yarat",
+            "download": "Yüklə",
+            "reAnalyze": "Yenidən Analiz Et",
+            "addItem": "Əlavə Et",
+            "removeItem": "Sil",
+            "back": "Geri",
+            "next": "İrəli",
+            "reset": "Sıfırla",
+            "coverLetter": "Müraciət Məktubu"
+        },
+
+        "ai": {
+            "atsScore": {
+                "title": "ATS Bal",
+                "subtitle": "CV-nizin ATS sistemlərindəki balı",
+                "justification": "Əsaslandırma",
+                "subCriteria": {
+                    "keywordRelevance": "Açar Söz Uyğunluğu",
+                    "formatCompatibility": "Format Uyğunluğu",
+                    "sectionCompleteness": "Bölmə Tamlığı",
+                    "contentQuality": "Məzmun Keyfiyyəti"
+                }
+            },
+            "analysis": {
+                "title": "CV Analizi",
+                "overallImpression": "Ümumi Qiymətləndirmə",
+                "strengths": "Güclü Tərəflər",
+                "improvements": "Təkmilləşdirmə Təklifləri",
+                "grammarErrors": "Qrammatik Səhvlər",
+                "topActions": "İlk 3 Addım",
+                "section": "Bölmə",
+                "current": "Hazırki",
+                "suggested": "Təklif",
+                "why": "Səbəb",
+                "location": "Yer",
+                "error": "Səhv",
+                "correction": "Düzəliş"
+            },
+            "coverLetter": {
+                "title": "Müraciət Məktubu",
+                "jobDescription": "İş Elanının Təsviri",
+                "jobDescriptionPlaceholder": "Müraciət edəcəyiniz iş elanının təsvirini yapışdırın (opsional)...",
+                "generate": "Məktub Yarat",
+                "regenerate": "Yenidən Yarat",
+                "downloadDocx": "DOCX Yüklə",
+                "optional": "Bu bölmə opsionaldır"
+            }
+        },
+
+        "progress": {
+            "personalInfo": "Şəxsi Məlumatlar",
+            "aboutMe": "Haqqımda",
+            "workExperience": "İş Təcrübəsi",
+            "education": "Təhsil",
+            "skills": "Bacarıqlar",
+            "languages": "Dillər",
+            "courses": "Kurslar",
+            "certificates": "Sertifikatlar",
+            "interests": "Maraqlar",
+            "references": "Referanslar"
+        },
+
+        "errors": {
+            "authRequired": "Bu funksiyadan istifadə etmək üçün daxil olmalısınız",
+            "rateLimitDaily": "Gündəlik limit dolmuşdur. Sabah yenidən cəhd edin.",
+            "rateLimitMonthly": "Aylıq limit dolmuşdur.",
+            "validationFailed": "Bütün tələb olunan sahələri doldurun",
+            "generateFailed": "CV yaradılarkən xəta baş verdi",
+            "analyzeFailed": "Analiz zamanı xəta baş verdi",
+            "coverLetterFailed": "Məktub yaradılarkən xəta baş verdi",
+            "aiUnavailable": "AI xidməti müvəqqəti olaraq əlçatmazdır",
+            "photoTooLarge": "Şəkil 10MB-dan böyük olmamalıdır",
+            "invalidPhotoType": "Yalnız JPG və PNG formatları qəbul olunur",
+            "networkError": "Şəbəkə xətası. Yenidən cəhd edin.",
+            "timeout": "Sorğu vaxtı bitdi. Yenidən cəhd edin."
+        },
+
+        "restore": {
+            "title": "Əvvəlki CV Məlumatları",
+            "message": "Əvvəlki CV məlumatlarınız tapıldı. Davam etmək istəyirsiniz?",
+            "continue": "Bəli, davam et",
+            "startFresh": "Xeyr, sıfırdan başla"
+        }
     },
     "support": {
         "title": "Dəstək",
