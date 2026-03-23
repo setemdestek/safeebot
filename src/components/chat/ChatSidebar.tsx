@@ -12,6 +12,7 @@ import {
     LogOut,
     ChevronLeft,
     Shield,
+    FileText,
     Mail,
     Pencil,
     Check,
@@ -281,6 +282,13 @@ export function ChatSidebar({
                         </p>
                     </div>
                 </div>
+                <button
+                    onClick={() => router.push(`/${locale}/dashboard/cv`)}
+                    className="w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius)] text-sm hover:bg-[hsl(var(--primary)/0.1)] text-[hsl(var(--primary))] font-medium transition-colors"
+                >
+                    <FileText className="w-4 h-4 opacity-60" />
+                    {tc("cv")}
+                </button>
                 <button
                     onClick={() => router.push(`/${locale}/dashboard/settings`)}
                     className="w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius)] text-sm hover:bg-[hsl(var(--sidebar-accent))] transition-colors"
