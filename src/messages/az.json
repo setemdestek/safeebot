@@ -172,11 +172,14 @@
         },
 
         "form": {
+            "optional": "opsional",
             "photo": {
                 "title": "Şəkil",
                 "upload": "Şəkil Yüklə",
                 "dragDrop": "Şəkli buraya sürükləyin və ya klikləyin",
                 "maxSize": "Maksimum: 10MB (JPG/PNG)",
+                "hint": "JPG/PNG, maks. 10MB",
+                "change": "Dəyiş",
                 "remove": "Şəkli Sil",
                 "invalidType": "Yalnız JPG və PNG formatları qəbul olunur",
                 "tooLarge": "Şəkil 10MB-dan böyük olmamalıdır"
@@ -200,13 +203,18 @@
                 "single": "Subay",
                 "married": "Evli",
                 "linkedin": "LinkedIn Hesabı",
-                "linkedinOptional": "LinkedIn URL (opsional)"
+                "linkedinOptional": "LinkedIn URL (opsional)",
+                "linkedinUrl": "LinkedIn URL",
+                "noLicense": "Yoxdur",
+                "category": "Kateqoriya"
             },
             "aboutMe": {
                 "title": "Haqqımda",
                 "placeholder": "Özünüz haqqında qısa məlumat yazın (50-500 simvol)...",
                 "charCount": "{count}/500 simvol",
-                "minChars": "Minimum 50 simvol tələb olunur"
+                "minChars": "Minimum 50 simvol tələb olunur",
+                "tooShort": "Minimum {min} simvol tələb olunur",
+                "tooLong": "Maksimum {max} simvol icazə verilir"
             },
             "workExperience": {
                 "title": "İş Təcrübəsi",
@@ -217,7 +225,8 @@
                 "currentlyWorking": "Hal-hazırda işləyirəm",
                 "description": "Görülən İşin Təsviri",
                 "descriptionPlaceholder": "Əsas vəzifə və nailiyyətlərinizi yazın...",
-                "addMore": "İş Təcrübəsi Əlavə Et"
+                "addMore": "İş Təcrübəsi Əlavə Et",
+                "add": "İş Təcrübəsi Əlavə Et"
             },
             "education": {
                 "title": "Təhsil",
@@ -227,7 +236,8 @@
                 "endDate": "Bitmə Tarixi",
                 "currentlyStudying": "Hazırda oxuyuram",
                 "city": "Şəhər",
-                "addMore": "Təhsil Əlavə Et"
+                "addMore": "Təhsil Əlavə Et",
+                "add": "Təhsil Əlavə Et"
             },
             "skills": {
                 "title": "Bacarıqlar",
@@ -238,33 +248,41 @@
                 "good": "Yaxşı",
                 "excellent": "Əla",
                 "expert": "Ekspert",
-                "addMore": "Bacarıq Əlavə Et"
+                "addMore": "Bacarıq Əlavə Et",
+                "add": "Bacarıq Əlavə Et",
+                "namePlaceholder": "Bacarıq adını daxil edin..."
             },
             "languages": {
                 "title": "Dillər",
                 "name": "Dil",
                 "level": "Səviyyə",
                 "native": "Ana dili",
-                "addMore": "Dil Əlavə Et"
+                "addMore": "Dil Əlavə Et",
+                "add": "Dil Əlavə Et",
+                "namePlaceholder": "Dil adını daxil edin..."
             },
             "courses": {
                 "title": "Kurslar",
                 "name": "Kurs Adı",
                 "organization": "Təşkilat",
                 "date": "Tarix",
-                "addMore": "Kurs Əlavə Et"
+                "addMore": "Kurs Əlavə Et",
+                "add": "Kurs Əlavə Et"
             },
             "certificates": {
                 "title": "Sertifikatlar",
                 "name": "Sertifikat Adı",
                 "issuer": "Verən Təşkilat",
                 "date": "Tarix",
-                "addMore": "Sertifikat Əlavə Et"
+                "addMore": "Sertifikat Əlavə Et",
+                "add": "Sertifikat Əlavə Et"
             },
             "interests": {
                 "title": "Maraqlar",
                 "placeholder": "Maraq daxil edin...",
-                "add": "Əlavə Et"
+                "add": "Əlavə Et",
+                "empty": "Hələ maraq əlavə edilməyib",
+                "remove": "Marağı sil"
             },
             "references": {
                 "title": "Referanslar",
@@ -273,7 +291,8 @@
                 "company": "Şirkət",
                 "phone": "Telefon",
                 "email": "E-poçt",
-                "addMore": "Referans Əlavə Et"
+                "addMore": "Referans Əlavə Et",
+                "add": "Referans Əlavə Et"
             }
         },
 

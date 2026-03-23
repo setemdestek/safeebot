@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { useCVFormReducer } from '@/hooks/useCVForm';
 import { CVFormProvider, CVUIProvider } from './CVBuilderContext';
 import CVLanguageSelector from './CVLanguageSelector';
@@ -24,13 +25,15 @@ import CVAnalysisPanel from './ai/CVAnalysisPanel';
 import CoverLetterTab from './ai/CoverLetterTab';
 import { generateCVDocx, analyzeCVData, downloadBlob } from '@/lib/cv-builder/cv-api';
 import { Button } from '@/components/ui/button';
-import { Loader2, FileDown, Search } from 'lucide-react';
+import { Loader2, FileDown, Search, ArrowLeft } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
 import type { CVAnalysisResult, CoverLetterResult, CVBuilderStep } from '@/types/cv';
 
 export default function CVBuilder() {
   const t = useTranslations('cvBuilder');
+  const router = useRouter();
+  const locale = useLocale();
   const { state: formState, dispatch, getSavedDraft, clearDraft } = useCVFormReducer();
 
   // UI State
@@ -43,6 +46,12 @@ export default function CVBuilder() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isGeneratingCoverLetter, setIsGeneratingCoverLetter] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const isFormValid = Boolean(
+    formState.personalInfo.firstName.trim() &&
+    formState.personalInfo.lastName.trim() &&
+    formState.personalInfo.email.trim()
+  );
 
   // Check for saved draft on mount
   useEffect(() => {
@@ -114,7 +123,15 @@ export default function CVBuilder() {
     <CVFormProvider value={{ state: formState, dispatch }}>
       <CVUIProvider value={uiContextValue}>
         <div className="min-h-screen p-4 md:p-8 max-w-7xl mx-auto">
-          <h1 className="text-2xl font-bold mb-6">{t('title')}</h1>
+          <div className="flex items-center gap-3 mb-6">
+            <button
+              onClick={() => router.push(`/${locale}/dashboard/chat`)}
+              className="p-2 rounded-[var(--radius)] hover:bg-[hsl(var(--accent))] transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <h1 className="text-2xl font-bold">{t('title')}</h1>
+          </div>
 
           {/* Restore Dialog */}
           <Dialog.Root open={showRestoreDialog} onOpenChange={setShowRestoreDialog}>
@@ -189,7 +206,7 @@ export default function CVBuilder() {
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-3 sticky bottom-4 bg-background/80 backdrop-blur p-4 rounded-lg border">
-                  <Button onClick={handleAnalyze} disabled={isAnalyzing} variant="outline">
+                  <Button onClick={handleAnalyze} disabled={isAnalyzing || !isFormValid} variant="outline">
                     {isAnalyzing ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                     ) : (
@@ -197,7 +214,7 @@ export default function CVBuilder() {
                     )}
                     {t('actions.analyze')}
                   </Button>
-                  <Button onClick={handleGenerate} disabled={isGenerating}>
+                  <Button onClick={handleGenerate} disabled={isGenerating || !isFormValid}>
                     {isGenerating ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                     ) : (

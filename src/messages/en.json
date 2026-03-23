@@ -172,11 +172,14 @@
         },
 
         "form": {
+            "optional": "optional",
             "photo": {
                 "title": "Photo",
                 "upload": "Upload Photo",
                 "dragDrop": "Drag and drop photo here or click",
                 "maxSize": "Maximum: 10MB (JPG/PNG)",
+                "hint": "JPG/PNG, max. 10MB",
+                "change": "Change",
                 "remove": "Remove Photo",
                 "invalidType": "Only JPG and PNG formats are accepted",
                 "tooLarge": "Photo must not exceed 10MB"
@@ -200,13 +203,18 @@
                 "single": "Single",
                 "married": "Married",
                 "linkedin": "LinkedIn Account",
-                "linkedinOptional": "LinkedIn URL (optional)"
+                "linkedinOptional": "LinkedIn URL (optional)",
+                "linkedinUrl": "LinkedIn URL",
+                "noLicense": "None",
+                "category": "Category"
             },
             "aboutMe": {
                 "title": "About Me",
                 "placeholder": "Write a short description about yourself (50-500 characters)...",
                 "charCount": "{count}/500 characters",
-                "minChars": "Minimum 50 characters required"
+                "minChars": "Minimum 50 characters required",
+                "tooShort": "Minimum {min} characters required",
+                "tooLong": "Maximum {max} characters allowed"
             },
             "workExperience": {
                 "title": "Work Experience",
@@ -217,7 +225,8 @@
                 "currentlyWorking": "Currently working here",
                 "description": "Job Description",
                 "descriptionPlaceholder": "Write your main responsibilities and achievements...",
-                "addMore": "Add Work Experience"
+                "addMore": "Add Work Experience",
+                "add": "Add Work Experience"
             },
             "education": {
                 "title": "Education",
@@ -227,7 +236,8 @@
                 "endDate": "End Date",
                 "currentlyStudying": "Currently studying here",
                 "city": "City",
-                "addMore": "Add Education"
+                "addMore": "Add Education",
+                "add": "Add Education"
             },
             "skills": {
                 "title": "Skills",
@@ -238,33 +248,41 @@
                 "good": "Good",
                 "excellent": "Excellent",
                 "expert": "Expert",
-                "addMore": "Add Skill"
+                "addMore": "Add Skill",
+                "add": "Add Skill",
+                "namePlaceholder": "Enter skill name..."
             },
             "languages": {
                 "title": "Languages",
                 "name": "Language",
                 "level": "Level",
                 "native": "Native",
-                "addMore": "Add Language"
+                "addMore": "Add Language",
+                "add": "Add Language",
+                "namePlaceholder": "Enter language name..."
             },
             "courses": {
                 "title": "Courses",
                 "name": "Course Name",
                 "organization": "Organization",
                 "date": "Date",
-                "addMore": "Add Course"
+                "addMore": "Add Course",
+                "add": "Add Course"
             },
             "certificates": {
                 "title": "Certificates",
                 "name": "Certificate Name",
                 "issuer": "Issuing Organization",
                 "date": "Date",
-                "addMore": "Add Certificate"
+                "addMore": "Add Certificate",
+                "add": "Add Certificate"
             },
             "interests": {
                 "title": "Interests",
                 "placeholder": "Enter an interest...",
-                "add": "Add"
+                "add": "Add",
+                "empty": "No interests added yet",
+                "remove": "Remove interest"
             },
             "references": {
                 "title": "References",
@@ -273,7 +291,8 @@
                 "company": "Company",
                 "phone": "Phone",
                 "email": "Email",
-                "addMore": "Add Reference"
+                "addMore": "Add Reference",
+                "add": "Add Reference"
             }
         },
 
