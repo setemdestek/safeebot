@@ -1,14 +1,20 @@
 // src/lib/cv-builder/sanitize.ts
-import DOMPurify from 'dompurify';
-import { JSDOM } from 'jsdom';
 import type { CVFormData } from '@/types/cv';
 
-const window = new JSDOM('').window;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const purify = DOMPurify(window as any);
-
+/**
+ * Strip all HTML tags and decode common HTML entities.
+ * No external dependencies needed since we allow zero tags.
+ */
 function sanitizeString(str: string): string {
-  return purify.sanitize(str, { ALLOWED_TAGS: [] }); // strip ALL HTML
+  return str
+    .replace(/<[^>]*>/g, '')       // strip all HTML tags
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x2F;/g, '/')
+    .trim();
 }
 
 export function sanitizeCVData(data: CVFormData): CVFormData {
