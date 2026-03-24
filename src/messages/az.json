@@ -213,7 +213,7 @@
             },
             "aboutMe": {
                 "title": "Haqqımda",
-                "placeholder": "Özünüz haqqında qısa məlumat yazın (50-500 simvol)...",
+                "placeholder": "Məs: 5 il ərzində əmək mühafizəsi və sənaye təhlükəsizliyi sahəsində çalışmışam. Risk qiymətləndirmə, HSE auditlər, işçilərin təhlükəsizlik təlimi və qəzaların araşdırılması üzrə təcrübəm var...",
                 "charCount": "{count}/500 simvol",
                 "minChars": "Minimum 50 simvol tələb olunur",
                 "tooShort": "Minimum {min} simvol tələb olunur",
@@ -227,14 +227,16 @@
                 "endDate": "Bitmə Tarixi",
                 "currentlyWorking": "Hal-hazırda işləyirəm",
                 "description": "Görülən İşin Təsviri",
-                "descriptionPlaceholder": "Əsas vəzifə və nailiyyətlərinizi yazın...",
+                "descriptionPlaceholder": "Məs: İş yerində risk qiymətləndirmə sənədlərini hazırladım. Aylıq HSE hesabatları tərtib etdim. İşçilərə təhlükəsizlik qaydaları üzrə təlim keçdim. Qəzaların sayını 30% azaltmağa nail oldum...",
                 "addMore": "İş Təcrübəsi Əlavə Et",
                 "add": "İş Təcrübəsi Əlavə Et"
             },
             "education": {
                 "title": "Təhsil",
                 "institution": "Təhsil Müəssisəsi",
+                "institutionPlaceholder": "Məs: Azərbaycan Dövlət Neft və Sənaye Universiteti",
                 "major": "İxtisas",
+                "majorPlaceholder": "Məs: Əmək mühafizəsi və sənaye təhlükəsizliyi",
                 "startDate": "Başlama Tarixi",
                 "endDate": "Bitmə Tarixi",
                 "currentlyStudying": "Hazırda oxuyuram",
@@ -253,7 +255,7 @@
                 "expert": "Ekspert",
                 "addMore": "Bacarıq Əlavə Et",
                 "add": "Bacarıq Əlavə Et",
-                "namePlaceholder": "Bacarıq adını daxil edin..."
+                "namePlaceholder": "Məs: Risk qiymətləndirmə, İSO 45001, Yanğın təhlükəsizliyi..."
             },
             "languages": {
                 "title": "Dillər",
@@ -282,7 +284,7 @@
             },
             "interests": {
                 "title": "Maraqlar",
-                "placeholder": "Maraq daxil edin...",
+                "placeholder": "Məs: Sənaye təhlükəsizliyi, Ekologiya, Texnologiya...",
                 "add": "Əlavə Et",
                 "empty": "Hələ maraq əlavə edilməyib",
                 "remove": "Marağı sil"

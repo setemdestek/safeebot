@@ -213,7 +213,7 @@
             },
             "aboutMe": {
                 "title": "About Me",
-                "placeholder": "Write a short description about yourself (50-500 characters)...",
+                "placeholder": "E.g: With 5 years of experience in occupational health & safety, I specialize in risk assessment, HSE audits, employee safety training, and incident investigation...",
                 "charCount": "{count}/500 characters",
                 "minChars": "Minimum 50 characters required",
                 "tooShort": "Minimum {min} characters required",
@@ -227,14 +227,16 @@
                 "endDate": "End Date",
                 "currentlyWorking": "Currently working here",
                 "description": "Job Description",
-                "descriptionPlaceholder": "Write your main responsibilities and achievements...",
+                "descriptionPlaceholder": "E.g: Prepared risk assessment documents. Compiled monthly HSE reports. Conducted safety training for employees. Reduced incident rate by 30%...",
                 "addMore": "Add Work Experience",
                 "add": "Add Work Experience"
             },
             "education": {
                 "title": "Education",
                 "institution": "Educational Institution",
+                "institutionPlaceholder": "E.g: Azerbaijan State Oil and Industry University",
                 "major": "Field of Study",
+                "majorPlaceholder": "E.g: Occupational Health and Safety Engineering",
                 "startDate": "Start Date",
                 "endDate": "End Date",
                 "currentlyStudying": "Currently studying here",
@@ -253,7 +255,7 @@
                 "expert": "Expert",
                 "addMore": "Add Skill",
                 "add": "Add Skill",
-                "namePlaceholder": "Enter skill name..."
+                "namePlaceholder": "E.g: Risk Assessment, ISO 45001, Fire Safety..."
             },
             "languages": {
                 "title": "Languages",
@@ -282,7 +284,7 @@
             },
             "interests": {
                 "title": "Interests",
-                "placeholder": "Enter an interest...",
+                "placeholder": "E.g: Industrial Safety, Ecology, Technology...",
                 "add": "Add",
                 "empty": "No interests added yet",
                 "remove": "Remove interest"

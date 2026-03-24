@@ -35,7 +35,7 @@ export default function EducationSection() {
                   type="text"
                   value={item.institution}
                   onChange={(e) => update(item.id, { institution: e.target.value })}
-                  placeholder={t('form.education.institution')}
+                  placeholder={t('form.education.institutionPlaceholder')}
                 />
               </div>
               <div>
@@ -46,7 +46,7 @@ export default function EducationSection() {
                   type="text"
                   value={item.major}
                   onChange={(e) => update(item.id, { major: e.target.value })}
-                  placeholder={t('form.education.major')}
+                  placeholder={t('form.education.majorPlaceholder')}
                 />
               </div>
             </div>
