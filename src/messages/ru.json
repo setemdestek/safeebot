@@ -206,6 +206,8 @@
                 "linkedinOptional": "LinkedIn URL (необязательно)",
                 "linkedinUrl": "LinkedIn URL",
                 "noLicense": "Нет",
+                "noLicenseRadio": "Нет",
+                "hasLicense": "Да",
                 "category": "Категория"
             },
             "aboutMe": {
@@ -293,7 +295,29 @@
                 "email": "Электронная почта",
                 "addMore": "Добавить рекомендацию",
                 "add": "Добавить рекомендацию"
+            },
+            "months": {
+                "1": "Январь", "2": "Февраль", "3": "Март", "4": "Апрель",
+                "5": "Май", "6": "Июнь", "7": "Июль", "8": "Август",
+                "9": "Сентябрь", "10": "Октябрь", "11": "Ноябрь", "12": "Декабрь"
+            },
+            "datePicker": {
+                "day": "День", "month": "Месяц", "year": "Год"
             }
+        },
+
+        "validation": {
+            "firstNameRequired": "Введите имя",
+            "lastNameRequired": "Введите фамилию",
+            "emailRequired": "Введите электронную почту",
+            "dateOfBirthRequired": "Введите дату рождения",
+            "phoneRequired": "Введите номер телефона",
+            "cityRequired": "Введите город",
+            "aboutMeMin": "Раздел \"О себе\" требует минимум 50 символов",
+            "workExperienceMin": "Добавьте минимум 1 опыт работы",
+            "educationMin": "Добавьте минимум 1 запись об образовании",
+            "skillsMin": "Добавьте минимум 1 навык",
+            "languagesMin": "Добавьте минимум 1 язык"
         },
 
         "actions": {

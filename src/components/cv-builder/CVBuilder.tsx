@@ -28,7 +28,26 @@ import { Button } from '@/components/ui/button';
 import { Loader2, FileDown, Search, ArrowLeft } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import * as Tabs from '@radix-ui/react-tabs';
-import type { CVAnalysisResult, CoverLetterResult, CVBuilderStep } from '@/types/cv';
+import type { CVAnalysisResult, CoverLetterResult, CVBuilderStep, CVFormData } from '@/types/cv';
+
+function getValidationErrors(formState: CVFormData, t: ReturnType<typeof useTranslations<'cvBuilder'>>): string[] {
+  const errors: string[] = [];
+  const p = formState.personalInfo;
+
+  if (!p.firstName.trim()) errors.push(t('validation.firstNameRequired'));
+  if (!p.lastName.trim()) errors.push(t('validation.lastNameRequired'));
+  if (!p.email.trim()) errors.push(t('validation.emailRequired'));
+  if (!p.dateOfBirth) errors.push(t('validation.dateOfBirthRequired'));
+  if (!p.phone.trim()) errors.push(t('validation.phoneRequired'));
+  if (!p.city.trim()) errors.push(t('validation.cityRequired'));
+  if ((p.aboutMe ?? '').length < 50) errors.push(t('validation.aboutMeMin'));
+  if (formState.workExperience.length === 0) errors.push(t('validation.workExperienceMin'));
+  if (formState.education.length === 0) errors.push(t('validation.educationMin'));
+  if (formState.skills.length === 0) errors.push(t('validation.skillsMin'));
+  if (formState.languages.length === 0) errors.push(t('validation.languagesMin'));
+
+  return errors;
+}
 
 export default function CVBuilder() {
   const t = useTranslations('cvBuilder');
@@ -77,6 +96,11 @@ export default function CVBuilder() {
   };
 
   const handleAnalyze = async () => {
+    const validationErrors = getValidationErrors(formState, t);
+    if (validationErrors.length > 0) {
+      setError(validationErrors.join('\n'));
+      return;
+    }
     setIsAnalyzing(true);
     setError(null);
     try {
@@ -90,6 +114,11 @@ export default function CVBuilder() {
   };
 
   const handleGenerate = async () => {
+    const validationErrors = getValidationErrors(formState, t);
+    if (validationErrors.length > 0) {
+      setError(validationErrors.join('\n'));
+      return;
+    }
     setIsGenerating(true);
     setError(null);
     try {
@@ -199,8 +228,12 @@ export default function CVBuilder() {
 
                 {/* Error */}
                 {error && (
-                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                    {error}
+                  <div className="p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
+                    <ul className="list-disc list-inside space-y-1">
+                      {error.split('\n').map((msg, i) => (
+                        <li key={i}>{msg}</li>
+                      ))}
+                    </ul>
                   </div>
                 )}
 

@@ -206,6 +206,8 @@
                 "linkedinOptional": "LinkedIn URL (optional)",
                 "linkedinUrl": "LinkedIn URL",
                 "noLicense": "None",
+                "noLicenseRadio": "No",
+                "hasLicense": "Yes",
                 "category": "Category"
             },
             "aboutMe": {
@@ -293,7 +295,29 @@
                 "email": "Email",
                 "addMore": "Add Reference",
                 "add": "Add Reference"
+            },
+            "months": {
+                "1": "January", "2": "February", "3": "March", "4": "April",
+                "5": "May", "6": "June", "7": "July", "8": "August",
+                "9": "September", "10": "October", "11": "November", "12": "December"
+            },
+            "datePicker": {
+                "day": "Day", "month": "Month", "year": "Year"
             }
+        },
+
+        "validation": {
+            "firstNameRequired": "Please enter your first name",
+            "lastNameRequired": "Please enter your last name",
+            "emailRequired": "Please enter your email",
+            "dateOfBirthRequired": "Please enter your date of birth",
+            "phoneRequired": "Please enter your phone number",
+            "cityRequired": "Please enter your city",
+            "aboutMeMin": "\"About Me\" section requires minimum 50 characters",
+            "workExperienceMin": "Add at least 1 work experience",
+            "educationMin": "Add at least 1 education entry",
+            "skillsMin": "Add at least 1 skill",
+            "languagesMin": "Add at least 1 language"
         },
 
         "actions": {

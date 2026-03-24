@@ -206,6 +206,8 @@
                 "linkedinOptional": "LinkedIn URL (opsional)",
                 "linkedinUrl": "LinkedIn URL",
                 "noLicense": "Yoxdur",
+                "noLicenseRadio": "Yoxdur",
+                "hasLicense": "Var",
                 "category": "Kateqoriya"
             },
             "aboutMe": {
@@ -293,6 +295,14 @@
                 "email": "E-poçt",
                 "addMore": "Referans Əlavə Et",
                 "add": "Referans Əlavə Et"
+            },
+            "months": {
+                "1": "Yanvar", "2": "Fevral", "3": "Mart", "4": "Aprel",
+                "5": "May", "6": "İyun", "7": "İyul", "8": "Avqust",
+                "9": "Sentyabr", "10": "Oktyabr", "11": "Noyabr", "12": "Dekabr"
+            },
+            "datePicker": {
+                "day": "Gün", "month": "Ay", "year": "İl"
             }
         },
 
@@ -373,6 +383,20 @@
             "invalidPhotoType": "Yalnız JPG və PNG formatları qəbul olunur",
             "networkError": "Şəbəkə xətası. Yenidən cəhd edin.",
             "timeout": "Sorğu vaxtı bitdi. Yenidən cəhd edin."
+        },
+
+        "validation": {
+            "firstNameRequired": "Ad daxil edin",
+            "lastNameRequired": "Soyad daxil edin",
+            "emailRequired": "E-poçt daxil edin",
+            "dateOfBirthRequired": "Doğum tarixini daxil edin",
+            "phoneRequired": "Telefon nömrəsini daxil edin",
+            "cityRequired": "Şəhər daxil edin",
+            "aboutMeMin": "\"Haqqımda\" bölməsinə minimum 50 simvol yazın",
+            "workExperienceMin": "Minimum 1 iş təcrübəsi əlavə edin",
+            "educationMin": "Minimum 1 təhsil əlavə edin",
+            "skillsMin": "Minimum 1 bacarıq əlavə edin",
+            "languagesMin": "Minimum 1 dil əlavə edin"
         },
 
         "restore": {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import CustomSelect from './CustomSelect';
 
 interface ProficiencySelectorProps {
   type: 'skill' | 'language';
@@ -15,18 +16,18 @@ export default function ProficiencySelector({ type, value, onChange }: Proficien
   const t = useTranslations('cvBuilder');
 
   if (type === 'language') {
+    const options = LANGUAGE_LEVELS.map((level) => ({
+      value: level,
+      label: level === 'native' ? t('form.languages.native') : level,
+    }));
+
     return (
-      <select
+      <CustomSelect
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        {LANGUAGE_LEVELS.map((level) => (
-          <option key={level} value={level}>
-            {level === 'native' ? t('form.languages.native') : level}
-          </option>
-        ))}
-      </select>
+        onChange={onChange}
+        options={options}
+        placeholder="A1"
+      />
     );
   }
 

@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useCVFormContext } from '@/components/cv-builder/CVBuilderContext';
 import DynamicListField from '@/components/cv-builder/common/DynamicListField';
 import { Input } from '@/components/ui/input';
+import DateSelector from '@/components/cv-builder/common/DateSelector';
 import type { Course } from '@/types/cv';
 
 export default function CoursesSection() {
@@ -52,10 +53,10 @@ export default function CoursesSection() {
                 <label className="text-sm font-medium mb-1 block">
                   {t('form.courses.date')}
                 </label>
-                <Input
-                  type="month"
+                <DateSelector
+                  mode="month"
                   value={item.date}
-                  onChange={(e) => update(item.id, { date: e.target.value })}
+                  onChange={(v) => update(item.id, { date: v })}
                 />
               </div>
             </div>

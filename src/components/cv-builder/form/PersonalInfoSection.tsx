@@ -1,20 +1,31 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useCVFormContext } from '@/components/cv-builder/CVBuilderContext';
 import { Input } from '@/components/ui/input';
+import DateSelector from '@/components/cv-builder/common/DateSelector';
+import CustomSelect from '@/components/cv-builder/common/CustomSelect';
 import type { PersonalInfo } from '@/types/cv';
 
-const DRIVERS_LICENSE_OPTIONS = ['', 'B', 'C', 'D', 'E'] as const;
+const LICENSE_CATEGORIES = ['B', 'C', 'D', 'E'] as const;
 
 export default function PersonalInfoSection() {
   const t = useTranslations('cvBuilder');
   const { state, dispatch } = useCVFormContext();
   const info = state.personalInfo;
 
+  const hasLicense = Boolean(info.driversLicense);
+  const [licenseEnabled, setLicenseEnabled] = useState(hasLicense);
+
   const update = (partial: Partial<PersonalInfo>) => {
     dispatch({ type: 'UPDATE_PERSONAL_INFO', payload: partial });
   };
+
+  const categoryOptions = LICENSE_CATEGORIES.map((cat) => ({
+    value: cat,
+    label: `${t('form.personalInfo.category')} ${cat}`,
+  }));
 
   return (
     <div id="cv-section-personalInfo" className="space-y-5">
@@ -50,10 +61,10 @@ export default function PersonalInfoSection() {
           <label className="text-sm font-medium mb-1 block">
             {t('form.personalInfo.dateOfBirth')} <span className="text-destructive">*</span>
           </label>
-          <Input
-            type="date"
+          <DateSelector
+            mode="date"
             value={info.dateOfBirth}
-            onChange={(e) => update({ dateOfBirth: e.target.value })}
+            onChange={(v) => update({ dateOfBirth: v })}
           />
         </div>
         <div>
@@ -169,21 +180,46 @@ export default function PersonalInfoSection() {
 
       {/* Driver's License (optional) */}
       <div>
-        <label className="text-sm font-medium mb-1 block">
+        <label className="text-sm font-medium mb-2 block">
           {t('form.personalInfo.driversLicense')}
           <span className="text-muted-foreground text-xs ml-1">({t('form.optional')})</span>
         </label>
-        <select
-          value={info.driversLicense ?? ''}
-          onChange={(e) => update({ driversLicense: e.target.value || undefined })}
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          {DRIVERS_LICENSE_OPTIONS.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt === '' ? t('form.personalInfo.noLicense') : `${t('form.personalInfo.category')} ${opt}`}
-            </option>
-          ))}
-        </select>
+        <div className="flex gap-4 mb-3">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="hasLicense"
+              checked={!licenseEnabled}
+              onChange={() => {
+                setLicenseEnabled(false);
+                update({ driversLicense: undefined });
+              }}
+              className="w-4 h-4 accent-primary"
+            />
+            <span className="text-sm">{t('form.personalInfo.noLicenseRadio')}</span>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="hasLicense"
+              checked={licenseEnabled}
+              onChange={() => {
+                setLicenseEnabled(true);
+                update({ driversLicense: 'B' });
+              }}
+              className="w-4 h-4 accent-primary"
+            />
+            <span className="text-sm">{t('form.personalInfo.hasLicense')}</span>
+          </label>
+        </div>
+        {licenseEnabled && (
+          <CustomSelect
+            value={info.driversLicense ?? 'B'}
+            onChange={(v) => update({ driversLicense: v })}
+            options={categoryOptions}
+            placeholder={t('form.personalInfo.category')}
+          />
+        )}
       </div>
     </div>
   );
