@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import CustomSelect from './CustomSelect';
 
@@ -10,8 +11,9 @@ interface DateSelectorProps {
   disabled?: boolean;
 }
 
-function getDaysInMonth(year: number, month: number): number {
-  return new Date(year, month, 0).getDate();
+function getDaysInMonth(year: string, month: string): number {
+  if (!year || !month) return 31;
+  return new Date(parseInt(year), parseInt(month), 0).getDate();
 }
 
 const currentYear = new Date().getFullYear();
@@ -19,11 +21,42 @@ const currentYear = new Date().getFullYear();
 export default function DateSelector({ mode, value, onChange, disabled = false }: DateSelectorProps) {
   const t = useTranslations('cvBuilder');
 
-  // Parse current value
-  const parts = value ? value.split('-') : [];
-  const selectedYear = parts[0] || '';
-  const selectedMonth = parts[1] || '';
-  const selectedDay = mode === 'date' ? (parts[2] || '') : '';
+  // Parse initial value into parts
+  const parseValue = (v: string) => {
+    const parts = v ? v.split('-') : [];
+    return {
+      year: parts[0] || '',
+      month: parts[1] || '',
+      day: mode === 'date' ? (parts[2] || '') : '',
+    };
+  };
+
+  const initial = parseValue(value);
+  const [selYear, setSelYear] = useState(initial.year);
+  const [selMonth, setSelMonth] = useState(initial.month);
+  const [selDay, setSelDay] = useState(initial.day);
+
+  // Sync if parent resets value to empty
+  useEffect(() => {
+    if (!value) {
+      setSelYear('');
+      setSelMonth('');
+      setSelDay('');
+    }
+  }, [value]);
+
+  // Emit combined value whenever any part changes
+  const emit = (y: string, m: string, d: string) => {
+    if (mode === 'month') {
+      onChange(y && m ? `${y}-${m}` : '');
+    } else {
+      onChange(y && m && d ? `${y}-${m}-${d}` : '');
+    }
+  };
+
+  const handleYear = (v: string) => { setSelYear(v); emit(v, selMonth, selDay); };
+  const handleMonth = (v: string) => { setSelMonth(v); emit(selYear, v, selDay); };
+  const handleDay = (v: string) => { setSelDay(v); emit(selYear, selMonth, v); };
 
   const monthOptions = Array.from({ length: 12 }, (_, i) => ({
     value: String(i + 1).padStart(2, '0'),
@@ -38,46 +71,25 @@ export default function DateSelector({ mode, value, onChange, disabled = false }
     }
   );
 
-  const maxDay = selectedYear && selectedMonth
-    ? getDaysInMonth(parseInt(selectedYear), parseInt(selectedMonth))
-    : 31;
-
+  const maxDay = getDaysInMonth(selYear, selMonth);
   const dayOptions = Array.from({ length: maxDay }, (_, i) => ({
     value: String(i + 1).padStart(2, '0'),
     label: String(i + 1),
   }));
 
-  const handleChange = (type: 'day' | 'month' | 'year', val: string) => {
-    let y = selectedYear;
-    let m = selectedMonth;
-    let d = selectedDay;
-
-    if (type === 'year') y = val;
-    if (type === 'month') m = val;
-    if (type === 'day') d = val;
-
-    if (mode === 'month') {
-      if (y && m) onChange(`${y}-${m}`);
-      else onChange('');
-    } else {
-      if (y && m && d) onChange(`${y}-${m}-${d}`);
-      else onChange('');
-    }
-  };
-
   if (mode === 'month') {
     return (
       <div className="grid grid-cols-2 gap-2">
         <CustomSelect
-          value={selectedMonth}
-          onChange={(v) => handleChange('month', v)}
+          value={selMonth}
+          onChange={handleMonth}
           options={monthOptions}
           placeholder={t('form.datePicker.month')}
           disabled={disabled}
         />
         <CustomSelect
-          value={selectedYear}
-          onChange={(v) => handleChange('year', v)}
+          value={selYear}
+          onChange={handleYear}
           options={yearOptions}
           placeholder={t('form.datePicker.year')}
           disabled={disabled}
@@ -89,22 +101,22 @@ export default function DateSelector({ mode, value, onChange, disabled = false }
   return (
     <div className="grid grid-cols-3 gap-2">
       <CustomSelect
-        value={selectedDay}
-        onChange={(v) => handleChange('day', v)}
+        value={selDay}
+        onChange={handleDay}
         options={dayOptions}
         placeholder={t('form.datePicker.day')}
         disabled={disabled}
       />
       <CustomSelect
-        value={selectedMonth}
-        onChange={(v) => handleChange('month', v)}
+        value={selMonth}
+        onChange={handleMonth}
         options={monthOptions}
         placeholder={t('form.datePicker.month')}
         disabled={disabled}
       />
       <CustomSelect
-        value={selectedYear}
-        onChange={(v) => handleChange('year', v)}
+        value={selYear}
+        onChange={handleYear}
         options={yearOptions}
         placeholder={t('form.datePicker.year')}
         disabled={disabled}
