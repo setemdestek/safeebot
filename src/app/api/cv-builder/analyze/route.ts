@@ -39,8 +39,15 @@ export async function POST(request: Request) {
     try {
       rawText = await callGemini(prompt);
     } catch (err) {
-      console.error('Gemini API Error:', err);
-      return NextResponse.json({ message: 'AI xidməti müvəqqəti əlçatmazdır.' }, { status: 503 });
+      const errMsg = err instanceof Error ? err.message : String(err);
+      console.error('Gemini API Error:', errMsg);
+      if (errMsg.includes('API_KEY') || errMsg.includes('401') || errMsg.includes('403')) {
+        return NextResponse.json({ message: 'Gemini API açarı yanlışdır və ya etibarsızdır.' }, { status: 503 });
+      }
+      if (errMsg.includes('not found') || errMsg.includes('404')) {
+        return NextResponse.json({ message: 'Gemini model tapılmadı.' }, { status: 503 });
+      }
+      return NextResponse.json({ message: `AI xidməti xətası: ${errMsg.slice(0, 200)}` }, { status: 503 });
     }
 
     let parsed: unknown;
