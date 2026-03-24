@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 interface DynamicListFieldProps<T extends { id: string }> {
   items: T[];
@@ -25,6 +26,7 @@ export default function DynamicListField<T extends { id: string }>({
   maxItems = 10,
   emptyMessage,
 }: DynamicListFieldProps<T>) {
+  const t = useTranslations('cvBuilder');
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -60,7 +62,7 @@ export default function DynamicListField<T extends { id: string }>({
       </AnimatePresence>
       {items.length === 0 && (
         <p className="text-sm text-muted-foreground text-center py-4">
-          {emptyMessage ?? `${addLabel} düyməsinə basaraq əlavə edin`}
+          {emptyMessage ?? t('form.emptyList', { button: addLabel })}
         </p>
       )}
     </div>

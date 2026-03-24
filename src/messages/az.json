@@ -173,6 +173,7 @@
 
         "form": {
             "optional": "opsional",
+            "emptyList": "{button} düyməsinə basaraq əlavə edin",
             "photo": {
                 "title": "Şəkil",
                 "upload": "Şəkil Yüklə",
@@ -316,7 +317,9 @@
             "back": "Geri",
             "next": "İrəli",
             "reset": "Sıfırla",
-            "coverLetter": "Müraciət Məktubu"
+            "coverLetter": "Müraciət Məktubu",
+            "loading": "Yüklənir...",
+            "preview": "Önizləmə"
         },
 
         "ai": {
