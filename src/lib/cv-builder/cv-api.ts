@@ -16,7 +16,18 @@ export async function generateCVDocx(cvData: CVFormData, photo: File | null): Pr
     let errorMessage = 'CV yaradılarkən xəta baş verdi.';
     try {
       const errorData = await response.json();
-      if (errorData.message) errorMessage = errorData.message;
+      if (errorData.errors) {
+        const fieldErrors = errorData.errors.fieldErrors ?? {};
+        const messages = Object.entries(fieldErrors)
+          .flatMap(([, msgs]) => msgs as string[]);
+        if (messages.length > 0) {
+          errorMessage = messages.join('\n');
+        } else if (errorData.message) {
+          errorMessage = errorData.message;
+        }
+      } else if (errorData.message) {
+        errorMessage = errorData.message;
+      }
     } catch {
       if (response.status === 401) errorMessage = 'Autentifikasiya xətası.';
       else if (response.status === 429) errorMessage = 'Gündəlik limit dolmuşdur.';
@@ -40,7 +51,18 @@ export async function analyzeCVData(cvData: CVFormData): Promise<CVAnalysisResul
     let errorMessage = 'Analiz zamanı xəta baş verdi.';
     try {
       const errorData = await response.json();
-      if (errorData.message) errorMessage = errorData.message;
+      if (errorData.errors) {
+        const fieldErrors = errorData.errors.fieldErrors ?? {};
+        const messages = Object.entries(fieldErrors)
+          .flatMap(([, msgs]) => msgs as string[]);
+        if (messages.length > 0) {
+          errorMessage = messages.join('\n');
+        } else if (errorData.message) {
+          errorMessage = errorData.message;
+        }
+      } else if (errorData.message) {
+        errorMessage = errorData.message;
+      }
     } catch {
       if (response.status === 401) errorMessage = 'Autentifikasiya xətası.';
       else if (response.status === 429) errorMessage = 'Gündəlik limit dolmuşdur.';
@@ -65,7 +87,18 @@ export async function generateCoverLetter(cvData: CVFormData, jobDescription: st
     let errorMessage = 'Məktub yaradılarkən xəta baş verdi.';
     try {
       const errorData = await response.json();
-      if (errorData.message) errorMessage = errorData.message;
+      if (errorData.errors) {
+        const fieldErrors = errorData.errors.fieldErrors ?? {};
+        const messages = Object.entries(fieldErrors)
+          .flatMap(([, msgs]) => msgs as string[]);
+        if (messages.length > 0) {
+          errorMessage = messages.join('\n');
+        } else if (errorData.message) {
+          errorMessage = errorData.message;
+        }
+      } else if (errorData.message) {
+        errorMessage = errorData.message;
+      }
     } catch {
       if (response.status === 401) errorMessage = 'Autentifikasiya xətası.';
       else if (response.status === 429) errorMessage = 'Gündəlik limit dolmuşdur.';

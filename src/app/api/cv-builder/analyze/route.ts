@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const inputValidation = cvFormSchema.safeParse(body.cvData);
     if (!inputValidation.success) {
-      return NextResponse.json({ message: 'Validasiya xətası.' }, { status: 400 });
+      return NextResponse.json({ message: 'Validasiya xətası.', errors: inputValidation.error.flatten() }, { status: 400 });
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const sanitizedData = sanitizeCVData({ ...inputValidation.data, photo: null } as any);
