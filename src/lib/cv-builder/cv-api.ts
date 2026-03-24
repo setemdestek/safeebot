@@ -1,9 +1,28 @@
 import type { CVFormData, CVAnalysisResult, CoverLetterResult } from '@/types/cv';
 
+/**
+ * Normalize form data before sending to API.
+ * JSON.stringify strips `undefined` values, which makes Zod fail
+ * on required string fields. Convert undefined → '' for string fields.
+ */
+function prepareForAPI(cvData: CVFormData) {
+  const { photo: _, ...data } = cvData;
+  return {
+    ...data,
+    personalInfo: {
+      ...data.personalInfo,
+      aboutMe: data.personalInfo.aboutMe ?? '',
+      address: data.personalInfo.address ?? '',
+      driversLicense: data.personalInfo.driversLicense ?? '',
+      linkedinUrl: data.personalInfo.linkedinUrl ?? '',
+    },
+  };
+}
+
 export async function generateCVDocx(cvData: CVFormData, photo: File | null): Promise<Blob> {
   const formData = new FormData();
-  const { photo: _, ...serializableData } = cvData;
-  formData.append('cvData', JSON.stringify(serializableData));
+  const prepared = prepareForAPI(cvData);
+  formData.append('cvData', JSON.stringify(prepared));
   if (photo) formData.append('photo', photo);
 
   const response = await fetch('/api/cv-builder/generate', {
@@ -39,11 +58,11 @@ export async function generateCVDocx(cvData: CVFormData, photo: File | null): Pr
 }
 
 export async function analyzeCVData(cvData: CVFormData): Promise<CVAnalysisResult> {
-  const { photo: _, ...serializableData } = cvData;
+  const prepared = prepareForAPI(cvData);
   const response = await fetch('/api/cv-builder/analyze', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ cvData: serializableData }),
+    body: JSON.stringify({ cvData: prepared }),
     signal: AbortSignal.timeout(60000),
   });
 
@@ -75,11 +94,11 @@ export async function analyzeCVData(cvData: CVFormData): Promise<CVAnalysisResul
 }
 
 export async function generateCoverLetter(cvData: CVFormData, jobDescription: string): Promise<CoverLetterResult> {
-  const { photo: _, ...serializableData } = cvData;
+  const prepared = prepareForAPI(cvData);
   const response = await fetch('/api/cv-builder/cover-letter', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ cvData: serializableData, jobDescription }),
+    body: JSON.stringify({ cvData: prepared, jobDescription }),
     signal: AbortSignal.timeout(60000),
   });
 

@@ -67,7 +67,7 @@ function cvFormReducer(state: CVFormData, action: CVFormAction): CVFormData {
         ...state,
         workExperience: [
           ...state.workExperience,
-          { id: createId(), company: '', position: '', startDate: '', endDate: undefined, currentlyWorking: false, description: '' },
+          { id: createId(), company: '', position: '', startDate: '', endDate: '', currentlyWorking: false, description: '' },
         ],
       };
     case 'UPDATE_WORK_EXPERIENCE':
@@ -85,7 +85,7 @@ function cvFormReducer(state: CVFormData, action: CVFormAction): CVFormData {
         ...state,
         education: [
           ...state.education,
-          { id: createId(), institution: '', major: '', startDate: '', endDate: undefined, currentlyStudying: false, city: '' },
+          { id: createId(), institution: '', major: '', startDate: '', endDate: '', currentlyStudying: false, city: '' },
         ],
       };
     case 'UPDATE_EDUCATION':
