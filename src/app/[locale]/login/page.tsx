@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -11,9 +11,11 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
-import { Logo, LogoWithText } from "@/components/common/Logo";
+import { Logo } from "@/components/common/Logo";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
+import { Turnstile } from "@marsidev/react-turnstile";
+import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
 import Image from "next/image";
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -31,8 +33,10 @@ function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const turnstileRef = useRef<TurnstileInstance>(null);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError("");
 
@@ -43,14 +47,18 @@ function LoginForm() {
 
         setLoading(true);
         try {
-            const success = await login(email, password, rememberMe);
+            const success = await login(email, password, rememberMe, captchaToken ?? undefined);
             if (success) {
                 router.push(`/${locale}/dashboard/chat`);
             } else {
                 setError(t("emailInvalid"));
+                turnstileRef.current?.reset();
+                setCaptchaToken(null);
             }
         } catch {
             setError(t("emailInvalid"));
+            turnstileRef.current?.reset();
+            setCaptchaToken(null);
         } finally {
             setLoading(false);
         }
@@ -200,13 +208,22 @@ function LoginForm() {
                             </Link>
                         </div>
 
+                        {/* Turnstile CAPTCHA */}
+                        <Turnstile
+                            ref={turnstileRef}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                            onSuccess={setCaptchaToken}
+                            onExpire={() => setCaptchaToken(null)}
+                            options={{ theme: "auto", size: "flexible" }}
+                        />
+
                         {/* Error */}
                         {error && (
                             <p className="text-sm text-[hsl(var(--destructive))]">{error}</p>
                         )}
 
                         {/* Submit */}
-                        <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                        <Button type="submit" className="w-full" size="lg" disabled={loading || !captchaToken}>
                             {loading ? (
                                 <span className="flex items-center gap-2">
                                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

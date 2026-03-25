@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,7 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
-import { Logo, LogoWithText } from "@/components/common/Logo";
+import { Logo } from "@/components/common/Logo";
+import { Turnstile } from "@marsidev/react-turnstile";
+import type { TurnstileInstance } from "@marsidev/react-turnstile";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 
@@ -55,6 +57,8 @@ function RegisterForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const turnstileRef = useRef<TurnstileInstance>(null);
 
     const strength = useMemo(
         () => getPasswordStrength(form.password),
@@ -99,12 +103,14 @@ function RegisterForm() {
 
         setLoading(true);
         try {
-            const success = await register(form);
+            const success = await register({ ...form, captchaToken: captchaToken ?? undefined });
             if (success) {
                 router.push(`/${locale}/dashboard/chat`);
             }
         } catch {
             setError(t("emailInvalid"));
+            turnstileRef.current?.reset();
+            setCaptchaToken(null);
         } finally {
             setLoading(false);
         }
@@ -286,11 +292,20 @@ function RegisterForm() {
                             </div>
                         </div>
 
+                        {/* Turnstile CAPTCHA */}
+                        <Turnstile
+                            ref={turnstileRef}
+                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                            onSuccess={setCaptchaToken}
+                            onExpire={() => setCaptchaToken(null)}
+                            options={{ theme: "auto", size: "flexible" }}
+                        />
+
                         {error && (
                             <p className="text-sm text-[hsl(var(--destructive))]">{error}</p>
                         )}
 
-                        <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                        <Button type="submit" className="w-full" size="lg" disabled={loading || !captchaToken}>
                             {loading ? (
                                 <span className="flex items-center gap-2">
                                     <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

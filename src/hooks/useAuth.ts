@@ -49,11 +49,12 @@ export function useAuth() {
     }, [supabase]);
 
     const login = useCallback(
-        async (email: string, password: string, rememberMe: boolean = true): Promise<boolean> => {
+        async (email: string, password: string, rememberMe: boolean = true, captchaToken?: string): Promise<boolean> => {
             const loginClient = createLoginClient(rememberMe);
             const { error } = await loginClient.auth.signInWithPassword({
                 email,
                 password,
+                options: captchaToken ? { captchaToken } : undefined,
             });
 
             if (error) {
@@ -74,6 +75,7 @@ export function useAuth() {
             lastName: string;
             email: string;
             password: string;
+            captchaToken?: string;
         }): Promise<boolean> => {
             const { error } = await supabase.auth.signUp({
                 email: data.email,
@@ -82,7 +84,8 @@ export function useAuth() {
                     data: {
                         first_name: data.firstName,
                         last_name: data.lastName,
-                    }
+                    },
+                    ...(data.captchaToken ? { captchaToken: data.captchaToken } : {}),
                 }
             });
 
