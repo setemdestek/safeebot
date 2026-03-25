@@ -70,7 +70,7 @@ export default function ChatPage() {
             {/* Main */}
             <div className="flex-1 flex flex-col min-w-0">
                 {/* Header */}
-                <div className="h-14 border-b border-[hsl(var(--border))] flex items-center justify-between px-4 shrink-0">
+                <div className="h-14 border-b border-[hsl(var(--border))] flex items-center justify-between px-4 shrink-0 sticky top-0 z-30 bg-[hsl(var(--background))]">
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setSidebarOpen(true)}
