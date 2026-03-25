@@ -146,10 +146,10 @@ function RegisterForm() {
             </div>
 
             {/* Mobile Gradient Header */}
-            <div className="lg:hidden w-full bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary)/0.7)] rounded-b-[2.5rem] p-10 flex flex-col items-center justify-center relative shadow-2xl overflow-hidden mb-8 z-10">
+            <div className="lg:hidden w-full bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary)/0.7)] rounded-b-[2.5rem] p-6 sm:p-10 flex flex-col items-center justify-center relative shadow-2xl overflow-hidden mb-8 z-10">
                 {/* Decorative elements */}
-                <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-                <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+                <div className="absolute -bottom-20 -left-20 w-40 h-40 sm:w-64 sm:h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+                <div className="absolute -top-10 -right-10 w-32 h-32 sm:w-48 sm:h-48 rounded-full bg-white/5 blur-2xl pointer-events-none" />
 
                 <div className="w-20 h-20 rounded-[1.25rem] bg-white/10 backdrop-blur-md flex items-center justify-center mb-5 border border-white/20 shadow-xl relative z-10 transition-transform hover:scale-105 duration-500">
                     <Logo width={54} height={54} />

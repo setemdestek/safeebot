@@ -102,7 +102,7 @@ export default function ChatPage() {
             {/* JSA Analyzer Modal */}
             {isJsaModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 md:p-6 overflow-y-auto">
-                    <div className="relative bg-[#F4F7FB] w-full max-w-6xl rounded-2xl shadow-xl overflow-hidden my-auto max-h-[90vh] flex flex-col">
+                    <div className="relative bg-[#F4F7FB] w-full max-w-4xl md:max-w-6xl rounded-2xl shadow-xl overflow-hidden my-auto max-h-[90vh] flex flex-col">
                         <div className="flex justify-between items-center p-4 border-b border-gray-200 bg-white">
                             <h2 className="text-xl font-bold text-[#1F3864] flex items-center gap-2">
                                 <ShieldCheck className="w-6 h-6 text-[#1F3864]" />

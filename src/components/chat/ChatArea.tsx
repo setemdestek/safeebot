@@ -153,7 +153,7 @@ export function ChatArea({ messages, isLoading, isMessageSending }: ChatAreaProp
                         {/* Content */}
                         <div
                             className={cn(
-                                "rounded-2xl px-5 py-3.5 max-w-[85%]",
+                                "rounded-2xl px-4 sm:px-5 py-3.5 max-w-[92%] sm:max-w-[85%]",
                                 msg.role === "user"
                                     ? "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] rounded-br-sm shadow-sm"
                                     : "bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-bl-sm shadow-sm",

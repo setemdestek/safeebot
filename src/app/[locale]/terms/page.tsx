@@ -86,13 +86,13 @@ export default function TermsPage() {
             </div>
 
             {/* Right — Content */}
-            <div className="flex-1 flex flex-col items-center justify-start p-8 bg-[hsl(var(--background))] overflow-y-auto max-h-screen custom-scrollbar relative">
+            <div className="flex-1 flex flex-col items-center justify-start p-4 sm:p-8 bg-[hsl(var(--background))] overflow-y-auto max-h-screen custom-scrollbar relative">
                 <div className="w-full max-w-2xl flex flex-col relative py-12">
                     {/* Back Button */}
                     <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="absolute top-4 left-0 lg:-left-4"
+                        className="absolute top-4 left-2 sm:left-0 lg:-left-4"
                     >
                         <Link
                             href={`/${locale}`}

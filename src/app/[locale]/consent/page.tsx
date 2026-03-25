@@ -21,7 +21,7 @@ export default function ConsentPage() {
             </div>
 
             {/* Right — Content */}
-            <div className="flex-1 flex flex-col items-center justify-start p-8 bg-[hsl(var(--background))] overflow-y-auto max-h-screen custom-scrollbar">
+            <div className="flex-1 flex flex-col items-center justify-start p-4 sm:p-8 bg-[hsl(var(--background))] overflow-y-auto max-h-screen custom-scrollbar">
                 <div className="w-full max-w-2xl flex flex-col relative py-12">
                     <div className="lg:hidden flex justify-center mb-8">
                         <LogoWithText />

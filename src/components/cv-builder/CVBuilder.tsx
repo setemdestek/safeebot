@@ -166,7 +166,7 @@ export default function CVBuilder() {
           <Dialog.Root open={showRestoreDialog} onOpenChange={setShowRestoreDialog}>
             <Dialog.Portal>
               <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-              <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-6 rounded-lg shadow-lg z-50 max-w-md w-full">
+              <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-4 sm:p-6 rounded-lg shadow-lg z-50 max-w-[95vw] sm:max-w-md w-full">
                 <Dialog.Title className="text-lg font-bold">{t('restore.title')}</Dialog.Title>
                 <Dialog.Description className="text-sm text-muted-foreground mt-2">
                   {t('restore.message')}
@@ -238,7 +238,7 @@ export default function CVBuilder() {
                 )}
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap gap-3 sticky bottom-4 bg-background/80 backdrop-blur p-4 rounded-lg border">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 sticky bottom-4 bg-background/80 backdrop-blur p-3 sm:p-4 rounded-lg border">
                   <Button onClick={handleAnalyze} disabled={isAnalyzing || !isFormValid} variant="outline">
                     {isAnalyzing ? (
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
