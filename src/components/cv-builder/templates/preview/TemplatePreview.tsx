@@ -46,7 +46,7 @@ export default function TemplatePreview({ isOpen, onClose }: TemplatePreviewProp
           >
             <button
               onClick={onClose}
-              className="absolute top-2 right-2 z-10 bg-white rounded-full p-1 shadow hover:bg-gray-100"
+              className="absolute top-2 right-2 z-10 bg-white rounded-full p-2.5 shadow hover:bg-gray-100"
             >
               <X className="w-5 h-5" />
             </button>

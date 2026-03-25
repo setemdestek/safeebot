@@ -29,8 +29,8 @@ export default function DynamicListField<T extends { id: string }>({
   const t = useTranslations('cvBuilder');
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold">{title}</h3>
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="text-lg font-semibold min-w-0 truncate">{title}</h3>
         {items.length < maxItems && (
           <Button type="button" variant="outline" size="sm" onClick={onAdd}>
             <Plus className="w-4 h-4 mr-2" />
@@ -51,7 +51,7 @@ export default function DynamicListField<T extends { id: string }>({
             <button
               type="button"
               onClick={() => onRemove(item.id)}
-              className="absolute top-3 right-3 p-1 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+              className="absolute top-2 right-2 p-2 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/30 rounded transition-colors"
               aria-label="Remove"
             >
               <Trash2 className="w-4 h-4" />

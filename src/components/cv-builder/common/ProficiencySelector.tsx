@@ -41,7 +41,7 @@ export default function ProficiencySelector({ type, value, onChange }: Proficien
           key={level}
           type="button"
           onClick={() => onChange(level)}
-          className={`h-8 flex-1 rounded text-xs font-medium transition-colors ${
+          className={`h-11 sm:h-9 flex-1 rounded text-[10px] sm:text-xs font-medium transition-colors ${
             index <= currentIndex
               ? 'bg-primary text-primary-foreground'
               : 'bg-muted text-muted-foreground hover:bg-muted/80'

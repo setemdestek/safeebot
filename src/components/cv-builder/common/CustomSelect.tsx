@@ -50,7 +50,7 @@ export default function CustomSelect({
         type="button"
         disabled={disabled}
         onClick={() => !disabled && setOpen(!open)}
-        className="flex h-10 w-full items-center justify-between rounded-md border border-[hsl(var(--input))] bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        className="flex min-h-[44px] w-full items-center justify-between rounded-md border border-[hsl(var(--input))] bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         role="combobox"
         aria-expanded={open}
       >
@@ -71,7 +71,7 @@ export default function CustomSelect({
               type="button"
               role="option"
               aria-selected={option.value === value}
-              className={`w-full px-3 py-2 text-sm text-left cursor-pointer hover:bg-[hsl(var(--accent))] transition-colors ${
+              className={`w-full px-3 py-3 text-sm text-left cursor-pointer hover:bg-[hsl(var(--accent))] transition-colors ${
                 option.value === value ? 'bg-[hsl(var(--accent))] font-medium' : ''
               }`}
               onClick={() => {

@@ -53,6 +53,7 @@ export default function InterestsSection() {
           variant="outline"
           onClick={handleAdd}
           disabled={!inputValue.trim()}
+          className="shrink-0"
         >
           {t('form.interests.add')}
         </Button>
@@ -70,10 +71,10 @@ export default function InterestsSection() {
               <button
                 type="button"
                 onClick={() => handleRemove(index)}
-                className="ml-1 hover:text-destructive transition-colors"
+                className="ml-1 p-1 hover:text-destructive transition-colors rounded-full"
                 aria-label={t('form.interests.remove')}
               >
-                <X className="w-3 h-3" />
+                <X className="w-3.5 h-3.5" />
               </button>
             </span>
           ))}

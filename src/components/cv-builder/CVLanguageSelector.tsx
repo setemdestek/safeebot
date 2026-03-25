@@ -28,7 +28,7 @@ export default function CVLanguageSelector({ onSelect }: CVLanguageSelectorProps
     <div className="text-center space-y-6 py-12">
       <h2 className="text-2xl font-bold">{t('languageSelector.title')}</h2>
       <p className="text-muted-foreground">{t('languageSelector.subtitle')}</p>
-      <div className="flex justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
         {LANGUAGES.map(({ code, flag }) => (
           <motion.button
             key={code}
@@ -36,7 +36,7 @@ export default function CVLanguageSelector({ onSelect }: CVLanguageSelectorProps
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleSelect(code)}
-            className={`flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-colors min-w-[140px] ${
+            className={`flex flex-col items-center gap-2 sm:gap-3 p-4 sm:p-6 rounded-xl border-2 transition-colors min-w-[100px] sm:min-w-[140px] ${
               state.cvLanguage === code
                 ? 'border-primary bg-primary/5'
                 : 'border-border hover:border-primary/50'

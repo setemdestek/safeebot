@@ -171,7 +171,7 @@ export default function CVBuilder() {
                 <Dialog.Description className="text-sm text-muted-foreground mt-2">
                   {t('restore.message')}
                 </Dialog.Description>
-                <div className="flex gap-3 mt-4">
+                <div className="flex flex-wrap gap-3 mt-4">
                   <Button onClick={handleRestore}>{t('restore.continue')}</Button>
                   <Button variant="outline" onClick={handleStartFresh}>
                     {t('restore.startFresh')}
@@ -206,7 +206,7 @@ export default function CVBuilder() {
 
           {/* Step: Form */}
           {currentStep === 'form' && (
-            <div className="flex gap-6">
+            <div className="flex flex-col lg:flex-row gap-6">
               {/* Left sidebar: progress */}
               <div className="hidden lg:block w-48 flex-shrink-0 sticky top-4 self-start">
                 <CVProgressIndicator />
@@ -263,7 +263,7 @@ export default function CVBuilder() {
                 {/* AI Results - Tabs (shown after analysis) */}
                 {(analysisResult || coverLetterResult) && (
                   <Tabs.Root defaultValue="analysis" className="mt-6">
-                    <Tabs.List className="flex border-b mb-4">
+                    <Tabs.List className="flex border-b mb-4 overflow-x-auto">
                       <Tabs.Trigger
                         value="analysis"
                         className="px-4 py-2 text-sm font-medium border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:text-primary"
