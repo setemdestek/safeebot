@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useRef, useCallback, useState } from "react";
 import { Turnstile } from "@marsidev/react-turnstile";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
@@ -14,13 +14,6 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
     const ref = useRef<TurnstileInstance>(null);
     const [hasFailed, setHasFailed] = useState(false);
 
-    // If no site key configured, skip CAPTCHA entirely
-    useEffect(() => {
-        if (!SITE_KEY) {
-            onVerify("__skip__");
-        }
-    }, [onVerify]);
-
     const handleSuccess = useCallback(
         (token: string) => {
             setHasFailed(false);
@@ -30,19 +23,29 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
     );
 
     const handleError = useCallback(() => {
-        // If CAPTCHA fails, allow the user through — Supabase will validate server-side
         setHasFailed(true);
-        onVerify("__skip__");
+        onVerify(null);
     }, [onVerify]);
 
     const handleExpire = useCallback(() => {
         onVerify(null);
     }, [onVerify]);
 
-    if (!SITE_KEY) return null;
+    const handleRetry = () => {
+        setHasFailed(false);
+        ref.current?.reset();
+    };
+
+    if (!SITE_KEY) {
+        return (
+            <p className="text-xs text-[hsl(var(--destructive))] text-center">
+                CAPTCHA konfiqurasiya olunmayıb. Sistem administratoruna müraciət edin.
+            </p>
+        );
+    }
 
     return (
-        <div className="flex justify-center">
+        <div className="flex flex-col items-center gap-2">
             <Turnstile
                 ref={ref}
                 siteKey={SITE_KEY}
@@ -55,14 +58,14 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
                 }}
             />
             {hasFailed && (
-                <p className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
-                    CAPTCHA yüklənmədi, davam edə bilərsiniz
-                </p>
+                <button
+                    type="button"
+                    onClick={handleRetry}
+                    className="text-xs text-[hsl(var(--primary))] hover:underline"
+                >
+                    CAPTCHA yüklənmədi — yenidən cəhd edin
+                </button>
             )}
         </div>
     );
-}
-
-export function resetTurnstile(ref: React.RefObject<TurnstileInstance | null>) {
-    ref.current?.reset();
 }
