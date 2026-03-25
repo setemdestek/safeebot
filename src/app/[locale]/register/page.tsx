@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -11,8 +11,7 @@ import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/common/Logo";
-import { Turnstile } from "@marsidev/react-turnstile";
-import type { TurnstileInstance } from "@marsidev/react-turnstile";
+import { TurnstileWidget } from "@/components/auth/TurnstileWidget";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 
@@ -58,7 +57,6 @@ function RegisterForm() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-    const turnstileRef = useRef<TurnstileInstance>(null);
 
     const strength = useMemo(
         () => getPasswordStrength(form.password),
@@ -109,7 +107,6 @@ function RegisterForm() {
             }
         } catch {
             setError(t("emailInvalid"));
-            turnstileRef.current?.reset();
             setCaptchaToken(null);
         } finally {
             setLoading(false);
@@ -293,13 +290,7 @@ function RegisterForm() {
                         </div>
 
                         {/* Turnstile CAPTCHA */}
-                        <Turnstile
-                            ref={turnstileRef}
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                            onSuccess={setCaptchaToken}
-                            onExpire={() => setCaptchaToken(null)}
-                            options={{ theme: "auto", size: "flexible" }}
-                        />
+                        <TurnstileWidget onVerify={setCaptchaToken} />
 
                         {error && (
                             <p className="text-sm text-[hsl(var(--destructive))]">{error}</p>

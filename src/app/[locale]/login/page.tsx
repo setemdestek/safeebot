@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,14 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/hooks/useAuth";
-import { cn } from "@/lib/utils";
 import { Logo } from "@/components/common/Logo";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
-import { Turnstile } from "@marsidev/react-turnstile";
-import type { TurnstileInstance } from "@marsidev/react-turnstile";
-
-import Image from "next/image";
+import { TurnstileWidget } from "@/components/auth/TurnstileWidget";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
 function LoginForm() {
@@ -34,7 +30,6 @@ function LoginForm() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
-    const turnstileRef = useRef<TurnstileInstance>(null);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -52,12 +47,10 @@ function LoginForm() {
                 router.push(`/${locale}/dashboard/chat`);
             } else {
                 setError(t("emailInvalid"));
-                turnstileRef.current?.reset();
                 setCaptchaToken(null);
             }
         } catch {
             setError(t("emailInvalid"));
-            turnstileRef.current?.reset();
             setCaptchaToken(null);
         } finally {
             setLoading(false);
@@ -209,13 +202,7 @@ function LoginForm() {
                         </div>
 
                         {/* Turnstile CAPTCHA */}
-                        <Turnstile
-                            ref={turnstileRef}
-                            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
-                            onSuccess={setCaptchaToken}
-                            onExpire={() => setCaptchaToken(null)}
-                            options={{ theme: "auto", size: "flexible" }}
-                        />
+                        <TurnstileWidget onVerify={setCaptchaToken} />
 
                         {/* Error */}
                         {error && (
