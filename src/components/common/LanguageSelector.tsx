@@ -57,7 +57,7 @@ export function LanguageSelector() {
             </button>
 
             {open && (
-                <div className="absolute right-0 top-full mt-2 w-36 rounded-[var(--radius)] border border-[hsl(var(--border))] bg-[hsl(var(--popover))] text-[hsl(var(--popover-foreground))] shadow-lg z-50 overflow-hidden">
+                <div className="absolute left-0 sm:left-auto sm:right-0 top-full mt-2 w-36 rounded-[var(--radius)] border border-[hsl(var(--border))] bg-[hsl(var(--popover))] text-[hsl(var(--popover-foreground))] shadow-lg z-50 overflow-hidden">
                     {LOCALES.map((l) => (
                         <button
                             key={l.code}

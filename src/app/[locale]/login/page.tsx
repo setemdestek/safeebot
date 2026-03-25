@@ -107,15 +107,17 @@ function LoginForm() {
             </div>
 
             {/* Right — Form */}
-            <div className="flex-1 flex flex-col items-center justify-center px-6 lg:p-8 pb-12 w-full lg:w-1/2 z-20 relative">
-                {/* Floating Back Button */}
-                <Link
-                    href={`/${locale}`}
-                    className="absolute left-6 top-6 lg:left-10 lg:top-10 flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] bg-[hsl(var(--muted)/0.3)] hover:bg-[hsl(var(--muted)/0.5)] px-4 py-2 rounded-full transition-all duration-300"
-                >
-                    <ArrowLeft className="w-4 h-4" />
-                    Ana səhifə
-                </Link>
+            <div className="flex-1 flex flex-col items-center px-6 lg:p-8 pb-12 w-full lg:w-1/2 z-20 relative lg:justify-center">
+                {/* Back Button */}
+                <div className="w-full max-w-md pt-4 mb-4 lg:absolute lg:left-10 lg:top-10 lg:w-auto lg:max-w-none lg:pt-0 lg:mb-0">
+                    <Link
+                        href={`/${locale}`}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] bg-[hsl(var(--muted)/0.3)] hover:bg-[hsl(var(--muted)/0.5)] px-4 py-2 rounded-full transition-all duration-300"
+                    >
+                        <ArrowLeft className="w-4 h-4" />
+                        Ana səhifə
+                    </Link>
+                </div>
                 <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
