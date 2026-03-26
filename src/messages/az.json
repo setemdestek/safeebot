@@ -93,7 +93,8 @@
         "privacyLink": "Məxfilik siyasəti",
         "consentLink": "Açıq razılıq bəyanəti",
         "acceptTermsSuffix": "ni oxudum və qəbul edirəm",
-        "and": "və"
+        "and": "və",
+        "termsRequired": "Qeydiyyatdan keçmək üçün qaydalarla razılaşmalısınız."
     },
     "chat": {
         "title": "Chatbot",

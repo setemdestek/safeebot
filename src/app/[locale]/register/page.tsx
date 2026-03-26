@@ -82,7 +82,7 @@ function RegisterForm() {
             return;
         }
         if (!form.agreedToTerms) {
-            setError("Qeydiyyatdan keçmək üçün qaydalarla razılaşmalısınız.");
+            setError(t("termsRequired"));
             return;
         }
         if (form.password !== form.confirmPassword) {

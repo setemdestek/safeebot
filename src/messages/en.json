@@ -93,7 +93,8 @@
         "privacyLink": "Privacy Policy",
         "consentLink": "Consent Declaration",
         "acceptTermsSuffix": " — I have read and accept",
-        "and": "and"
+        "and": "and",
+        "termsRequired": "You must accept the terms and conditions to register."
     },
     "chat": {
         "title": "Chatbot",
