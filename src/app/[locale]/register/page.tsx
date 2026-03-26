@@ -324,17 +324,17 @@ function RegisterForm() {
                                     className="text-sm font-medium leading-normal cursor-pointer select-none text-[hsl(var(--muted-foreground))]"
                                 >
                                     <Link href={`/${locale}/terms`} target="_blank" className="font-semibold text-[hsl(var(--foreground))] hover:underline">
-                                        İstifadəçi qaydaları və şərtləri
+                                        {t("termsLink")}
                                     </Link>
                                     ,{" "}
                                     <Link href={`/${locale}/privacy`} target="_blank" className="font-semibold text-[hsl(var(--foreground))] hover:underline">
-                                        Məxfilik siyasəti
+                                        {t("privacyLink")}
                                     </Link>
-                                    {" "}və{" "}
+                                    {" "}{t("and")}{" "}
                                     <Link href={`/${locale}/consent`} target="_blank" className="font-semibold text-[hsl(var(--foreground))] hover:underline">
-                                        Açıq razılıq bəyanəti
+                                        {t("consentLink")}
                                     </Link>
-                                    ni oxudum və qəbul edirəm
+                                    {t("acceptTermsSuffix")}
                                 </label>
                             </div>
                         </div>

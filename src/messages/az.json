@@ -88,7 +88,12 @@
         "updatePasswordButton": "Şifrəni Yenilə",
         "updatePasswordSuccess": "Şifrəniz uğurla yeniləndi",
         "logoutSuccess": "Uğurla çıxış etdiniz",
-        "slogan": "Təhlükəsiz Gələcək, Bu Gündən Başlayır"
+        "slogan": "Təhlükəsiz Gələcək, Bu Gündən Başlayır",
+        "termsLink": "İstifadəçi qaydaları və şərtləri",
+        "privacyLink": "Məxfilik siyasəti",
+        "consentLink": "Açıq razılıq bəyanəti",
+        "acceptTermsSuffix": "ni oxudum və qəbul edirəm",
+        "and": "və"
     },
     "chat": {
         "title": "Chatbot",

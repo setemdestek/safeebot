@@ -88,7 +88,12 @@
         "updatePasswordButton": "Update Password",
         "updatePasswordSuccess": "Your password has been updated successfully",
         "logoutSuccess": "Successfully logged out",
-        "slogan": "A Safe Future Starts Today"
+        "slogan": "A Safe Future Starts Today",
+        "termsLink": "Terms and Conditions",
+        "privacyLink": "Privacy Policy",
+        "consentLink": "Consent Declaration",
+        "acceptTermsSuffix": " — I have read and accept",
+        "and": "and"
     },
     "chat": {
         "title": "Chatbot",
