@@ -465,5 +465,57 @@
                 "d1": "Bu qaydalar istifadəçinin qeydiyyatdan keçdiyi andan etibarən qüvvəyə minir və istifadəçi bu şərtlərə əməl etməyə borcludur."
             }
         }
+    },
+    "consent": {
+        "pageTitle": "Açıq Razılıq Bəyannaməsi",
+        "pageDesc": "Bu bəyannamə istifadəçinin şəxsi məlumatlarının Safeebot.az tərəfindən emal edilməsinə açıq və təsdiqlənmiş razılığını əks etdirir. Qeydiyyatdan keçməklə və ya sifariş verməklə aşağıdakı şərtlərlə tam razı olduğunuzu təsdiqləyirsiniz.",
+        "s1": {
+            "title": "1. Şəxsi məlumatların emalına razılıq",
+            "d1": "Ad və soyad",
+            "d2": "Mobil nömrə",
+            "d3": "Elektron poçt ünvanı",
+            "d4": "Sifariş zamanı təqdim edilmiş məlumatlar",
+            "note": "Ödəniş zamanı tələb olunan kart və maliyyə məlumatları yalnız ödəniş sistemi tərəfindən emal olunur. SafeeBot.az bu məlumatlara heç bir halda çıxış əldə etmir və onları saxlamır."
+        },
+        "s2": {
+            "title": "2. Emal məqsədi",
+            "d1": "Xidmətlərin göstərilməsi və sifarişlərin icrası",
+            "d2": "Hesabların və abunəliklərin aktivləşdirilməsi",
+            "d3": "Müştəri dəstəyinin təmin edilməsi",
+            "d4": "Fırıldaqçılıq hallarının qarşısının alınması",
+            "d5": "Qanunvericiliklə tələb olunan öhdəliklərin icrası",
+            "d6": "Xidmətin aktivləşdirilməsi üçün zəruri məlumatların istifadəsi"
+        },
+        "s3": {
+            "title": "3. Üçüncü şəxslərə ötürülməsinə razılıq",
+            "d1": "Məhsulun aktivləşdirilməsi üçün tələb olunan minimal məlumatların istifadə edilməsi",
+            "d2": "Qanunla tələb olunduqda dövlət qurumlarına təqdim edilməsi",
+            "highlight": "SafeeBot.Az şəxsi məlumatları kommersiya məqsədi ilə satmır və üçüncü şəxslərə ötürmür."
+        },
+        "s4": {
+            "title": "4. Məlumatların saxlanması və istifadəsi",
+            "d1": "İstifadəçi məlumatları yalnız xidmətin göstərilməsi və sifarişin icrası üçün tələb olunan müddətdə, həmçinin Azərbaycan Respublikasının qanunvericiliyinin tələblərinə uyğun şəkildə saxlanılır.",
+            "d2": "SafeeBot.Az istifadəçinin təqdim etdiyi məlumatlardan əlavə emal məqsədilə istifadə etmir. Məlumatlar artıq tələb olunmadıqda təhlükəsiz şəkildə silinir və ya anonimləşdirilir.",
+            "d3": "SafeeBot.Az yalnız sifarişın aktivləşdirilməsi və icrası üçün istifadəçinin təqdim etdiyi minimum məlumatlardan istifadə edir və sifariş tamamlandıqdan sonra bu məlumatların əlavə saxlanılması, ötürülməsi və ya istifadəsi həyata keçirilmir."
+        },
+        "s5": {
+            "title": "5. İstifadəçi hüquqları",
+            "subtitle": "İstifadəçi \"Şəxsi məlumatlar haqqında\" Qanuna əsasən aşağıdakı hüquqlara malik olduğunu təsdiqləyir:",
+            "d1": "Öz məlumatlarına çıxış əldə etmək",
+            "d2": "Məlumatların düzəldilməsini tələb etmək",
+            "d3": "Məlumatların silinməsini tələb etmək (texniki və hüquqi imkanlar daxilində)",
+            "d4": "Məlumatların emalına dair sual vermək"
+        },
+        "s6": {
+            "title": "6. Razılığı geri çəkmək",
+            "d1": "İstifadəçi şəxsi məlumatlarının emalına verdiyi razılığı istənilən vaxt müraciət etməklə geri çəkə bilər. Razılığın geri çəkilməsi, geri çəkilmədən əvvəl edilmiş emalı qanunsuz etmir."
+        },
+        "s7": {
+            "title": "7. Təsdiq",
+            "subtitle": "İstifadəçi qeydiyyatdan keçməklə və/və ya sifariş verməklə aşağıdakıları təsdiq edir:",
+            "d1": "Bu Açıq Razılıq Bəyannaməsini tam şəkildə oxudum;",
+            "d2": "Şəxsi məlumatlarımın göstərilən məqsədlərlə emal edilməsinə açıq razılıq verirəm;",
+            "d3": "Şərtlərin mənə aydın olduğunu və könüllü şəkildə qəbul etdiyimi bəyan edirəm."
+        }
     }
 }

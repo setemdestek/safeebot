@@ -1,75 +1,58 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface ConsentDeclarationProps {
     className?: string;
 }
 
+interface Section {
+    title: string;
+    subtitle?: string;
+    items: string[];
+    note?: string;
+    highlight?: string;
+    ordered?: boolean;
+}
+
 export function ConsentDeclaration({ className }: ConsentDeclarationProps) {
-    const sections = [
+    const t = useTranslations("consent");
+
+    const sections: Section[] = [
         {
-            title: "1. Şəxsi məlumatların emalına razılıq",
-            desc: [
-                "Ad və soyad",
-                "Mobil nömrə",
-                "Elektron poçt ünvanı",
-                "Sifariş zamanı təqdim edilmiş məlumatlar"
-            ],
-            note: "Ödəniş zamanı tələb olunan kart və maliyyə məlumatları yalnız ödəniş sistemi tərəfindən emal olunur. SafeeBot.az bu məlumatlara heç bir halda çıxış əldə etmir və onları saxlamır."
+            title: t("s1.title"),
+            items: [t("s1.d1"), t("s1.d2"), t("s1.d3"), t("s1.d4")],
+            note: t("s1.note"),
         },
         {
-            title: "2. Emal məqsədi",
-            desc: [
-                "Xidmətlərin göstərilməsi və sifarişlərin icrası",
-                "Hesabların və abunəliklərin aktivləşdirilməsi",
-                "Müştəri dəstəyinin təmin edilməsi",
-                "Fırıldaqçılıq hallarının qarşısının alınması",
-                "Qanunvericiliklə tələb olunan öhdəliklərin icrası",
-                "Xidmətin aktivləşdirilməsi üçün zəruri məlumatların istifadəsi"
-            ]
+            title: t("s2.title"),
+            items: [t("s2.d1"), t("s2.d2"), t("s2.d3"), t("s2.d4"), t("s2.d5"), t("s2.d6")],
         },
         {
-            title: "3. Üçüncü şəxslərə ötürülməsinə razılıq",
-            desc: [
-                "Məhsulun aktivləşdirilməsi üçün tələb olunan minimal məlumatların istifadə edilməsi",
-                "Qanunla tələb olunduqda dövlət qurumlarına təqdim edilməsi"
-            ],
-            highlight: "SafeeBot.Az şəxsi məlumatları kommersiya məqsədi ilə satmır və üçüncü şəxslərə ötürmür."
+            title: t("s3.title"),
+            items: [t("s3.d1"), t("s3.d2")],
+            highlight: t("s3.highlight"),
         },
         {
-            title: "4. Məlumatların saxlanması və istifadəsi",
-            desc: [
-                "4.1. İstifadəçi məlumatları yalnız xidmətin göstərilməsi və sifarişin icrası üçün tələb olunan müddətdə, həmçinin Azərbaycan Respublikasının qanunvericiliyinin tələblərinə uyğun şəkildə saxlanılır.",
-                "4.2. SafeeBot.Az istifadəçinin təqdim etdiyi məlumatlardan əlavə emal məqsədilə istifadə etmir. Məlumatlar artıq tələb olunmadıqda təhlükəsiz şəkildə silinir və ya anonimləşdirilir.",
-                "4.3. SafeeBot.Az yalnız sifarişın aktivləşdirilməsi və icrası üçün istifadəçinin təqdim etdiyi minimum məlumatlardan istifadə edir və sifariş tamamlandıqdan sonra bu məlumatların əlavə saxlanılması, ötürülməsi və ya istifadəsi həyata keçirilmir."
-            ]
+            title: t("s4.title"),
+            items: [t("s4.d1"), t("s4.d2"), t("s4.d3")],
         },
         {
-            title: "5. İstifadəçi hüquqları",
-            subtitle: "İstifadəçi “Şəxsi məlumatlar haqqında” Qanuna əsasən aşağıdakı hüquqlara malik olduğunu təsdiqləyir:",
-            desc: [
-                "Öz məlumatlarına çıxış əldə etmək",
-                "Məlumatların düzəldilməsini tələb etmək",
-                "Məlumatların silinməsini tələb etmək (texniki və hüquqi imkanlar daxilində)",
-                "Məlumatların emalına dair sual vermək"
-            ]
+            title: t("s5.title"),
+            subtitle: t("s5.subtitle"),
+            items: [t("s5.d1"), t("s5.d2"), t("s5.d3"), t("s5.d4")],
         },
         {
-            title: "6. Razılığı geri çəkmək",
-            desc: [
-                "İstifadəçi şəxsi məlumatlarının emalına verdiyi razılığı istənilən vaxt müraciət etməklə geri çəkə bilər. Razılığın geri çəkilməsi, geri çəkilmədən əvvəl edilmiş emalı qanunsuz etmir."
-            ]
+            title: t("s6.title"),
+            items: [t("s6.d1")],
         },
         {
-            title: "7. Təsdiq",
-            subtitle: "İstifadəçi qeydiyyatdan keçməklə və/və ya sifariş verməklə aşağıdakıları təsdiq edir:",
-            desc: [
-                "Bu Açıq Razılıq Bəyannaməsini tam şəkildə oxudum;",
-                "Şəxsi məlumatlarımın göstərilən məqsədlərlə emal edilməsinə açıq razılıq verirəm;",
-                "Şərtlərin mənə aydın olduğunu və könüllü şəkildə qəbul etdiyimi bəyan edirəm."
-            ]
-        }
+            title: t("s7.title"),
+            subtitle: t("s7.subtitle"),
+            items: [t("s7.d1"), t("s7.d2"), t("s7.d3")],
+            ordered: true,
+        },
     ];
 
     return (
@@ -91,9 +74,9 @@ export function ConsentDeclaration({ className }: ConsentDeclarationProps) {
 
                     <ul className={cn(
                         "space-y-2 pl-5",
-                        idx === 6 ? "list-decimal" : "list-disc"
+                        section.ordered ? "list-decimal" : "list-disc"
                     )}>
-                        {section.desc.map((item, idy) => (
+                        {section.items.map((item, idy) => (
                             <li key={idy} className="text-[hsl(var(--muted-foreground))] leading-relaxed">
                                 {item}
                             </li>

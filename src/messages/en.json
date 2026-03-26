@@ -465,5 +465,57 @@
                 "d1": "These rules enter into force from the moment the user registers, and the user is obliged to comply with these terms."
             }
         }
+    },
+    "consent": {
+        "pageTitle": "Consent Declaration",
+        "pageDesc": "This declaration reflects the user's explicit and confirmed consent to the processing of personal data by Safeebot.az. By registering or placing an order, you confirm your full agreement with the terms below.",
+        "s1": {
+            "title": "1. Consent to Processing of Personal Data",
+            "d1": "First and last name",
+            "d2": "Mobile number",
+            "d3": "Email address",
+            "d4": "Information provided during the order",
+            "note": "Card and financial information required during payment is processed only by the payment system. SafeeBot.az does not access or store this information under any circumstances."
+        },
+        "s2": {
+            "title": "2. Purpose of Processing",
+            "d1": "Provision of services and order fulfillment",
+            "d2": "Activation of accounts and subscriptions",
+            "d3": "Providing customer support",
+            "d4": "Prevention of fraud",
+            "d5": "Fulfillment of obligations required by law",
+            "d6": "Use of necessary information for service activation"
+        },
+        "s3": {
+            "title": "3. Consent to Transfer to Third Parties",
+            "d1": "Use of minimal information required for product activation",
+            "d2": "Submission to government authorities when required by law",
+            "highlight": "SafeeBot.Az does not sell personal data for commercial purposes and does not transfer it to third parties."
+        },
+        "s4": {
+            "title": "4. Data Storage and Use",
+            "d1": "User data is stored only for the period required for service provision and order fulfillment, in accordance with the legislation of the Republic of Azerbaijan.",
+            "d2": "SafeeBot.Az does not use user-provided data for additional processing purposes. Data is securely deleted or anonymized when no longer required.",
+            "d3": "SafeeBot.Az uses only the minimum data provided by the user for order activation and fulfillment, and does not store, transfer, or use this data after the order is completed."
+        },
+        "s5": {
+            "title": "5. User Rights",
+            "subtitle": "The user confirms they have the following rights under the Personal Data Law:",
+            "d1": "Access to their own data",
+            "d2": "Request correction of data",
+            "d3": "Request deletion of data (within technical and legal capabilities)",
+            "d4": "Ask questions regarding data processing"
+        },
+        "s6": {
+            "title": "6. Withdrawal of Consent",
+            "d1": "The user may withdraw their consent to the processing of personal data at any time by contacting us. Withdrawal of consent does not make the processing carried out before withdrawal unlawful."
+        },
+        "s7": {
+            "title": "7. Confirmation",
+            "subtitle": "By registering and/or placing an order, the user confirms the following:",
+            "d1": "I have fully read this Consent Declaration;",
+            "d2": "I give my explicit consent to the processing of my personal data for the stated purposes;",
+            "d3": "I declare that the terms are clear to me and that I accept them voluntarily."
+        }
     }
 }

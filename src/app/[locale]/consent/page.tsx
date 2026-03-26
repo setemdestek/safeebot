@@ -1,7 +1,13 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { ConsentDeclaration } from "@/components/auth/ConsentDeclaration";
 import { Logo, LogoWithText } from "@/components/common/Logo";
 
 export default function ConsentPage() {
+    const t = useTranslations("consent");
+    const ta = useTranslations("auth");
+
     return (
         <div className="min-h-screen flex">
             {/* Left — Branding */}
@@ -13,7 +19,7 @@ export default function ConsentPage() {
                     </div>
                     <h2 className="text-4xl font-bold text-white mb-4">SafeeBot</h2>
                     <p className="text-white/80 text-lg leading-relaxed">
-                        Təhlükəsiz Gələcək, Bu Gündən Başlayır
+                        {ta("slogan")}
                     </p>
                 </div>
                 <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-white/5" />
@@ -28,9 +34,9 @@ export default function ConsentPage() {
                     </div>
 
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold tracking-tight mb-4">Açıq Razılıq Bəyannaməsi</h1>
+                        <h1 className="text-4xl font-bold tracking-tight mb-4">{t("pageTitle")}</h1>
                         <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed text-center">
-                            Bu bəyannamə istifadəçinin şəxsi məlumatlarının Safeebot.az tərəfindən emal edilməsinə açıq və təsdiqlənmiş razılığını əks etdirir. Qeydiyyatdan keçməklə və ya sifariş verməklə aşağıdakı şərtlərlə tam razı olduğunuzu təsdiqləyirsiniz.
+                            {t("pageDesc")}
                         </p>
                     </div>
 
