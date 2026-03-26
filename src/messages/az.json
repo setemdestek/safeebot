@@ -87,7 +87,8 @@
         "confirmNewPassword": "Yeni Şifrənin Təkrarı",
         "updatePasswordButton": "Şifrəni Yenilə",
         "updatePasswordSuccess": "Şifrəniz uğurla yeniləndi",
-        "logoutSuccess": "Uğurla çıxış etdiniz"
+        "logoutSuccess": "Uğurla çıxış etdiniz",
+        "slogan": "Təhlükəsiz Gələcək, Bu Gündən Başlayır"
     },
     "chat": {
         "title": "Chatbot",
@@ -123,7 +124,8 @@
         "profileUpdated": "Profil yeniləndi",
         "passwordChanged": "Şifrə dəyişdirildi",
         "selectLanguage": "Dil seçin",
-        "selectTheme": "Tema seçin"
+        "selectTheme": "Tema seçin",
+        "backToHome": "Ana səhifə"
     },
     "footer": {
         "rights": "Bütün hüquqlar qorunur.",

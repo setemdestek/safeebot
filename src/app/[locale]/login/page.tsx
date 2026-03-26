@@ -18,6 +18,7 @@ import { useMediaQuery } from "@/hooks/use-media-query";
 
 function LoginForm() {
     const t = useTranslations("auth");
+    const tc = useTranslations("common");
     const locale = useLocale();
     const router = useRouter();
     const { login } = useAuth();
@@ -86,7 +87,7 @@ function LoginForm() {
                             SafeeBot
                         </h1>
                         <p className="mt-4 text-neutral-300 max-w-lg text-lg leading-relaxed">
-                            Təhlükəsiz Gələcək, Bu Gündən Başlayır
+                            {t("slogan")}
                         </p>
                     </div>
                 </div>
@@ -102,7 +103,7 @@ function LoginForm() {
                 </div>
                 <h2 className="text-3xl font-bold text-white tracking-tight drop-shadow-lg relative z-10">SafeeBot</h2>
                 <p className="text-white/80 text-sm mt-3 text-center max-w-[250px] leading-relaxed relative z-10 font-medium">
-                    Təhlükəsiz Gələcək, Bu Gündən Başlayır
+                    {t("slogan")}
                 </p>
             </div>
 
@@ -115,7 +116,7 @@ function LoginForm() {
                         className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] bg-[hsl(var(--muted)/0.3)] hover:bg-[hsl(var(--muted)/0.5)] px-4 py-2 rounded-full transition-all duration-300"
                     >
                         <ArrowLeft className="w-4 h-4" />
-                        Ana səhifə
+                        {tc("backToHome")}
                     </Link>
                 </div>
                 <motion.div

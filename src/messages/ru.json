@@ -87,7 +87,8 @@
         "confirmNewPassword": "Подтверждение нового пароля",
         "updatePasswordButton": "Обновить пароль",
         "updatePasswordSuccess": "Ваш пароль успешно обновлён",
-        "logoutSuccess": "Вы успешно вышли"
+        "logoutSuccess": "Вы успешно вышли",
+        "slogan": "Безопасное Будущее Начинается Сегодня"
     },
     "chat": {
         "title": "Чатбот",
@@ -123,7 +124,8 @@
         "profileUpdated": "Профиль обновлён",
         "passwordChanged": "Пароль изменён",
         "selectLanguage": "Выберите язык",
-        "selectTheme": "Выберите тему"
+        "selectTheme": "Выберите тему",
+        "backToHome": "Главная"
     },
     "footer": {
         "rights": "Все права защищены.",

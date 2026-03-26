@@ -87,7 +87,8 @@
         "confirmNewPassword": "Confirm New Password",
         "updatePasswordButton": "Update Password",
         "updatePasswordSuccess": "Your password has been updated successfully",
-        "logoutSuccess": "Successfully logged out"
+        "logoutSuccess": "Successfully logged out",
+        "slogan": "A Safe Future Starts Today"
     },
     "chat": {
         "title": "Chatbot",
@@ -123,7 +124,8 @@
         "profileUpdated": "Profile updated",
         "passwordChanged": "Password changed",
         "selectLanguage": "Select Language",
-        "selectTheme": "Select Theme"
+        "selectTheme": "Select Theme",
+        "backToHome": "Home Page"
     },
     "footer": {
         "rights": "All rights reserved.",
