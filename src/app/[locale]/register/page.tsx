@@ -173,7 +173,7 @@ function RegisterForm() {
                         className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] bg-[hsl(var(--muted)/0.3)] hover:bg-[hsl(var(--muted)/0.5)] px-4 py-2 rounded-full transition-all duration-300"
                     >
                         <ArrowLeft className="w-4 h-4" />
-                        {tc("backToHome")}
+                        Back
                     </Link>
                 </div>
                 <motion.div
