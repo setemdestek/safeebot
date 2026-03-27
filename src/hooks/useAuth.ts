@@ -135,13 +135,14 @@ export function useAuth() {
 
     const changePassword = useCallback(
         async (currentPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> => {
-            // Verify current password by re-authenticating
             const { data: { user: currentUser } } = await supabase.auth.getUser();
             if (!currentUser?.email) {
                 return { success: false, error: "no_user" };
             }
 
-            const { error: signInError } = await supabase.auth.signInWithPassword({
+            // Ayrı non-singleton client ilə cari parolu yoxla (aktiv session-a toxunmur)
+            const verifyClient = createLoginClient(true);
+            const { error: signInError } = await verifyClient.auth.signInWithPassword({
                 email: currentUser.email,
                 password: currentPassword,
             });
@@ -150,7 +151,7 @@ export function useAuth() {
                 return { success: false, error: "wrong_password" };
             }
 
-            // Update to new password
+            // Əsas client ilə parolu yenilə
             const { error: updateError } = await supabase.auth.updateUser({
                 password: newPassword,
             });

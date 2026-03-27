@@ -10,6 +10,8 @@ import {
     Trash2,
     ArrowLeft,
     Check,
+    Eye,
+    EyeOff,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -42,6 +44,9 @@ export default function SettingsPage() {
     const [saved, setSaved] = useState(false);
     const [passwordError, setPasswordError] = useState("");
     const [passwordLoading, setPasswordLoading] = useState(false);
+    const [showCurrentPass, setShowCurrentPass] = useState(false);
+    const [showNewPass, setShowNewPass] = useState(false);
+    const [showConfirmPass, setShowConfirmPass] = useState(false);
 
     // Sync user data to form when it is loaded
     useEffect(() => {
@@ -213,46 +218,76 @@ export default function SettingsPage() {
                                             <label className="text-sm font-medium">
                                                 {t("currentPassword")}
                                             </label>
-                                            <Input
-                                                type="password"
-                                                value={passwordForm.current}
-                                                onChange={(e) =>
-                                                    setPasswordForm((p) => ({
-                                                        ...p,
-                                                        current: e.target.value,
-                                                    }))
-                                                }
-                                            />
+                                            <div className="relative">
+                                                <Input
+                                                    type={showCurrentPass ? "text" : "password"}
+                                                    value={passwordForm.current}
+                                                    onChange={(e) =>
+                                                        setPasswordForm((p) => ({
+                                                            ...p,
+                                                            current: e.target.value,
+                                                        }))
+                                                    }
+                                                    className="pr-10"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowCurrentPass(!showCurrentPass)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                                                >
+                                                    {showCurrentPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                                </button>
+                                            </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium">
                                                 {t("newPassword")}
                                             </label>
-                                            <Input
-                                                type="password"
-                                                value={passwordForm.newPass}
-                                                onChange={(e) =>
-                                                    setPasswordForm((p) => ({
-                                                        ...p,
-                                                        newPass: e.target.value,
-                                                    }))
-                                                }
-                                            />
+                                            <div className="relative">
+                                                <Input
+                                                    type={showNewPass ? "text" : "password"}
+                                                    value={passwordForm.newPass}
+                                                    onChange={(e) =>
+                                                        setPasswordForm((p) => ({
+                                                            ...p,
+                                                            newPass: e.target.value,
+                                                        }))
+                                                    }
+                                                    className="pr-10"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowNewPass(!showNewPass)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                                                >
+                                                    {showNewPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                                </button>
+                                            </div>
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-sm font-medium">
                                                 {t("confirmNewPassword")}
                                             </label>
-                                            <Input
-                                                type="password"
-                                                value={passwordForm.confirm}
-                                                onChange={(e) =>
-                                                    setPasswordForm((p) => ({
-                                                        ...p,
-                                                        confirm: e.target.value,
-                                                    }))
-                                                }
-                                            />
+                                            <div className="relative">
+                                                <Input
+                                                    type={showConfirmPass ? "text" : "password"}
+                                                    value={passwordForm.confirm}
+                                                    onChange={(e) =>
+                                                        setPasswordForm((p) => ({
+                                                            ...p,
+                                                            confirm: e.target.value,
+                                                        }))
+                                                    }
+                                                    className="pr-10"
+                                                />
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setShowConfirmPass(!showConfirmPass)}
+                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] transition-colors"
+                                                >
+                                                    {showConfirmPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                                                </button>
+                                            </div>
                                         </div>
                                         {passwordError && (
                                             <p className="text-sm text-[hsl(var(--destructive))]">{passwordError}</p>
