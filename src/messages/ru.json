@@ -153,6 +153,10 @@
         "deleteAccountConfirm": "Вы уверены, что хотите удалить свой аккаунт?",
         "profileUpdated": "Профиль обновлён",
         "passwordChanged": "Пароль изменён",
+        "fillAllFields": "Заполните все поля",
+        "passwordMismatch": "Новые пароли не совпадают",
+        "currentPasswordWrong": "Текущий пароль неверен",
+        "passwordChangeError": "Произошла ошибка при смене пароля",
         "selectLanguage": "Выберите язык",
         "selectTheme": "Выберите тему",
         "backToHome": "Главная"

@@ -133,6 +133,37 @@ export function useAuth() {
         [supabase],
     );
 
+    const changePassword = useCallback(
+        async (currentPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> => {
+            // Verify current password by re-authenticating
+            const { data: { user: currentUser } } = await supabase.auth.getUser();
+            if (!currentUser?.email) {
+                return { success: false, error: "no_user" };
+            }
+
+            const { error: signInError } = await supabase.auth.signInWithPassword({
+                email: currentUser.email,
+                password: currentPassword,
+            });
+
+            if (signInError) {
+                return { success: false, error: "wrong_password" };
+            }
+
+            // Update to new password
+            const { error: updateError } = await supabase.auth.updateUser({
+                password: newPassword,
+            });
+
+            if (updateError) {
+                return { success: false, error: "update_failed" };
+            }
+
+            return { success: true };
+        },
+        [supabase],
+    );
+
     const updatePassword = useCallback(
         async (newPassword: string): Promise<boolean> => {
             const { error } = await supabase.auth.updateUser({
@@ -149,5 +180,5 @@ export function useAuth() {
         [supabase],
     );
 
-    return { user, isLoading, login, register, logout, updateProfile, resetPassword, updatePassword };
+    return { user, isLoading, login, register, logout, updateProfile, resetPassword, updatePassword, changePassword };
 }

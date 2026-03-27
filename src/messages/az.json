@@ -153,6 +153,10 @@
         "deleteAccountConfirm": "Hesabı silmək istədiyinizə əminsiniz?",
         "profileUpdated": "Profil yeniləndi",
         "passwordChanged": "Şifrə dəyişdirildi",
+        "fillAllFields": "Bütün sahələri doldurun",
+        "passwordMismatch": "Yeni şifrələr uyğun gəlmir",
+        "currentPasswordWrong": "Cari şifrə yanlışdır",
+        "passwordChangeError": "Şifrə dəyişdirilərkən xəta baş verdi",
         "selectLanguage": "Dil seçin",
         "selectTheme": "Tema seçin",
         "backToHome": "Ana səhifə"

@@ -153,6 +153,10 @@
         "deleteAccountConfirm": "Are you sure you want to delete your account?",
         "profileUpdated": "Profile updated",
         "passwordChanged": "Password changed",
+        "fillAllFields": "Please fill in all fields",
+        "passwordMismatch": "New passwords do not match",
+        "currentPasswordWrong": "Current password is incorrect",
+        "passwordChangeError": "An error occurred while changing the password",
         "selectLanguage": "Select Language",
         "selectTheme": "Select Theme",
         "backToHome": "Home Page"

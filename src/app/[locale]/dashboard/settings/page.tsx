@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import {
     User,
     Lock,
-    Globe,
     Palette,
     Trash2,
     ArrowLeft,
@@ -26,7 +25,7 @@ export default function SettingsPage() {
     const tc = useTranslations("common");
     const locale = useLocale();
     const router = useRouter();
-    const { user, updateProfile, logout } = useAuth();
+    const { user, logout, changePassword } = useAuth();
 
     const [activeTab, setActiveTab] = useState("profile");
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -41,6 +40,8 @@ export default function SettingsPage() {
         confirm: "",
     });
     const [saved, setSaved] = useState(false);
+    const [passwordError, setPasswordError] = useState("");
+    const [passwordLoading, setPasswordLoading] = useState(false);
 
     // Sync user data to form when it is loaded
     useEffect(() => {
@@ -59,16 +60,35 @@ export default function SettingsPage() {
         { id: "preferences", label: t("preferences"), icon: Palette },
     ];
 
-    const handleSaveProfile = () => {
-        updateProfile(profileForm);
-        setSaved(true);
-        setTimeout(() => setSaved(false), 2000);
-    };
+    const handleChangePassword = async () => {
+        setPasswordError("");
 
-    const handleChangePassword = () => {
-        setSaved(true);
-        setTimeout(() => setSaved(false), 2000);
-        setPasswordForm({ current: "", newPass: "", confirm: "" });
+        if (!passwordForm.current || !passwordForm.newPass || !passwordForm.confirm) {
+            setPasswordError(t("fillAllFields"));
+            return;
+        }
+        if (passwordForm.newPass !== passwordForm.confirm) {
+            setPasswordError(t("passwordMismatch"));
+            return;
+        }
+
+        setPasswordLoading(true);
+        try {
+            const result = await changePassword(passwordForm.current, passwordForm.newPass);
+            if (result.success) {
+                setSaved(true);
+                setTimeout(() => setSaved(false), 2000);
+                setPasswordForm({ current: "", newPass: "", confirm: "" });
+            } else if (result.error === "wrong_password") {
+                setPasswordError(t("currentPasswordWrong"));
+            } else {
+                setPasswordError(t("passwordChangeError"));
+            }
+        } catch {
+            setPasswordError(t("passwordChangeError"));
+        } finally {
+            setPasswordLoading(false);
+        }
     };
 
     const handleDeleteAccount = () => {
@@ -234,8 +254,16 @@ export default function SettingsPage() {
                                                 }
                                             />
                                         </div>
-                                        <Button onClick={handleChangePassword}>
-                                            {saved ? (
+                                        {passwordError && (
+                                            <p className="text-sm text-[hsl(var(--destructive))]">{passwordError}</p>
+                                        )}
+                                        <Button onClick={handleChangePassword} disabled={passwordLoading}>
+                                            {passwordLoading ? (
+                                                <span className="flex items-center gap-2">
+                                                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                                    {t("changePassword")}...
+                                                </span>
+                                            ) : saved ? (
                                                 <span className="flex items-center gap-1">
                                                     <Check className="w-4 h-4" /> {t("passwordChanged")}
                                                 </span>
