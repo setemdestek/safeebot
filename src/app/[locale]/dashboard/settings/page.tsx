@@ -152,12 +152,8 @@ export default function SettingsPage() {
                                             </label>
                                             <Input
                                                 value={profileForm.firstName}
-                                                onChange={(e) =>
-                                                    setProfileForm((p) => ({
-                                                        ...p,
-                                                        firstName: e.target.value,
-                                                    }))
-                                                }
+                                                disabled
+                                                className="bg-[hsl(var(--muted))] cursor-not-allowed text-[hsl(var(--muted-foreground))]"
                                             />
                                         </div>
                                         <div className="space-y-2">
@@ -166,12 +162,8 @@ export default function SettingsPage() {
                                             </label>
                                             <Input
                                                 value={profileForm.lastName}
-                                                onChange={(e) =>
-                                                    setProfileForm((p) => ({
-                                                        ...p,
-                                                        lastName: e.target.value,
-                                                    }))
-                                                }
+                                                disabled
+                                                className="bg-[hsl(var(--muted))] cursor-not-allowed text-[hsl(var(--muted-foreground))]"
                                             />
                                         </div>
                                     </div>
@@ -185,15 +177,6 @@ export default function SettingsPage() {
                                         />
                                         <p className="text-xs text-[hsl(var(--muted-foreground))]">E-poçt ünvanınızı dəyişdirə bilməzsiniz.</p>
                                     </div>
-                                    <Button onClick={handleSaveProfile}>
-                                        {saved ? (
-                                            <span className="flex items-center gap-1">
-                                                <Check className="w-4 h-4" /> {t("profileUpdated")}
-                                            </span>
-                                        ) : (
-                                            tc("save")
-                                        )}
-                                    </Button>
                                 </CardContent>
                             </Card>
                         )}
