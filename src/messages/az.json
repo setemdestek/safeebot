@@ -94,7 +94,17 @@
         "consentLink": "Açıq razılıq bəyanəti",
         "acceptTermsSuffix": "ni oxudum və qəbul edirəm",
         "and": "və",
-        "termsRequired": "Qeydiyyatdan keçmək üçün qaydalarla razılaşmalısınız."
+        "termsRequired": "Qeydiyyatdan keçmək üçün qaydalarla razılaşmalısınız.",
+        "passwordGood": "Yaxşı",
+        "passwordVeryStrong": "Çox güclü",
+        "emailPlaceholder": "email@nümunə.az",
+        "valMinLength": "Parol ən az 10 simvol olmalıdır",
+        "valUppercase": "Ən az 1 böyük hərf (A-Z) olmalıdır",
+        "valLowercase": "Ən az 1 kiçik hərf (a-z) olmalıdır",
+        "valDigit": "Ən az 1 rəqəm (0-9) olmalıdır",
+        "valSpecial": "Ən az 1 xüsusi simvol olmalıdır (@$!%*?&)",
+        "requirementsNotMet": "{count} tələb qarşılanmayıb",
+        "forgotPasswordError": "Şifrə sıfırlama linki göndərilə bilmədi. Zəhmət olmasa bir az sonra yenidən cəhd edin."
     },
     "chat": {
         "title": "Chatbot",
@@ -113,7 +123,14 @@
         "deleteChat": "Söhbəti sil",
         "deleteChatConfirm": "Bu söhbəti silmək istədiyinizə əminsiniz?",
         "jsaButton": "RİSK ANALİZİ ET",
-        "disclaimer": "SafeeBot səhvlər edə bilər. Əhəmiyyətli məlumatları istifadə etməzdən öncə yoxlamağınız tövsiyə olunur."
+        "disclaimer": "SafeeBot səhvlər edə bilər. Əhəmiyyətli məlumatları istifadə etməzdən öncə yoxlamağınız tövsiyə olunur.",
+        "copied": "Kopyalandı!",
+        "copy": "Kopyala",
+        "placeholder1": "Əməyin mühafizəsi nədir?",
+        "placeholder2": "İş yerlərinin attestasiyası necə aparılır?",
+        "placeholder3": "Təhlükəsizlik qaydalarını necə tətbiq etməli?",
+        "placeholder4": "Yanğın təhlükəsizliyi qaydaları hansılardır?",
+        "placeholder5": "Risklərin qiymətləndirilməsi nədən ibarətdir?"
     },
     "settings": {
         "title": "Parametrlər",
@@ -522,6 +539,51 @@
             "d1": "Bu Açıq Razılıq Bəyannaməsini tam şəkildə oxudum;",
             "d2": "Şəxsi məlumatlarımın göstərilən məqsədlərlə emal edilməsinə açıq razılıq verirəm;",
             "d3": "Şərtlərin mənə aydın olduğunu və könüllü şəkildə qəbul etdiyimi bəyan edirəm."
+        }
+    },
+    "jsa": {
+        "title": "İş Təhlükəsizliyi Analizi",
+        "subtitle": "Şəkilləri yükləyin, AI hesabatı hazırlar",
+        "imageUpload": "Şəkil Yükləmə",
+        "generateReport": "JSA Hesabatı Hazırla",
+        "unknownError": "Bilinməyən xəta baş verdi",
+        "dropzone": {
+            "maxOneFile": "Maksimum 1 şəkil əlavə edə bilərsiniz",
+            "onlyImages": "Yalnız şəkil faylları qəbul edilir (JPG, PNG, WEBP)",
+            "fileTooLarge": "Fayl 10MB limitini aşır",
+            "dragHere": "Şəkilləri bura sürükləyin",
+            "orClick": "və ya klikləyin",
+            "formatInfo": "JPG · PNG · WEBP · Maks 10MB · Maks 1 şəkil",
+            "takePhoto": "Kameradan çək"
+        },
+        "progress": {
+            "heading": "Analiz Statusu",
+            "uploading": "Şəkillər yüklənir",
+            "analyzing": "AI analizi aparılır",
+            "riskAssessment": "Risk qiymətləndirməsi",
+            "generating": "DOCX hesabatı hazırlanır",
+            "done": "Hesabat hazırdır"
+        },
+        "result": {
+            "reportReady": "Hesabatınız hazırdır!",
+            "autoDownloaded": "DOCX faylı avtomatik yükləndi.",
+            "downloadAgain": "Yenidən Yüklə",
+            "newAnalysis": "Yeni Analiz",
+            "errorTitle": "Xəta baş verdi",
+            "retry": "Yenidən Cəhd Et"
+        },
+        "metadata": {
+            "heading": "Məlumatlar",
+            "inspectorLabel": "Yoxlayan Şəxs (İnspektor)",
+            "inspectorPlaceholder": "Ad və soyad",
+            "locationLabel": "İş Yeri / Obyekt",
+            "locationPlaceholder": "İşin görüləcəyi yer",
+            "dateLabel": "Tarix",
+            "companyLabel": "Şirkət (opsional)",
+            "companyPlaceholder": "Şirkətin adı",
+            "notesLabel": "Əlavə Qeydlər (opsional)",
+            "notesPlaceholder": "Buraya əlavə etmək istədiyiniz detalları yazın...",
+            "fieldRequired": "Bu sahə mütləqdir"
         }
     }
 }

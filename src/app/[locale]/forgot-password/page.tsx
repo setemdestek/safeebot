@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
 import { Logo } from "@/components/common/Logo";
+import { TurnstileWidget } from "@/components/auth/TurnstileWidget";
 
 export default function ForgotPasswordPage() {
     const t = useTranslations("auth");
@@ -19,6 +20,7 @@ export default function ForgotPasswordPage() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [sent, setSent] = useState(false);
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -35,14 +37,16 @@ export default function ForgotPasswordPage() {
 
         setLoading(true);
         try {
-            const success = await resetPassword(email);
+            const success = await resetPassword(email, captchaToken ?? undefined);
             if (success) {
                 setSent(true);
             } else {
-                setError(t("emailInvalid"));
+                setError(t("forgotPasswordError"));
+                setCaptchaToken(null);
             }
         } catch {
-            setError(t("emailInvalid"));
+            setError(t("forgotPasswordError"));
+            setCaptchaToken(null);
         } finally {
             setLoading(false);
         }
@@ -107,7 +111,7 @@ export default function ForgotPasswordPage() {
                                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[hsl(var(--muted-foreground))]" />
                                         <Input
                                             type="email"
-                                            placeholder="email@nümunə.az"
+                                            placeholder={t("emailPlaceholder")}
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             className="pl-10"
@@ -115,11 +119,14 @@ export default function ForgotPasswordPage() {
                                     </div>
                                 </div>
 
+                                {/* Turnstile CAPTCHA */}
+                                <TurnstileWidget onVerify={setCaptchaToken} />
+
                                 {error && (
                                     <p className="text-sm text-[hsl(var(--destructive))]">{error}</p>
                                 )}
 
-                                <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                                <Button type="submit" className="w-full" size="lg" disabled={loading || !captchaToken}>
                                     {loading ? (
                                         <span className="flex items-center gap-2">
                                             <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

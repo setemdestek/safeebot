@@ -21,13 +21,13 @@ function getPasswordStrength(pass: string): number {
     return Math.min(score, 5);
 }
 
-function validatePassword(pass: string): string[] {
+function validatePassword(pass: string, t: (key: string) => string): string[] {
     const errors: string[] = [];
-    if (pass.length < 10) errors.push("Parol ən az 10 simvol olmalıdır");
-    if (!/[A-Z]/.test(pass)) errors.push("Ən az 1 böyük hərf (A-Z) olmalıdır");
-    if (!/[a-z]/.test(pass)) errors.push("Ən az 1 kiçik hərf (a-z) olmalıdır");
-    if (!/[0-9]/.test(pass)) errors.push("Ən az 1 rəqəm (0-9) olmalıdır");
-    if (!/[@$!%*?&]/.test(pass)) errors.push("Ən az 1 xüsusi simvol olmalıdır (@$!%*?&)");
+    if (pass.length < 10) errors.push(t("valMinLength"));
+    if (!/[A-Z]/.test(pass)) errors.push(t("valUppercase"));
+    if (!/[a-z]/.test(pass)) errors.push(t("valLowercase"));
+    if (!/[0-9]/.test(pass)) errors.push(t("valDigit"));
+    if (!/[@$!%*?&]/.test(pass)) errors.push(t("valSpecial"));
     return errors;
 }
 
@@ -45,8 +45,8 @@ export default function UpdatePasswordPage() {
     const [success, setSuccess] = useState(false);
 
     const strength = useMemo(() => getPasswordStrength(password), [password]);
-    const passwordErrors = useMemo(() => validatePassword(password), [password]);
-    const strengthLabel = strength <= 1 ? t("passwordWeak") : strength <= 3 ? t("passwordMedium") : strength === 4 ? "Yaxşı" : "Güclü";
+    const passwordErrors = useMemo(() => validatePassword(password, t), [password, t]);
+    const strengthLabel = strength <= 1 ? t("passwordWeak") : strength <= 3 ? t("passwordMedium") : strength === 4 ? t("passwordGood") : t("passwordVeryStrong");
     const strengthColor = strength <= 1 ? "bg-red-500" : strength <= 3 ? "bg-amber-500" : strength === 4 ? "bg-blue-500" : "bg-emerald-500";
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -62,7 +62,7 @@ export default function UpdatePasswordPage() {
             return;
         }
 
-        const validationErrors = validatePassword(password);
+        const validationErrors = validatePassword(password, t);
         if (validationErrors.length > 0) {
             setError(validationErrors[0]);
             return;
@@ -171,7 +171,7 @@ export default function UpdatePasswordPage() {
                                                 </p>
                                                 {passwordErrors.length > 0 && (
                                                     <p className="text-[hsl(var(--destructive))]">
-                                                        {passwordErrors.length} tələb qarşılanmayıb
+                                                        {t("requirementsNotMet", { count: passwordErrors.length })}
                                                     </p>
                                                 )}
                                             </div>

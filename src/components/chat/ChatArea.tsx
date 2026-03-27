@@ -17,7 +17,7 @@ interface ChatAreaProps {
     isMessageSending?: boolean;
 }
 
-const CodeBlock = ({ inline, className, children, ...props }: any) => {
+const CodeBlock = ({ inline, className, children, copiedLabel, copyLabel, ...props }: any) => {
     const [copied, setCopied] = useState(false);
     const match = /language-(\w+)/.exec(className || "");
     const codeText = String(children).replace(/\n$/, "");
@@ -47,7 +47,7 @@ const CodeBlock = ({ inline, className, children, ...props }: any) => {
                     className="flex items-center gap-1.5 text-xs text-[#9aa5ce] hover:text-white transition-colors py-1"
                 >
                     {copied ? <Check className="w-3.5 h-3.5 text-[#9ece6a]" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copied ? "Copied!" : "Kopyala"}</span>
+                    <span>{copied ? (copiedLabel || "Copied!") : (copyLabel || "Copy")}</span>
                 </button>
             </div>
             <div className="p-4 overflow-x-auto text-[13px] font-mono leading-relaxed">
@@ -68,8 +68,10 @@ export function ChatArea({ messages, isLoading, isMessageSending }: ChatAreaProp
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages, isLoading, isMessageSending]);
 
+    const copiedLabel = t("copied");
+    const copyLabel = t("copy");
     const markdownComponents = {
-        code: CodeBlock,
+        code: (props: any) => <CodeBlock {...props} copiedLabel={copiedLabel} copyLabel={copyLabel} />,
         p: ({ children }: any) => <p className="mb-3 last:mb-0 leading-[1.6] text-[15px]">{children}</p>,
         ul: ({ children }: any) => <ul className="mb-4 pl-6 list-disc [&>li]:mt-2 leading-relaxed text-[15px] text-[hsl(var(--foreground))]">{children}</ul>,
         ol: ({ children }: any) => <ol className="mb-4 pl-6 list-decimal [&>li]:mt-2 leading-relaxed text-[15px] text-[hsl(var(--foreground))]">{children}</ol>,

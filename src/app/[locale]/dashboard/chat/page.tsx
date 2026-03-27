@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 
 export default function ChatPage() {
     const t = useTranslations("chat");
+    const tJsa = useTranslations("jsa");
     const {
         sessions,
         activeSessionId,
@@ -106,7 +107,7 @@ export default function ChatPage() {
                         <div className="flex justify-between items-center p-4 border-b border-gray-200 bg-white">
                             <h2 className="text-xl font-bold text-[#1F3864] flex items-center gap-2">
                                 <ShieldCheck className="w-6 h-6 text-[#1F3864]" />
-                                HSE JSA Analizi
+                                {tJsa("title")}
                             </h2>
                             <button
                                 onClick={() => setIsJsaModalOpen(false)}

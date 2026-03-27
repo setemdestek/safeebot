@@ -28,13 +28,13 @@ function getPasswordStrength(pass: string): number {
     return Math.min(score, 5);
 }
 
-function validatePassword(pass: string): string[] {
+function validatePassword(pass: string, t: (key: string) => string): string[] {
     const errors: string[] = [];
-    if (pass.length < 10) errors.push("Parol ən az 10 simvol olmalıdır");
-    if (!/[A-Z]/.test(pass)) errors.push("Ən az 1 böyük hərf (A-Z) olmalıdır");
-    if (!/[a-z]/.test(pass)) errors.push("Ən az 1 kiçik hərf (a-z) olmalıdır");
-    if (!/[0-9]/.test(pass)) errors.push("Ən az 1 rəqəm (0-9) olmalıdır");
-    if (!/[@$!%*?&]/.test(pass)) errors.push("Ən az 1 xüsusi simvol olmalıdır (@$!%*?&)");
+    if (pass.length < 10) errors.push(t("valMinLength"));
+    if (!/[A-Z]/.test(pass)) errors.push(t("valUppercase"));
+    if (!/[a-z]/.test(pass)) errors.push(t("valLowercase"));
+    if (!/[0-9]/.test(pass)) errors.push(t("valDigit"));
+    if (!/[@$!%*?&]/.test(pass)) errors.push(t("valSpecial"));
     return errors;
 }
 
@@ -64,10 +64,10 @@ function RegisterForm() {
         [form.password],
     );
     const passwordErrors = useMemo(
-        () => validatePassword(form.password),
-        [form.password],
+        () => validatePassword(form.password, t),
+        [form.password, t],
     );
-    const strengthLabel = strength <= 1 ? t("passwordWeak") : strength <= 3 ? t("passwordMedium") : strength === 4 ? "Yaxşı" : "Güclü";
+    const strengthLabel = strength <= 1 ? t("passwordWeak") : strength <= 3 ? t("passwordMedium") : strength === 4 ? t("passwordGood") : t("passwordVeryStrong");
     const strengthColor = strength <= 1 ? "bg-red-500" : strength <= 3 ? "bg-amber-500" : strength === 4 ? "bg-blue-500" : "bg-emerald-500";
 
     const update = (key: string, value: string | boolean) =>
@@ -90,7 +90,7 @@ function RegisterForm() {
             return;
         }
 
-        const passwordValidationErrors = validatePassword(form.password);
+        const passwordValidationErrors = validatePassword(form.password, t);
         if (passwordValidationErrors.length > 0) {
             setError(passwordValidationErrors[0]);
             return;
@@ -173,7 +173,7 @@ function RegisterForm() {
                         className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] bg-[hsl(var(--muted)/0.3)] hover:bg-[hsl(var(--muted)/0.5)] px-4 py-2 rounded-full transition-all duration-300"
                     >
                         <ArrowLeft className="w-4 h-4" />
-                        Back
+                        {tc("back")}
                     </Link>
                 </div>
                 <motion.div
@@ -221,7 +221,7 @@ function RegisterForm() {
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[hsl(var(--muted-foreground))]" />
                                 <Input
                                     type="email"
-                                    placeholder="email@nümunə.az"
+                                    placeholder={t("emailPlaceholder")}
                                     value={form.email}
                                     onChange={(e) => update("email", e.target.value)}
                                     className="pl-10"
@@ -269,7 +269,7 @@ function RegisterForm() {
                                         </p>
                                         {passwordErrors.length > 0 && (
                                             <p className="text-[hsl(var(--destructive))]">
-                                                {passwordErrors.length} tələb qarşılanmayıb
+                                                {t("requirementsNotMet", { count: passwordErrors.length })}
                                             </p>
                                         )}
                                     </div>

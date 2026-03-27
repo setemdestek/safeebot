@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, ChangeEvent, DragEvent } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface DropZoneProps {
     onFilesAdded: (files: File[]) => void;
@@ -8,6 +9,7 @@ interface DropZoneProps {
 }
 
 export default function DropZone({ onFilesAdded, disabled = false }: DropZoneProps) {
+    const t = useTranslations('jsa.dropzone');
     const [isDragActive, setIsDragActive] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
@@ -17,19 +19,19 @@ export default function DropZone({ onFilesAdded, disabled = false }: DropZonePro
         if (!fileList || fileList.length === 0) return;
 
         if (fileList.length > 1) {
-            setError("Maksimum 1 şəkil əlavə edə bilərsiniz");
+            setError(t('maxOneFile'));
             return;
         }
 
         const file = fileList[0];
         const validTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/heic'];
         if (!validTypes.includes(file.type)) {
-            setError("Yalnız şəkil faylları qəbul edilir (JPG, PNG, WEBP)");
+            setError(t('onlyImages'));
             return;
         }
 
         if (file.size > 10 * 1024 * 1024) {
-            setError("Fayl 10MB limitini aşır");
+            setError(t('fileTooLarge'));
             return;
         }
 
@@ -106,9 +108,9 @@ export default function DropZone({ onFilesAdded, disabled = false }: DropZonePro
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                 </svg>
 
-                <p className="text-gray-700 font-medium text-lg">Şəkilləri bura sürükləyin</p>
-                <p className="text-gray-500 mt-1">və ya klikləyin</p>
-                <p className="text-sm text-gray-400 mt-2">JPG · PNG · WEBP · Maks 10MB · Maks 1 şəkil</p>
+                <p className="text-gray-700 font-medium text-lg">{t('dragHere')}</p>
+                <p className="text-gray-500 mt-1">{t('orClick')}</p>
+                <p className="text-sm text-gray-400 mt-2">{t('formatInfo')}</p>
 
                 {error && (
                     <p className="text-red-500 text-sm mt-3">{error}</p>
@@ -121,7 +123,7 @@ export default function DropZone({ onFilesAdded, disabled = false }: DropZonePro
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    Kameradan çək
+                    {t('takePhoto')}
                     <input
                         type="file"
                         accept="image/jpeg, image/png, image/webp, image/heic"

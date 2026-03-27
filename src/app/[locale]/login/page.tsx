@@ -116,7 +116,7 @@ function LoginForm() {
                         className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-[hsl(var(--foreground))] bg-[hsl(var(--muted)/0.3)] hover:bg-[hsl(var(--muted)/0.5)] px-4 py-2 rounded-full transition-all duration-300"
                     >
                         <ArrowLeft className="w-4 h-4" />
-                        Back
+                        {tc("back")}
                     </Link>
                 </div>
                 <motion.div
@@ -142,7 +142,7 @@ function LoginForm() {
                                     id="email"
                                     name="email"
                                     type="email"
-                                    placeholder="email@nümunə.az"
+                                    placeholder={t("emailPlaceholder")}
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="pl-10"
@@ -193,7 +193,7 @@ function LoginForm() {
                                     htmlFor="remember"
                                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[hsl(var(--muted-foreground))] cursor-pointer select-none"
                                 >
-                                    Məni xatırla
+                                    {t("rememberMe")}
                                 </label>
                             </div>
                             <Link

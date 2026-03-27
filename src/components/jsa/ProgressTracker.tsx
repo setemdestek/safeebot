@@ -1,3 +1,6 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { AnalysisStep } from '@/types/jsa';
 
 interface ProgressTrackerProps {
@@ -5,21 +8,23 @@ interface ProgressTrackerProps {
 }
 
 export default function ProgressTracker({ step }: ProgressTrackerProps) {
+    const t = useTranslations('jsa.progress');
+
     if (step === 'idle' || step === 'error') return null;
 
     const steps = [
-        { id: 'uploading', label: 'Şəkillər yüklənir' },
-        { id: 'analyzing', label: 'AI analizi aparılır' },
-        { id: 'risk_assessment', label: 'Risk qiymətləndirməsi' },
-        { id: 'generating', label: 'DOCX hesabatı hazırlanır' },
-        { id: 'done', label: 'Hesabat hazırdır' }
+        { id: 'uploading', label: t('uploading') },
+        { id: 'analyzing', label: t('analyzing') },
+        { id: 'risk_assessment', label: t('riskAssessment') },
+        { id: 'generating', label: t('generating') },
+        { id: 'done', label: t('done') }
     ];
 
     const currentStepIndex = steps.findIndex(s => s.id === step);
 
     return (
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-            <h3 className="font-semibold text-gray-800 text-lg mb-4">Analiz Statusu</h3>
+            <h3 className="font-semibold text-gray-800 text-lg mb-4">{t('heading')}</h3>
             <div className="flex flex-col space-y-0 relative">
                 {steps.map((s, index) => {
                     const isCompleted = currentStepIndex > index || step === 'done';

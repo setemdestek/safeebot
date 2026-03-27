@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { JSAMetadata, AnalysisState, PreviewFile } from '@/types/jsa';
 import { analyzeImages, downloadBlob } from '@/lib/jsa-api';
 import DropZone from './DropZone';
@@ -10,6 +11,7 @@ import ProgressTracker from './ProgressTracker';
 import ResultPanel from './ResultPanel';
 
 export default function JSAAnalyzer() {
+    const t = useTranslations('jsa');
     const [files, setFiles] = useState<PreviewFile[]>([]);
     const [metadata, setMetadata] = useState<JSAMetadata>({
         inspector_name: '',
@@ -81,7 +83,7 @@ export default function JSAAnalyzer() {
         } catch (error: any) {
             setAnalysisState({
                 step: 'error',
-                error: error.message || "Bilinməyən xəta baş verdi",
+                error: error.message || t('unknownError'),
                 blob: null,
                 fileName: null
             });
@@ -109,8 +111,8 @@ export default function JSAAnalyzer() {
     return (
         <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
-                <h1 className="text-3xl font-bold text-[#1F3864] mb-3">İş Təhlükəsizliyi Analizi</h1>
-                <p className="text-gray-500 text-lg">Şəkilləri yükləyin, AI hesabatı hazırlar</p>
+                <h1 className="text-3xl font-bold text-[#1F3864] mb-3">{t('title')}</h1>
+                <p className="text-gray-500 text-lg">{t('subtitle')}</p>
             </div>
 
             <ProgressTracker step={analysisState.step} />
@@ -118,7 +120,7 @@ export default function JSAAnalyzer() {
             {analysisState.step === 'idle' || analysisState.step === 'error' ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="space-y-4">
-                        <h2 className="text-xl font-semibold text-gray-800">Şəkil Yükləmə</h2>
+                        <h2 className="text-xl font-semibold text-gray-800">{t('imageUpload')}</h2>
                         <DropZone onFilesAdded={handleFilesAdded} disabled={analysisState.step !== 'idle' && analysisState.step !== 'error'} />
                         <ImagePreviewGrid files={files} onRemove={handleRemoveFile} />
                     </div>
@@ -139,7 +141,7 @@ export default function JSAAnalyzer() {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
-                            JSA Hesabatı Hazırla
+                            {t('generateReport')}
                         </button>
                     </div>
                 </div>

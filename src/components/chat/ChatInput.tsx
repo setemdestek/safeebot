@@ -11,16 +11,15 @@ interface ChatInputProps {
     isLoading: boolean;
 }
 
-const placeholders = [
-    "Əməyin mühafizəsi nədir?",
-    "İş yerlərinin attestasiyası necə aparılır?",
-    "Təhlükəsizlik qaydalarını necə tətbiq etməli?",
-    "Yanğın təhlükəsizliyi qaydaları hansılardır?",
-    "Risklərin qiymətləndirilməsi nədən ibarətdir?"
-];
-
 export function ChatInput({ onSend, isLoading }: ChatInputProps) {
     const t = useTranslations("chat");
+    const placeholders = [
+        t("placeholder1"),
+        t("placeholder2"),
+        t("placeholder3"),
+        t("placeholder4"),
+        t("placeholder5"),
+    ];
     const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -111,7 +110,7 @@ export function ChatInput({ onSend, isLoading }: ChatInputProps) {
                         onChange={(e) => setValue(e.target.value)}
                         onKeyDown={handleKeyDown}
                         // Focus olanda aktiv olaraq heçnə yazılmayıbsa standart placeholder, deyilsə animasiyalı placeholder
-                        placeholder={isFocused && value.length === 0 ? "Mesajınızı yazın..." : currentPlaceholder}
+                        placeholder={isFocused && value.length === 0 ? t("typeMessage") : currentPlaceholder}
                         disabled={isLoading}
                         rows={1}
                         className="flex-1 bg-transparent resize-none text-[15px] outline-none placeholder:text-[hsl(var(--muted-foreground))] max-h-[160px] min-h-[24px] py-1 self-center w-full overflow-y-auto"
