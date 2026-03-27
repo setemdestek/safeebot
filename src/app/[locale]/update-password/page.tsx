@@ -2,9 +2,10 @@
 
 import { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Lock, Eye, EyeOff, CheckCircle } from "lucide-react";
+import { Lock, Eye, EyeOff, CheckCircle, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
@@ -35,7 +36,10 @@ export default function UpdatePasswordPage() {
     const t = useTranslations("auth");
     const locale = useLocale();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const { updatePassword } = useAuth();
+
+    const isLinkExpired = searchParams.get("error_code") === "otp_expired" || searchParams.get("error") === "access_denied";
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -77,10 +81,10 @@ export default function UpdatePasswordPage() {
                     router.push(`/${locale}/login`);
                 }, 2500);
             } else {
-                setError(t("emailInvalid"));
+                setError(t("updatePasswordError"));
             }
         } catch {
-            setError(t("emailInvalid"));
+            setError(t("updatePasswordError"));
         } finally {
             setLoading(false);
         }
@@ -104,6 +108,23 @@ export default function UpdatePasswordPage() {
                     </div>
                     <h1 className="text-2xl font-bold tracking-tight">SafeeBot</h1>
                 </div>
+
+                {/* Expired Link Warning */}
+                {isLinkExpired && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-4 p-4 rounded-xl border border-amber-500/30 bg-amber-500/10 flex items-start gap-3"
+                    >
+                        <AlertTriangle className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" />
+                        <div className="space-y-2">
+                            <p className="text-sm font-medium text-amber-500">{t("linkExpired")}</p>
+                            <Link href={`/${locale}/forgot-password`}>
+                                <Button variant="outline" size="sm">{t("requestNewLink")}</Button>
+                            </Link>
+                        </div>
+                    </motion.div>
+                )}
 
                 {/* Card */}
                 <div className="bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl p-8 shadow-xl">

@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useCallback, useState } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Turnstile } from "@marsidev/react-turnstile";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 
@@ -8,11 +9,21 @@ const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 interface TurnstileWidgetProps {
     onVerify: (token: string | null) => void;
+    resetKey?: number;
 }
 
-export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
+export function TurnstileWidget({ onVerify, resetKey = 0 }: TurnstileWidgetProps) {
+    const t = useTranslations("auth");
     const ref = useRef<TurnstileInstance>(null);
     const [hasFailed, setHasFailed] = useState(false);
+
+    // Auto-reset when parent increments resetKey
+    useEffect(() => {
+        if (resetKey > 0) {
+            setHasFailed(false);
+            ref.current?.reset();
+        }
+    }, [resetKey]);
 
     const handleSuccess = useCallback(
         (token: string) => {
@@ -39,7 +50,7 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
     if (!SITE_KEY) {
         return (
             <p className="text-xs text-[hsl(var(--destructive))] text-center">
-                CAPTCHA konfiqurasiya olunmayıb. Sistem administratoruna müraciət edin.
+                {t("captchaNotConfigured")}
             </p>
         );
     }
@@ -63,7 +74,7 @@ export function TurnstileWidget({ onVerify }: TurnstileWidgetProps) {
                     onClick={handleRetry}
                     className="text-xs text-[hsl(var(--primary))] hover:underline"
                 >
-                    CAPTCHA yüklənmədi — yenidən cəhd edin
+                    {t("captchaRetry")}
                 </button>
             )}
         </div>

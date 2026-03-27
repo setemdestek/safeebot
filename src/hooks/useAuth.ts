@@ -116,9 +116,10 @@ export function useAuth() {
     );
 
     const resetPassword = useCallback(
-        async (email: string, captchaToken?: string): Promise<boolean> => {
+        async (email: string, captchaToken?: string, locale?: string): Promise<boolean> => {
+            const loc = locale || "az";
             const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: `${window.location.origin}/az/update-password`,
+                redirectTo: `${window.location.origin}/${loc}/update-password`,
                 captchaToken,
             });
 

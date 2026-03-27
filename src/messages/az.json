@@ -104,7 +104,14 @@
         "valDigit": "Ən az 1 rəqəm (0-9) olmalıdır",
         "valSpecial": "Ən az 1 xüsusi simvol olmalıdır (@$!%*?&)",
         "requirementsNotMet": "{count} tələb qarşılanmayıb",
-        "forgotPasswordError": "Şifrə sıfırlama linki göndərilə bilmədi. Zəhmət olmasa bir az sonra yenidən cəhd edin."
+        "forgotPasswordError": "Şifrə sıfırlama linki göndərilə bilmədi. Zəhmət olmasa bir az sonra yenidən cəhd edin.",
+        "loginError": "E-poçt və ya şifrə yanlışdır",
+        "registerError": "Qeydiyyat zamanı xəta baş verdi. Yenidən cəhd edin.",
+        "updatePasswordError": "Şifrə yenilənə bilmədi. Yenidən cəhd edin.",
+        "linkExpired": "Şifrə sıfırlama linkinin müddəti bitib.",
+        "requestNewLink": "Yeni link göndər",
+        "captchaNotConfigured": "CAPTCHA konfiqurasiya olunmayıb. Sistem administratoruna müraciət edin.",
+        "captchaRetry": "CAPTCHA yüklənmədi — yenidən cəhd edin"
     },
     "chat": {
         "title": "Chatbot",

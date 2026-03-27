@@ -21,6 +21,7 @@ export default function ForgotPasswordPage() {
     const [loading, setLoading] = useState(false);
     const [sent, setSent] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -37,16 +38,18 @@ export default function ForgotPasswordPage() {
 
         setLoading(true);
         try {
-            const success = await resetPassword(email, captchaToken ?? undefined);
+            const success = await resetPassword(email, captchaToken ?? undefined, locale);
             if (success) {
                 setSent(true);
             } else {
                 setError(t("forgotPasswordError"));
                 setCaptchaToken(null);
+                setCaptchaResetKey((k) => k + 1);
             }
         } catch {
             setError(t("forgotPasswordError"));
             setCaptchaToken(null);
+            setCaptchaResetKey((k) => k + 1);
         } finally {
             setLoading(false);
         }
@@ -120,7 +123,7 @@ export default function ForgotPasswordPage() {
                                 </div>
 
                                 {/* Turnstile CAPTCHA */}
-                                <TurnstileWidget onVerify={setCaptchaToken} />
+                                <TurnstileWidget onVerify={setCaptchaToken} resetKey={captchaResetKey} />
 
                                 {error && (
                                     <p className="text-sm text-[hsl(var(--destructive))]">{error}</p>

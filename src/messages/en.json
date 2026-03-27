@@ -104,7 +104,14 @@
         "valDigit": "At least 1 digit (0-9)",
         "valSpecial": "At least 1 special character (@$!%*?&)",
         "requirementsNotMet": "{count} requirements not met",
-        "forgotPasswordError": "Could not send password reset link. Please try again later."
+        "forgotPasswordError": "Could not send password reset link. Please try again later.",
+        "loginError": "Email or password is incorrect",
+        "registerError": "An error occurred during registration. Please try again.",
+        "updatePasswordError": "Could not update password. Please try again.",
+        "linkExpired": "The password reset link has expired.",
+        "requestNewLink": "Request new link",
+        "captchaNotConfigured": "CAPTCHA is not configured. Contact system administrator.",
+        "captchaRetry": "CAPTCHA failed to load — try again"
     },
     "chat": {
         "title": "Chatbot",

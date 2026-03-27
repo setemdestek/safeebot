@@ -58,6 +58,7 @@ function RegisterForm() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
     const strength = useMemo(
         () => getPasswordStrength(form.password),
@@ -107,8 +108,9 @@ function RegisterForm() {
                 router.push(`/${locale}/dashboard/chat`);
             }
         } catch {
-            setError(t("emailInvalid"));
+            setError(t("registerError"));
             setCaptchaToken(null);
+            setCaptchaResetKey((k) => k + 1);
         } finally {
             setLoading(false);
         }
@@ -293,7 +295,7 @@ function RegisterForm() {
                         </div>
 
                         {/* Turnstile CAPTCHA */}
-                        <TurnstileWidget onVerify={setCaptchaToken} />
+                        <TurnstileWidget onVerify={setCaptchaToken} resetKey={captchaResetKey} />
 
                         {error && (
                             <p className="text-sm text-[hsl(var(--destructive))]">{error}</p>

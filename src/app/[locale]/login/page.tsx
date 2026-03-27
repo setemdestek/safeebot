@@ -31,6 +31,7 @@ function LoginForm() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+    const [captchaResetKey, setCaptchaResetKey] = useState(0);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -47,12 +48,14 @@ function LoginForm() {
             if (success) {
                 router.push(`/${locale}/dashboard/chat`);
             } else {
-                setError(t("emailInvalid"));
+                setError(t("loginError"));
                 setCaptchaToken(null);
+                setCaptchaResetKey((k) => k + 1);
             }
         } catch {
-            setError(t("emailInvalid"));
+            setError(t("loginError"));
             setCaptchaToken(null);
+            setCaptchaResetKey((k) => k + 1);
         } finally {
             setLoading(false);
         }
@@ -205,7 +208,7 @@ function LoginForm() {
                         </div>
 
                         {/* Turnstile CAPTCHA */}
-                        <TurnstileWidget onVerify={setCaptchaToken} />
+                        <TurnstileWidget onVerify={setCaptchaToken} resetKey={captchaResetKey} />
 
                         {/* Error */}
                         {error && (
