@@ -74,6 +74,7 @@ export function ChatSidebar({
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editValue, setEditValue] = useState("");
     const editInputRef = useRef<HTMLInputElement>(null);
+    const [showSupport, setShowSupport] = useState(false);
 
     useEffect(() => {
         if (editingId && editInputRef.current) {
@@ -114,7 +115,7 @@ export function ChatSidebar({
     return (
         <aside
             className={cn(
-                "flex flex-col h-full bg-[hsl(var(--sidebar-background))] border-r border-[hsl(var(--sidebar-border))] transition-all duration-300",
+                "relative flex flex-col h-full bg-[hsl(var(--sidebar-background))] border-r border-[hsl(var(--sidebar-border))] transition-all duration-300",
                 "w-72 shrink-0",
                 "max-md:fixed max-md:inset-y-0 max-md:left-0 max-md:z-50",
                 isOpen ? "max-md:translate-x-0" : "max-md:-translate-x-full",
@@ -296,13 +297,13 @@ export function ChatSidebar({
                     <Settings className="w-4 h-4 opacity-60" />
                     {tc("settings")}
                 </button>
-                <a
-                    href="mailto:setemdestek@hotmail.com"
+                <button
+                    onClick={() => setShowSupport(true)}
                     className="w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius)] text-sm hover:bg-[hsl(var(--primary)/0.1)] text-[hsl(var(--primary))] transition-colors"
                 >
                     <Mail className="w-4 h-4 opacity-60" />
                     {ts("title")}
-                </a>
+                </button>
                 <button
                     onClick={handleLogout}
                     className="w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius)] text-sm hover:bg-[hsl(var(--destructive)/0.1)] text-[hsl(var(--destructive))] transition-colors"
@@ -311,6 +312,35 @@ export function ChatSidebar({
                     {tc("logout")}
                 </button>
             </div>
+
+            {/* Support Panel */}
+            {showSupport && (
+                <div className="absolute inset-0 z-10 flex flex-col bg-[hsl(var(--sidebar-background))] p-5">
+                    <div className="flex items-center justify-between mb-6">
+                        <h2 className="text-base font-semibold">{ts("title")}</h2>
+                        <button
+                            onClick={() => setShowSupport(false)}
+                            className="p-1 rounded-[var(--radius)] hover:bg-[hsl(var(--sidebar-accent))] transition-colors"
+                        >
+                            <X className="w-4 h-4" />
+                        </button>
+                    </div>
+                    <p className="text-sm text-[hsl(var(--muted-foreground))] mb-6">
+                        {ts("description")}
+                    </p>
+                    <div className="rounded-[var(--radius)] border border-[hsl(var(--border))] p-4 mb-4">
+                        <p className="text-xs text-[hsl(var(--muted-foreground))] mb-1">{ts("emailLabel")}</p>
+                        <p className="text-sm font-medium">setemdestek@hotmail.com</p>
+                    </div>
+                    <a
+                        href="mailto:setemdestek@hotmail.com"
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-[var(--radius)] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] text-sm font-medium hover:opacity-90 transition-opacity"
+                    >
+                        <Mail className="w-4 h-4" />
+                        {ts("emailButton")}
+                    </a>
+                </div>
+            )}
         </aside>
     );
 }
