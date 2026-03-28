@@ -151,6 +151,7 @@
         "deleteAccount": "Hesabı Sil",
         "deleteAccountWarning": "Bu əməliyyat geri qaytarıla bilməz. Bütün məlumatlarınız silinəcək.",
         "deleteAccountConfirm": "Hesabı silmək istədiyinizə əminsiniz?",
+        "deleteAccountError": "Hesab silinərkən xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
         "profileUpdated": "Profil yeniləndi",
         "passwordChanged": "Şifrə dəyişdirildi",
         "fillAllFields": "Bütün sahələri doldurun",

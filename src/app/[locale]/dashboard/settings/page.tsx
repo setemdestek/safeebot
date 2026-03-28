@@ -31,6 +31,8 @@ export default function SettingsPage() {
 
     const [activeTab, setActiveTab] = useState("profile");
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
+    const [deleteError, setDeleteError] = useState("");
     const [profileForm, setProfileForm] = useState({
         firstName: user?.firstName || "",
         lastName: user?.lastName || "",
@@ -97,9 +99,14 @@ export default function SettingsPage() {
     };
 
     const handleDeleteAccount = async () => {
+        setDeleteLoading(true);
+        setDeleteError("");
         const success = await deleteAccount();
         if (success) {
             router.push(`/${locale}/login`);
+        } else {
+            setDeleteError(t("deleteAccountError"));
+            setDeleteLoading(false);
         }
     };
 
@@ -393,15 +400,26 @@ export default function SettingsPage() {
                         <p className="text-sm text-[hsl(var(--muted-foreground))] mb-6">
                             {t("deleteAccountWarning")}
                         </p>
+                        {deleteError && (
+                            <p className="text-sm text-[hsl(var(--destructive))] mb-4">{deleteError}</p>
+                        )}
                         <div className="flex gap-3 justify-end">
                             <Button
                                 variant="outline"
-                                onClick={() => setShowDeleteModal(false)}
+                                onClick={() => { setShowDeleteModal(false); setDeleteError(""); }}
+                                disabled={deleteLoading}
                             >
                                 {tc("cancel")}
                             </Button>
-                            <Button variant="destructive" onClick={handleDeleteAccount}>
-                                {t("deleteAccount")}
+                            <Button variant="destructive" onClick={handleDeleteAccount} disabled={deleteLoading}>
+                                {deleteLoading ? (
+                                    <span className="flex items-center gap-2">
+                                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        {t("deleteAccount")}...
+                                    </span>
+                                ) : (
+                                    t("deleteAccount")
+                                )}
                             </Button>
                         </div>
                     </div>

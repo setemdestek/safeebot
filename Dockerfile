@@ -37,6 +37,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 # 3. Static files (CSS, JS bundles)
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# 4. Environment variables for runtime (server-side)
+COPY --from=builder --chown=nextjs:nodejs /app/.env.production ./.env.production
+
 # Switch to non-root user
 USER nextjs
 
