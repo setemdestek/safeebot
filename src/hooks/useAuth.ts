@@ -135,32 +135,43 @@ export function useAuth() {
 
     const changePassword = useCallback(
         async (currentPassword: string, newPassword: string): Promise<{ success: boolean; error?: string }> => {
-            const { data: { user: currentUser } } = await supabase.auth.getUser();
-            if (!currentUser?.email) {
-                return { success: false, error: "no_user" };
-            }
+            try {
+                const res = await fetch("/api/auth/change-password", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ currentPassword, newPassword }),
+                });
 
-            // Ayrı non-singleton client ilə cari parolu yoxla (aktiv session-a toxunmur)
-            const verifyClient = createLoginClient(true);
-            const { error: signInError } = await verifyClient.auth.signInWithPassword({
-                email: currentUser.email,
-                password: currentPassword,
-            });
+                const data = await res.json();
 
-            if (signInError) {
-                return { success: false, error: "wrong_password" };
-            }
+                if (!res.ok) {
+                    return { success: false, error: data.error || "update_failed" };
+                }
 
-            // Əsas client ilə parolu yenilə
-            const { error: updateError } = await supabase.auth.updateUser({
-                password: newPassword,
-            });
-
-            if (updateError) {
+                return { success: true };
+            } catch {
                 return { success: false, error: "update_failed" };
             }
+        },
+        [],
+    );
 
-            return { success: true };
+    const deleteAccount = useCallback(
+        async (): Promise<boolean> => {
+            try {
+                const res = await fetch("/api/auth/delete-account", {
+                    method: "DELETE",
+                });
+
+                if (!res.ok) {
+                    return false;
+                }
+
+                await supabase.auth.signOut();
+                return true;
+            } catch {
+                return false;
+            }
         },
         [supabase],
     );
@@ -181,5 +192,5 @@ export function useAuth() {
         [supabase],
     );
 
-    return { user, isLoading, login, register, logout, updateProfile, resetPassword, updatePassword, changePassword };
+    return { user, isLoading, login, register, logout, updateProfile, resetPassword, updatePassword, changePassword, deleteAccount };
 }

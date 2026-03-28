@@ -27,7 +27,7 @@ export default function SettingsPage() {
     const tc = useTranslations("common");
     const locale = useLocale();
     const router = useRouter();
-    const { user, logout, changePassword } = useAuth();
+    const { user, changePassword, deleteAccount } = useAuth();
 
     const [activeTab, setActiveTab] = useState("profile");
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -96,9 +96,11 @@ export default function SettingsPage() {
         }
     };
 
-    const handleDeleteAccount = () => {
-        logout();
-        router.push(`/${locale}/login`);
+    const handleDeleteAccount = async () => {
+        const success = await deleteAccount();
+        if (success) {
+            router.push(`/${locale}/login`);
+        }
     };
 
     const handleLanguageChange = (newLocale: string) => {
