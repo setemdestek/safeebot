@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { UserPlus, MessageCircleQuestion, Brain, CheckCircle } from "lucide-react";
+import { UserPlus, MessageCircleQuestion, Brain, CheckCircle, ShieldAlert, FileText, BarChart3, Mail } from "lucide-react";
 
 const stagger = {
     hidden: {},
@@ -41,6 +41,30 @@ export function HowItWorks() {
             title: t("step4Title"),
             desc: t("step4Desc"),
             color: "hsl(var(--chart-2))",
+        },
+        {
+            icon: ShieldAlert,
+            title: t("step5Title"),
+            desc: t("step5Desc"),
+            color: "hsl(var(--chart-5))",
+        },
+        {
+            icon: FileText,
+            title: t("step6Title"),
+            desc: t("step6Desc"),
+            color: "hsl(var(--chart-1))",
+        },
+        {
+            icon: BarChart3,
+            title: t("step7Title"),
+            desc: t("step7Desc"),
+            color: "hsl(var(--chart-3))",
+        },
+        {
+            icon: Mail,
+            title: t("step8Title"),
+            desc: t("step8Desc"),
+            color: "hsl(var(--chart-4))",
         },
     ];
 
@@ -87,7 +111,7 @@ export function HowItWorks() {
                                 {step.desc}
                             </p>
 
-                            {i < steps.length - 1 && (
+                            {i % 4 !== 3 && (
                                 <div className="hidden lg:block absolute top-[40%] -right-4 w-8 border-t border-dashed border-[hsl(var(--border))]" />
                             )}
                         </motion.div>

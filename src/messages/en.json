@@ -50,7 +50,15 @@
         "step3Title": "AI Analysis",
         "step3Desc": "Our system analyzes your question based on the legislation of the Republic of Azerbaijan (Labor Code, MES regulations) and international standards (NEBOSH, ISO).",
         "step4Title": "Get Accurate Solutions",
-        "step4Desc": "Receive accurate, applicable professional answers that reference legislation or provide informational guidance in seconds."
+        "step4Desc": "Receive accurate, applicable professional answers that reference legislation or provide informational guidance in seconds.",
+        "step5Title": "AI Risk Analysis",
+        "step5Desc": "Upload workplace photos and let AI analyze safety risks to generate a detailed JSA report.",
+        "step6Title": "CV Builder",
+        "step6Desc": "Create an effective CV in seconds with professional templates and download it as PDF.",
+        "step7Title": "ATS Scoring",
+        "step7Desc": "Analyze your CV for ATS compatibility and find out your score.",
+        "step8Title": "Cover Letter",
+        "step8Desc": "Let AI generate a professional cover letter tailored to the job description."
     },
     "auth": {
         "loginTitle": "Welcome Back",

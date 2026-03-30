@@ -50,7 +50,15 @@
         "step3Title": "Süni İntellekt Analizi",
         "step3Desc": "Sistemimiz sualınızı Azərbaycan Respublikasının qanunvericiliyi (Əmək Məcəlləsi, FHN qaydaları) və beynəlxalq standartlar (NEBOSH, ISO) əsasında analiz edir.",
         "step4Title": "Dəqiq Həllər Əldə Edin",
-        "step4Desc": "Saniyələr içində qanunvericiliyə istinad edən, və ya məlumat xarakterli dəqiq tətbiq edilə bilən peşəkar cavablar alın."
+        "step4Desc": "Saniyələr içində qanunvericiliyə istinad edən, və ya məlumat xarakterli dəqiq tətbiq edilə bilən peşəkar cavablar alın.",
+        "step5Title": "AI Risk Analizi",
+        "step5Desc": "İş yerinin şəklini yükləyin, süni intellekt təhlükəsizlik risklərini analiz edib ətraflı JSA hesabatı hazırlasın.",
+        "step6Title": "CV Hazırlama",
+        "step6Desc": "Peşəkar CV şablonları ilə saniyələr içində effektiv CV yaradın və PDF olaraq yükləyin.",
+        "step7Title": "ATS Qiymətləndirmə",
+        "step7Desc": "CV-nizi ATS sistemlərinə uyğunluq baxımından analiz edin və balınızı öyrənin.",
+        "step8Title": "Müraciət Məktubu",
+        "step8Desc": "AI iş təsvirinə uyğun peşəkar müraciət məktubu hazırlasın."
     },
     "auth": {
         "loginTitle": "Xoş Gəldiniz",
