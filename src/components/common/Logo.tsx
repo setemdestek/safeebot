@@ -19,7 +19,7 @@ export function Logo({ className, width = 44, height = 44 }: LogoProps) {
                 "object-cover rounded-2xl overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105 ring-1 ring-[hsl(var(--border))]",
                 className
             )}
-            unoptimized
+            priority
         />
     );
 }
