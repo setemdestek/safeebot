@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { generateCV } from '@/lib/cv-builder/generate-cv';
 import { sanitizeCVData } from '@/lib/cv-builder/sanitize';
 import { cvFormSchema } from '@/lib/validations-cv';
+import { logError } from '@/lib/logger';
 
 export const maxDuration = 30;
 
@@ -21,7 +22,7 @@ export async function POST(request: Request) {
       p_action: 'generate',
     });
     if (rpcError) {
-      console.error('RPC Error:', rpcError);
+      logError('cv-generate/rpc', rpcError);
       return NextResponse.json({ message: 'Server xətası.' }, { status: 500 });
     }
     if (limitCheck && !limitCheck.allowed) {
@@ -75,7 +76,7 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    console.error('CV Generate Error:', error);
+    logError('cv-generate', error);
     return NextResponse.json({ message: 'CV yaradılarkən xəta baş verdi.' }, { status: 500 });
   }
 }

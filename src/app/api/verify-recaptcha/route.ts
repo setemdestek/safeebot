@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { logError } from "@/lib/logger";
 
 export async function POST(request: Request) {
   try {
@@ -14,7 +15,7 @@ export async function POST(request: Request) {
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
 
     if (!secretKey) {
-      console.error("RECAPTCHA_SECRET_KEY is not configured");
+      logError("recaptcha", "RECAPTCHA_SECRET_KEY is not configured");
       return NextResponse.json(
         { success: false, error: "Server configuration error" },
         { status: 500 }
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
       });
     }
   } catch (error) {
-    console.error("reCAPTCHA API error:", error);
+    logError("recaptcha", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
       { status: 500 }

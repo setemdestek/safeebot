@@ -5,6 +5,7 @@ import { buildCoverLetterPrompt } from '@/lib/cv-builder/prompts';
 import { sanitizeCVData } from '@/lib/cv-builder/sanitize';
 import { parseGeminiJSON } from '@/lib/cv-builder/parse-gemini-json';
 import { cvFormSchema, coverLetterResultSchema } from '@/lib/validations-cv';
+import { logError } from '@/lib/logger';
 
 export const maxDuration = 60;
 
@@ -48,11 +49,11 @@ export async function POST(request: Request) {
       rawText = await callGemini(prompt);
     } catch (err) {
       const errMsg = err instanceof Error ? err.message : String(err);
-      console.error('Gemini Cover Letter Error:', errMsg);
+      logError('cover-letter/gemini', errMsg);
       if (errMsg.includes('API_KEY') || errMsg.includes('401') || errMsg.includes('403')) {
         return NextResponse.json({ message: 'Gemini API açarı yanlışdır və ya etibarsızdır.' }, { status: 503 });
       }
-      return NextResponse.json({ message: `AI xidməti xətası: ${errMsg.slice(0, 200)}` }, { status: 503 });
+      return NextResponse.json({ message: 'AI xidməti müvəqqəti əlçatmazdır. Bir az sonra cəhd edin.' }, { status: 503 });
     }
 
     let parsed: unknown;
@@ -74,7 +75,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(validation.data);
   } catch (error) {
-    console.error('Cover Letter Error:', error);
+    logError('cover-letter', error);
     return NextResponse.json({ message: 'Məktub yaradılarkən xəta baş verdi.' }, { status: 500 });
   }
 }

@@ -13,6 +13,21 @@ const RATE_LIMIT_WINDOW = 15 * 60 * 1000
 const RATE_LIMIT_MAX = 100
 const BLOCK_DURATION = 15 * 60 * 1000
 
+const PASSWORD_RATE_LIMIT_MAX = 5
+const PASSWORD_RATE_LIMIT_WINDOW = 15 * 60 * 1000
+const PASSWORD_BLOCK_DURATION = 30 * 60 * 1000
+
+// Cleanup expired entries every 5 minutes
+const CLEANUP_INTERVAL = 5 * 60 * 1000
+setInterval(() => {
+  const now = Date.now()
+  for (const [key, entry] of rateLimitStore) {
+    if (now > entry.resetTime && (!entry.blockedUntil || now > entry.blockedUntil)) {
+      rateLimitStore.delete(key)
+    }
+  }
+}, CLEANUP_INTERVAL)
+
 function getRateLimitKey(ip: string, endpoint: string): string {
   return `${ip}:${endpoint}`
 }
@@ -34,8 +49,13 @@ function isRateLimited(ip: string, endpoint: string): boolean {
   const now = Date.now()
   const entry = rateLimitStore.get(key)
 
+  const isPasswordEndpoint = endpoint === '/api/auth/change-password'
+  const window = isPasswordEndpoint ? PASSWORD_RATE_LIMIT_WINDOW : RATE_LIMIT_WINDOW
+  const max = isPasswordEndpoint ? PASSWORD_RATE_LIMIT_MAX : RATE_LIMIT_MAX
+  const block = isPasswordEndpoint ? PASSWORD_BLOCK_DURATION : BLOCK_DURATION
+
   if (!entry) {
-    rateLimitStore.set(key, { count: 1, resetTime: now + RATE_LIMIT_WINDOW })
+    rateLimitStore.set(key, { count: 1, resetTime: now + window })
     return false
   }
 
@@ -44,14 +64,14 @@ function isRateLimited(ip: string, endpoint: string): boolean {
   }
 
   if (now > entry.resetTime) {
-    rateLimitStore.set(key, { count: 1, resetTime: now + RATE_LIMIT_WINDOW })
+    rateLimitStore.set(key, { count: 1, resetTime: now + window })
     return false
   }
 
   entry.count++
 
-  if (entry.count > RATE_LIMIT_MAX) {
-    entry.blockedUntil = now + BLOCK_DURATION
+  if (entry.count > max) {
+    entry.blockedUntil = now + block
     return true
   }
 
@@ -60,17 +80,38 @@ function isRateLimited(ip: string, endpoint: string): boolean {
 
 export async function updateSession(request: NextRequest) {
   const ip = getClientIp(request)
-  
+
   const endpoint = request.nextUrl.pathname
   if (endpoint.startsWith('/api/')) {
+    // CSRF protection: verify Origin header for state-changing requests
+    const method = request.method.toUpperCase()
+    if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+      const origin = request.headers.get('origin')
+      const host = request.headers.get('host')
+      if (origin && host) {
+        const originHost = new URL(origin).host
+        if (originHost !== host) {
+          return NextResponse.json(
+            { error: 'İcazəsiz sorğu mənbəyi.' },
+            { status: 403 }
+          )
+        }
+      }
+    }
+
+    // Stricter rate limit for password change endpoint
+    const isPasswordEndpoint = endpoint === '/api/auth/change-password'
+    const maxRequests = isPasswordEndpoint ? PASSWORD_RATE_LIMIT_MAX : RATE_LIMIT_MAX
+    const blockDuration = isPasswordEndpoint ? PASSWORD_BLOCK_DURATION : BLOCK_DURATION
+
     if (isRateLimited(ip, endpoint)) {
       return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
-        { 
+        { error: 'Çox sayda sorğu göndərildi. Bir az sonra cəhd edin.' },
+        {
           status: 429,
           headers: {
-            'Retry-After': String(Math.floor(BLOCK_DURATION / 1000)),
-            'X-RateLimit-Limit': String(RATE_LIMIT_MAX),
+            'Retry-After': String(Math.floor(blockDuration / 1000)),
+            'X-RateLimit-Limit': String(maxRequests),
             'X-RateLimit-Remaining': '0',
           }
         }

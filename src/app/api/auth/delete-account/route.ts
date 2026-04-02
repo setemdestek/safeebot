@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { logError } from '@/lib/logger'
 
 export async function DELETE() {
     try {
@@ -7,7 +8,7 @@ export async function DELETE() {
         const { data: { user }, error: authError } = await supabase.auth.getUser()
 
         if (authError) {
-            console.error('[delete-account] Auth error:', authError.message)
+            logError('delete-account/auth', authError)
             return NextResponse.json({ error: 'auth_error' }, { status: 401 })
         }
 
@@ -18,13 +19,13 @@ export async function DELETE() {
         const { error } = await supabase.rpc('delete_own_account')
 
         if (error) {
-            console.error('[delete-account] RPC error:', error.message)
-            return NextResponse.json({ error: 'delete_failed', message: error.message }, { status: 500 })
+            logError('delete-account/rpc', error)
+            return NextResponse.json({ error: 'delete_failed' }, { status: 500 })
         }
 
         return NextResponse.json({ success: true })
     } catch (err) {
-        console.error('[delete-account] Unexpected error:', err)
+        logError('delete-account', err)
         return NextResponse.json({ error: 'internal_error' }, { status: 500 })
     }
 }

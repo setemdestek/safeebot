@@ -32,12 +32,12 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://*.supabase.co https://challenges.cloudflare.com",
+              "script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://*.supabase.co https://challenges.cloudflare.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: https: blob:",
-              "media-src 'self' https: blob:",
-              "connect-src 'self' https://*.supabase.co https://fvbsxhrvmmniuluwoayy.supabase.co wss://*.supabase.co https://*.spline.design https://unpkg.com https://challenges.cloudflare.com",
+              "img-src 'self' data: blob:",
+              "media-src 'self' blob:",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.spline.design https://unpkg.com https://challenges.cloudflare.com",
               "frame-src 'self' https://www.google.com https://www.gstatic.com https://challenges.cloudflare.com",
               "worker-src 'self' blob:",
             ].join("; "),
@@ -63,14 +63,6 @@ const nextConfig: NextConfig = {
             value: "max-age=31536000; includeSubDomains",
           },
         ],
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/api/n8n/:path*",
-        destination: process.env.WEBHOOK_URL || "/api/chat",
       },
     ];
   },

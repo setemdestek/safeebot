@@ -5,6 +5,7 @@ import { buildAnalysisPrompt } from '@/lib/cv-builder/prompts';
 import { sanitizeCVData } from '@/lib/cv-builder/sanitize';
 import { cvFormSchema, cvAnalysisResultSchema } from '@/lib/validations-cv';
 import { parseGeminiJSON } from '@/lib/cv-builder/parse-gemini-json';
+import { logError } from '@/lib/logger';
 
 export const maxDuration = 60;
 
@@ -40,14 +41,14 @@ export async function POST(request: Request) {
       rawText = await callGemini(prompt);
     } catch (err) {
       const errMsg = err instanceof Error ? err.message : String(err);
-      console.error('Gemini API Error:', errMsg);
+      logError('cv-analyze/gemini', errMsg);
       if (errMsg.includes('API_KEY') || errMsg.includes('401') || errMsg.includes('403')) {
         return NextResponse.json({ message: 'Gemini API açarı yanlışdır və ya etibarsızdır.' }, { status: 503 });
       }
       if (errMsg.includes('not found') || errMsg.includes('404')) {
         return NextResponse.json({ message: 'Gemini model tapılmadı.' }, { status: 503 });
       }
-      return NextResponse.json({ message: `AI xidməti xətası: ${errMsg.slice(0, 200)}` }, { status: 503 });
+      return NextResponse.json({ message: 'AI xidməti müvəqqəti əlçatmazdır. Bir az sonra cəhd edin.' }, { status: 503 });
     }
 
     let parsed: unknown;
@@ -65,13 +66,13 @@ export async function POST(request: Request) {
 
     const validation = cvAnalysisResultSchema.safeParse(parsed);
     if (!validation.success) {
-      console.error('Gemini response validation failed:', validation.error);
+      logError('cv-analyze/validation', validation.error);
       return NextResponse.json({ message: 'AI cavabı düzgün formatda deyil.' }, { status: 502 });
     }
 
     return NextResponse.json(validation.data);
   } catch (error) {
-    console.error('CV Analyze Error:', error);
+    logError('cv-analyze', error);
     return NextResponse.json({ message: 'Analiz zamanı xəta baş verdi.' }, { status: 500 });
   }
 }

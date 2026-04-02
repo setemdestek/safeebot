@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { passwordSchema } from '@/lib/validations'
 
 export async function POST(request: NextRequest) {
     const supabase = await createClient()
@@ -14,6 +15,12 @@ export async function POST(request: NextRequest) {
 
     if (!currentPassword || !newPassword) {
         return NextResponse.json({ error: 'missing_fields' }, { status: 400 })
+    }
+
+    const passwordValidation = passwordSchema.safeParse(newPassword)
+    if (!passwordValidation.success) {
+        const errors = passwordValidation.error.issues.map((i) => i.message)
+        return NextResponse.json({ error: 'weak_password', messages: errors }, { status: 400 })
     }
 
     const admin = createAdminClient()

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { logError } from '@/lib/logger';
 
 export async function POST(request: Request) {
     try {
@@ -24,7 +25,7 @@ export async function POST(request: Request) {
             });
 
             if (rpcError) {
-                console.error('RPC Error:', rpcError);
+                logError('jsa-analyze/rpc', rpcError);
                 return NextResponse.json(
                     { message: 'Limitləri yoxlayarkən server xətası baş verdi.' },
                     { status: 500 }
@@ -68,7 +69,7 @@ export async function POST(request: Request) {
             if (response.status === 413) {
                 return NextResponse.json({ message: 'Şəkillər çox böyükdür. Hər biri maks 10MB olmalıdır.' }, { status: 413 });
             }
-            return NextResponse.json({ message: `Webhook xətası (Kod: ${response.status})` }, { status: response.status });
+            return NextResponse.json({ message: 'Xarici xidmətlə əlaqə xətası.' }, { status: 502 });
         }
 
         // 6. Uğurlu olduqda Blob-u (DOCX faylını) birbaşa client-ə ötür
@@ -88,7 +89,7 @@ export async function POST(request: Request) {
             );
         }
 
-        console.error('JSA Analyze API Error:', error);
+        logError('jsa-analyze', error);
         return NextResponse.json(
             { message: 'Server xətası. Bir az sonra yenidən cəhd edin.' },
             { status: 500 }

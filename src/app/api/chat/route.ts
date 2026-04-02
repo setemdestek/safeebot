@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { WEBHOOK_URL, CHAT_TIMEOUT_MS } from "@/lib/constants";
 import { chatMessageSchema } from "@/lib/validations";
 import { createClient } from "@/lib/supabase/server";
+import { logError } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
     try {
@@ -84,8 +85,8 @@ export async function POST(request: NextRequest) {
 
         if (!response.ok) {
             return NextResponse.json(
-                { error: `Webhook error: ${response.status} ${response.statusText}` },
-                { status: response.status },
+                { error: "Xarici xidmətlə əlaqə xətası." },
+                { status: 502 },
             );
         }
 
@@ -105,7 +106,7 @@ export async function POST(request: NextRequest) {
             .single();
 
         if (botInsertErr) {
-            console.error("Bot mesajını DB-yə yazarkən xəta:", botInsertErr);
+            logError("chat/db-insert", botInsertErr);
             // Səssiz xəta kimi davam edə bilərik, amma loq mütləqdir.
         }
 
@@ -115,11 +116,11 @@ export async function POST(request: NextRequest) {
             dbMessage: botMsgInsert
         });
     } catch (error: any) {
-        console.error("Chat API xətası:", error);
+        logError("chat/api", error);
         const isAbort =
             error && typeof error === 'object' && error.name === "AbortError";
         return NextResponse.json(
-            { error: isAbort ? "Timeout" : `Internal server error: ${error?.message || error}` },
+            { error: isAbort ? "Sorğu vaxtı bitdi. Yenidən cəhd edin." : "Daxili server xətası." },
             { status: isAbort ? 504 : 500 },
         );
     }

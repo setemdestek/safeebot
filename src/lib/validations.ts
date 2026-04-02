@@ -1,5 +1,13 @@
 import { z } from 'zod'
 
+export const passwordSchema = z
+  .string()
+  .min(10, 'Parol ən az 10 simvol olmalıdır')
+  .regex(/[A-Z]/, 'Ən az 1 böyük hərf olmalıdır')
+  .regex(/[a-z]/, 'Ən az 1 kiçik hərf olmalıdır')
+  .regex(/[0-9]/, 'Ən az 1 rəqəm olmalıdır')
+  .regex(/[@$!%*?&]/, 'Ən az 1 xüsusi simvol olmalıdır (@$!%*?&)')
+
 export const chatMessageSchema = z.object({
   chatInput: z
     .string()
@@ -19,7 +27,7 @@ export const chatMessageSchema = z.object({
     ),
   sessionId: z
     .string()
-    .min(1, 'Yanlış session ID formatı'),
+    .uuid('Yanlış session ID formatı'),
 })
 
 export type ChatMessageInput = z.infer<typeof chatMessageSchema>
@@ -36,13 +44,7 @@ export const registerSchema = z.object({
   email: z
     .string()
     .email('Düzgün email ünvanı daxil edin'),
-  password: z
-    .string()
-    .min(10, 'Parol ən az 10 simvol olmalıdır')
-    .regex(/[A-Z]/, 'Ən az 1 böyük hərf olmalıdır')
-    .regex(/[a-z]/, 'Ən az 1 kiçik hərf olmalıdır')
-    .regex(/[0-9]/, 'Ən az 1 rəqəm olmalıdır')
-    .regex(/[@$!%*?&]/, 'Ən az 1 xüsusi simvol olmalıdır (@$!%*?&)'),
+  password: passwordSchema,
   confirmPassword: z.string(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: 'Parollar uyğun deyil',
