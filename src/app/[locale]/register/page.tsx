@@ -107,8 +107,19 @@ function RegisterForm() {
             if (success) {
                 router.push(`/${locale}/dashboard/chat`);
             }
-        } catch {
-            setError(t("registerError"));
+        } catch (err: unknown) {
+            const supabaseError = err as { message?: string; status?: number };
+            const msg = supabaseError?.message || "";
+
+            if (msg.includes("already registered") || msg.includes("already been registered")) {
+                setError(t("emailAlreadyExists"));
+            } else if (msg.includes("captcha") || msg.includes("Captcha")) {
+                setError(t("captchaFailed"));
+            } else if (msg.includes("rate") || msg.includes("limit")) {
+                setError(t("rateLimitError"));
+            } else {
+                setError(t("registerError"));
+            }
             setCaptchaToken(null);
             setCaptchaResetKey((k) => k + 1);
         } finally {
