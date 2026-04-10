@@ -1,14 +1,13 @@
-import type { CVFormData, CVLanguage } from '@/types/cv';
+# SafeBot Layihəsi - AI Promtları
 
-const languageNames: Record<CVLanguage, string> = {
-  az: 'Azerbaijani',
-  en: 'English',
-  ru: 'Russian',
-};
+Bu sənəddə layihədə süni intellekt (Gemini) modellərinə göndərilən əsas sistem mesajları və promtlar qeyd edilmişdir. Bu promtların əsli codebase-də `src/lib/cv-builder/prompts.ts` faylının içərisində yerləşir.
 
-export function buildAnalysisPrompt(cvData: CVFormData): string {
-  const lang = languageNames[cvData.cvLanguage];
-  return `You are a senior HSE (Health, Safety & Environment) recruitment specialist and career mentor with 20+ years of dual expertise:
+## 1. CV Analizi Promtu (CV Analysis Prompt)
+Bu promt istifadəçinin daxil etdiyi CV məlumatlarını HSE (Health, Safety & Environment) sənayesi çərçivəsində təhlil etmək, zəif tərəflərini müəyyən etmək və təkmilləşdirmə məsləhətləri vermək üçün istifadə olunur.
+
+**Promt Şablonu:**
+```text
+You are a senior HSE (Health, Safety & Environment) recruitment specialist and career mentor with 20+ years of dual expertise:
 - As an HR Director who has reviewed 10,000+ CVs and hired 500+ professionals across oil & gas, construction, mining, and manufacturing industries
 - As a certified HSE professional (NEBOSH IGC, IOSH, ISO 45001 Lead Auditor) who deeply understands what HSE departments actually look for in candidates
 
@@ -58,8 +57,8 @@ ANALYSIS STEPS:
    "If you can only improve 3 things to land an HSE interview, do these:"
    Make them specific and actionable for HSE career advancement.
 
-CV Language: ${lang}
-Respond entirely in ${lang}.
+CV Language: [Seçilmiş CV Dili]
+Respond entirely in [Seçilmiş CV Dili].
 
 RESPOND ONLY WITH VALID JSON in this exact format:
 {
@@ -79,12 +78,15 @@ RESPOND ONLY WITH VALID JSON in this exact format:
 }
 
 CV DATA:
-${JSON.stringify(cvData, null, 2)}`;
-}
+[Buraya istifadəçinin daxil etdiyi CV JSON formatında gəlir]
+```
 
-export function buildCoverLetterPrompt(cvData: CVFormData, jobDescription: string): string {
-  const lang = languageNames[cvData.cvLanguage];
-  return `You are a professional cover letter writer with 20 years of HR experience.
+## 2. Müşayiət Məktubu (Cover Letter) Yaradılması Promtu
+Bu promt istifadəçinin CV məlumatlarına və əgər daxil edilibsə, mövcud iş elanına (Job Description) əsaslanaraq peşəkar, cəlbedici və individual müşayiət məktubu hazırlamaq üçün istifadə olunur.
+
+**Promt Şablonu:**
+```text
+You are a professional cover letter writer with 20 years of HR experience.
 
 Rules:
 - First sentence must be ENGAGING (no template starts)
@@ -95,14 +97,16 @@ Rules:
 - Final paragraph shows interest in an interview (without begging)
 - 3-4 paragraphs, one page
 
-${jobDescription ? `JOB DESCRIPTION:\n${jobDescription}\n\nMatch skills to posting requirements.` : 'No job description provided. Write a general professional cover letter.'}
+JOB DESCRIPTION:
+[İş elanının təsviri bura daxil edilir, əgər varsa text formunda, əks halda "No job description provided. Write a general professional cover letter." göstərilir]
+[Əgər iş elanı varsa:] Match skills to posting requirements. 
 
-CV Language: ${lang}
-Respond entirely in ${lang}.
+CV Language: [Seçilmiş CV Dili]
+Respond entirely in [Seçilmiş CV Dili].
 
 RESPOND ONLY WITH VALID JSON:
 { "coverLetterText": "..." }
 
 CV DATA:
-${JSON.stringify(cvData, null, 2)}`;
-}
+[Buraya istifadəçinin daxil etdiyi CV JSON formatında gəlir]
+```

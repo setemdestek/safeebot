@@ -32,6 +32,7 @@ export const config = {
         // - API routes
         // - _next (Next.js internals)
         // - static files (icons, images, etc.)
-        "/((?!api|_next|.*\\..*).*)",
+        // - /cv/* (CV Builder — proxied to Reactive Resume)
+        "/((?!api|_next|cv|.*\\..*).*)",
     ],
 };

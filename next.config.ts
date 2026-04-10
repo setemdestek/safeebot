@@ -5,6 +5,30 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  async rewrites() {
+    const rrUrl = process.env.REACTIVE_RESUME_INTERNAL_URL || "http://reactive-resume:3000";
+    return [
+      // CV Builder — page routes and static assets (Vite base: /cv/)
+      {
+        source: "/cv",
+        destination: `${rrUrl}/cv`,
+      },
+      {
+        source: "/cv/:path*",
+        destination: `${rrUrl}/cv/:path*`,
+      },
+      // CV Builder — ORPC API (browser requests to /api/rpc/*)
+      {
+        source: "/api/rpc/:path*",
+        destination: `${rrUrl}/api/rpc/:path*`,
+      },
+      // CV Builder — OpenAPI spec
+      {
+        source: "/api/openapi/:path*",
+        destination: `${rrUrl}/api/openapi/:path*`,
+      },
+    ];
+  },
   async headers() {
     return [
       {
