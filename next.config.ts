@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         source: "/cv/assets/:path*",
         destination: `${rrUrl}/assets/:path*`,
       },
+      // Proxying API calls that frontend makes to /cv/api/... to Nitro's /api/...
+      {
+        source: "/cv/api/:path*",
+        destination: `${rrUrl}/api/:path*`,
+      },
       {
         source: "/cv",
         destination: `${rrUrl}/cv`,
@@ -21,12 +26,11 @@ const nextConfig: NextConfig = {
         source: "/cv/:path*",
         destination: `${rrUrl}/cv/:path*`,
       },
-      // CV Builder — ORPC API (browser requests to /api/rpc/*)
+      // Fallback for direct API requests if any
       {
         source: "/api/rpc/:path*",
         destination: `${rrUrl}/api/rpc/:path*`,
       },
-      // CV Builder — OpenAPI spec
       {
         source: "/api/openapi/:path*",
         destination: `${rrUrl}/api/openapi/:path*`,
