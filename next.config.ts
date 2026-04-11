@@ -8,16 +8,6 @@ const nextConfig: NextConfig = {
   async rewrites() {
     const rrUrl = process.env.REACTIVE_RESUME_INTERNAL_URL || "http://reactive-resume:3000";
     return [
-      // CV Builder — page routes and static assets (Vite base: /cv/)
-      {
-        source: "/cv/assets/:path*",
-        destination: `${rrUrl}/assets/:path*`,
-      },
-      // Proxying API calls that frontend makes to /cv/api/... to Nitro's /api/...
-      {
-        source: "/cv/api/:path*",
-        destination: `${rrUrl}/api/:path*`,
-      },
       {
         source: "/cv",
         destination: `${rrUrl}/cv`,
