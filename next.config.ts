@@ -8,17 +8,6 @@ const nextConfig: NextConfig = {
   async rewrites() {
     const rrUrl = process.env.REACTIVE_RESUME_INTERNAL_URL || "http://reactive-resume:3000";
     return [
-      // Static Assets (Vite builds these to /assets/ and the public root)
-      {
-        source: "/cv/assets/:path*",
-        destination: `${rrUrl}/assets/:path*`,
-      },
-      // Proxy public directory files like PWA manifest, service worker, icons, etc.
-      // Next.js regex named capture group to catch extensions only.
-      {
-        source: "/cv/:file(.*\\.(?:webmanifest|js|jpeg|jpg|png|svg|ico|woff2?|txt|xml))",
-        destination: `${rrUrl}/:file`,
-      },
       {
         source: "/cv",
         destination: `${rrUrl}/cv`,
