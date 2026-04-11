@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
     return [
       // CV Builder — page routes and static assets (Vite base: /cv/)
       {
+        source: "/cv/assets/:path*",
+        destination: `${rrUrl}/assets/:path*`,
+      },
+      {
         source: "/cv",
         destination: `${rrUrl}/cv`,
       },
